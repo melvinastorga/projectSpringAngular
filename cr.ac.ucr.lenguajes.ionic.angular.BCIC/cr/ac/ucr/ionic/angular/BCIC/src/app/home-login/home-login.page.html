@@ -1,0 +1,30 @@
+<ion-content>
+
+
+<br>
+<h1>Iniciar sesion</h1>
+<p>
+  <mat-form-field class="login-input"  appearance="legacy">
+    <mat-label>Usuario</mat-label>
+    <input class="login-input" matInput>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field  class="login-input"  appearance="legacy">
+    <mat-label>Contrasena</mat-label>
+    <input class="login-input" matInput >
+  </mat-form-field>
+</p>
+
+ 
+<ion-row>
+  <ion-col>
+    <button mat-raised-button color="primary">Acceptar</button>
+  </ion-col>
+  <ion-col>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Cancelar</button>
+  </ion-col>
+</ion-row>
+     
+
+</ion-content>
