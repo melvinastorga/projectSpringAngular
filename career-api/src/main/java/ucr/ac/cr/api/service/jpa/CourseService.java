@@ -19,8 +19,42 @@ public class CourseService implements ICourseService {
 	private CourseRepository repoCourse;
 	
 	@Override
-	public List<Course> ListAll() {
-		return repoCourse.findAll();
+	public List<Course> ListActiveCourses() {
+		return repoCourse.getActiveCourses();
+	}
+
+	@Override
+	public List<Course> ListOffCourses() {
+		return repoCourse.getOffCourses();
+	}
+
+	@Override
+	public Course GetCourseById(int courseId) {
+		
+		return repoCourse.getCourseById(courseId);
+	}
+
+	@Override
+	public void insertCourseSP(Course course) {
+		repoCourse.insertCourseSP(course.getCredits(), course.getCode(), course.getName(), course.getTerm(), course.getDescription());
+	}
+
+	@Override
+	public void updateCourseSP(Course course) {
+		repoCourse.updateCourseSP(course.getCourseId(), course.getCredits(), course.getCode(), course.getName(), course.getTerm(), course.getDescription());
+		
+	}
+
+	@Override
+	public void deleteCourseSP(Course course) {
+		repoCourse.deleteteCourseSP(course.getCourseId());
+		
+	}
+
+	@Override
+	public void activeCourseSP(Course course) {
+		repoCourse.activeCourseSP(course.getCourseId());
+		
 	}
 
 	
