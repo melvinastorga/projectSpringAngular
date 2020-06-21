@@ -1,234 +1,333 @@
- 
+<!-- =============================================
+  Page: UCR Informatica Empresarial admin system
+  Version: 1.2
+  Author:	Horizon Solutions
+  Title: site home page and sections
+
+  - Banner
+  - Noticias
+  - Cursos
+  - Profesores
+  - Footer
+=================================================== -->
 <ion-content id="bodyHome">
 
-  <div class="body">
-
-   
+  <!-- ------------------------------------- 
+      Banner
+--------------------------------------- -->
+  <div class="banner">
+    <div class="wrapper">
+      <h1 class="title-font regular double-header-line">Informatica empresarial</h1>
+      <p class="subtitle-font regular uppercase ls-large">You know you like it</p>
+    </div>
   </div>
 
-  <div class="separator" >
-    <h1>Noticias</h1>
- </div>
 
+  <!-- ------------------------------------- 
+      Noticias 
+--------------------------------------- -->
 
- <ion-items style="background-color: white;width: 90%; height: 70%; align-content: center;text-align: center; margin-left: 5%; margin-right: 5%;">
+  <!-- Separator Noticias -->
+  <div class="separator" id="newsRibbon">
+    <h1 style="font-size: 35px;">Noticias</h1>
+  </div>
+  <!-- End Separator Noticias -->
 
-<mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation" >
-<mdb-carousel-item *ngFor="let item of slides; let i = index">
-<div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>Titulo: Chiba Inu</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-    <ion-item> <mat-card-subtitle>Descripcion: The Shiba Inu japon dog</mat-card-subtitle></ion-item>
-  
+  <!-- Carrousel container -->
+  <ion-items>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Mas
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
-      
-      </mat-expansion-panel>
-    </mat-card-content>
-    <mat-card-actions  style="height: 80px;">
-      <button size="sm"  mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Comentar</button>
-    </mat-card-actions>
-  </mat-card>
-  
-</div>
-</mdb-carousel-item>
-</mdb-carousel>
+    <!-- Carrousel mdb -->
+    <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
 
-</ion-items>
+        <!-- Carrousel scroller-->
+        <div class="col-md-4 " *ngFor="let card of item; let cardIndex = index">
 
+          <!-- Material card-->
+          <mat-card class="mat-card">
+            <!-- Card header-->
+            <mat-card-header>
+              <mat-card-title>Titulo: Chiba Inu</mat-card-title>
+            </mat-card-header>
+            <!-- End Card header-->
 
-<div class="separator2" >
-  <h1>Cursos</h1>
-</div>
-<ion-items style="height: max-content;background-color: white;width: 70%; height: 60%; align-content: center;text-align: center; margin-left: 15%; margin-right: 15%;">
+            <!-- Card Content-->
+            <mat-card-content>
+              <ion-item>
+                <mat-card-subtitle>Descripcion: The Shiba Inu japon dog</mat-card-subtitle>
+              </ion-item>
+              <!-- Dropdown news-->
+              <mat-expansion-panel class="news-dropdown">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Mas
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
 
-  <mdb-carousel [interval]="'0'"  [isControls]="true" class="carousel-multi-item multi-animation" >
-    <mdb-carousel-item *ngFor="let item of slides; let i = index">
-    <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
-    <mdb-card class="my-1 h-100">
-      <ion-item>
-        <ion-img style="height:300px;width: 300px; margin-left: 10%; margin-right: 10%;" class="test" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap"></ion-img>
-      </ion-item>
-   
-    <mdb-card-body>
-    <mdb-card-title>
-    <h4>{{card.title}}</h4>
-    </mdb-card-title>
-    <p>{{card.description}}</p>
-    </mdb-card-body>
-    <mdb-card-footer style="height: 120px">
-      <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
-      </mdb-card-footer>
-    </mdb-card>
-    </div>
-    </mdb-carousel-item>
+                <p>
+                  The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                  A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                  bred for hunting.
+                </p>
+
+              </mat-expansion-panel>
+              <!-- End Dropdown news-->
+            </mat-card-content>
+            <!-- End Card content-->
+
+            <!-- Card actions-->
+            <mat-card-actions style="height: 80px;">
+              <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Comentar</button>
+            </mat-card-actions>
+            <!-- End Card actions-->
+          </mat-card>
+          <!-- End Material card-->
+
+        </div>
+        <!-- End Scroller of the carrousel-->
+
+      </mdb-carousel-item>
     </mdb-carousel>
-    
-</ion-items>
+    <!-- End Carrousel mdb -->
+  </ion-items>
+  <!-- End Carrousel container -->
 
+  <!-- ------------------------------------- 
+      Cursos 
+--------------------------------------- -->
+  <!-- Separator Cursos -->
+  <div class="separator2" id="coursesRibbon">
+    <h1 style="font-size: 35px;">Cursos</h1>
+  </div>
+  <!-- Separator Cursos -->
 
-<div class="separator2" >
-  <h1>Profesores</h1>
-</div>
+  <!-- Card item -->
+  <ion-items>
 
-<ion-items style="background-color: white;width: 70%; height: 60%; align-content: center;text-align: center; margin-left: 15%; margin-right: 15%;">
-  <mdb-carousel [interval]="'0'"  [isControls]="true" class="carousel-multi-item multi-animation" >
-    <mdb-carousel-item *ngFor="let item of slides; let i = index">
-    <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
-    <mdb-card class="my-1 h-100">
-     
-        <ion-img style=" border-radius: 50%; height:250px;width: 250px; margin-left: 25%; margin-right: 50%;" class="test" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap"></ion-img>
-        <mdb-card-title>
-          <h4>Alexis jesus madrigal cordero</h4>
-          </mdb-card-title>
-   
-    <mdb-card-body>
+    <!-- Carrousel mdb -->
+    <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
 
+        <!-- Carrousel scroller-->
+        <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Informacion
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
-      
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Cursos
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      
-         <ion-items>
+          <!-- Card -->
+          <mdb-card class="my-1 h-100">
+            <ion-item>
+              <ion-img class="carrouselImage"
+                src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
+              </ion-img>
+            </ion-item>
 
-   <br>
-            <div class="row">
-              <div  class="col-md">
-               Redes
-              </div>
+            <mdb-card-body>
+              <mdb-card-title>
+                <h4>{{card.title}}</h4>
+              </mdb-card-title>
+              <p>{{card.description}}</p>
+            </mdb-card-body>
+            <mdb-card-footer style="height: 120px">
+              <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+            </mdb-card-footer>
+          </mdb-card>
+          <!-- End Card -->
+        </div>
+        <!-- End Carrousel scroller-->
 
-              <div class="col-sm">
-  
-                <ion-button color="secondary"> Horario</ion-button>
-              </div>
-            </div>
-     
-         </ion-items>
-
-         <ion-items>
-
-     
-            <div class="row">
-              <div class="col-md">
-               Programacion I
-              
-              </div>
-              <div class="col-sm">
-  
-               <ion-button color="secondary"> Horario</ion-button>
-              </div>
-            </div>
-        
-         </ion-items>
-
-      
-      </mat-expansion-panel>
-
-    </mdb-card-body>
-    <mdb-card-footer style="height: 120px">
-      <button size="sm"  mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Facebook</button>
-      <button size="sm"  mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Instagram</button>
-      </mdb-card-footer>
-    </mdb-card>
-    </div>
-    </mdb-carousel-item>
+      </mdb-carousel-item>
     </mdb-carousel>
-    
+    <!-- End Carrousel mdb -->
+  </ion-items>
+  <!-- End Card item -->
 
-</ion-items>
+  <!-- ------------------------------------- 
+      Profesores
+--------------------------------------- -->
+  <!-- Separator Profesores -->
+  <div class="separator2" id="professorRibbon">
+    <h1 style="font-size: 35px;">Profesores</h1>
+  </div>
+  <!-- End Separator Profesores -->
 
-    
-<footer style="background-color: #204c6f;;color: white; margin-top: 10%;" class="page-footer font-small blue pt-4">
+  <!-- Card item -->
+  <ion-items>
+    <!-- Carrousel mdb -->
+    <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
 
-  <!-- Footer Links -->
-  <div class="container-fluid text-center text-md-left">
+        <!-- Carrousel scroller-->
+        <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
 
-    <!-- Grid row -->
-    <div class="row">
+          <!-- Card -->
+          <mdb-card>
 
-      <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
+            <!-- Card image -->
+            <ion-item>
+              <ion-img class="carrouselImage"
+                src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
+              </ion-img>
+            </ion-item>
+            <!-- End Card image-->
 
-        <!-- Content -->
-        <h5 class="text-uppercase">Descripcion</h5>
-        <p>Pagina de la carrera informatica empresarial CR</p>
+            <!-- Card name -->
+            <mdb-card-body>
+              <mdb-card-title>
+                <h4 class="professor-name">Alexis jesus madrigal cordero</h4>
+              </mdb-card-title>
+            </mdb-card-body>
+            <!-- End Card name -->
+
+            <!-- Card body-->
+            <mdb-card-body>
+              <!-- Dropdown  info -->
+              <mat-expansion-panel class="prof-dropdown">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Informacion
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <p>
+                  The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                  A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                  bred for hunting.
+                </p>
+              </mat-expansion-panel>
+              <!-- End Dropdown  info -->
+
+              <!-- Dropdown  courses-->
+              <mat-expansion-panel class="prof-dropdown">
+
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Cursos
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <!-- Professor course item-->
+                <ion-items>
+                  <br>
+                  <div class="row">
+                    <div class="col-md">
+                      Redes
+                    </div>
+
+                    <!-- Professor schedule-->
+                    <div class="col-sm">
+                      <ion-button color="secondary"> Horario</ion-button>
+                    </div>
+                    <!-- End Professor schedule-->
+
+                  </div>
+                </ion-items>
+                <!-- End Professor course item-->
+
+                <!-- End Professor course item-->
+                <ion-items>
+                  <div class="row">
+
+                    <div class="col-md">
+                      Programacion I
+                    </div>
+
+                    <div class="col-sm">
+                      <ion-button color="secondary"> Horario</ion-button>
+                    </div>
+
+                  </div>
+                </ion-items>
+                <!-- End Professor course item-->
+              </mat-expansion-panel>
+              <!-- End Dropdown  courses-->
+            </mdb-card-body>
+            <!-- End Card body-->
+
+            <!-- Card footer-->
+            <mdb-card-footer class="professor-card-footer">
+              <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect
+                class="social-prof-button">Facebook</button>
+              <button size="sm" mdbBtn type="button" gradient="purple" rounded="true" mdbWavesEffect
+                class="social-prof-button">Instagram</button>
+            </mdb-card-footer>
+            <!-- End Card footer-->
+          </mdb-card>
+          <!-- End Card -->
+
+        </div>
+        <!-- Carrousel scroller-->
+
+      </mdb-carousel-item>
+    </mdb-carousel>
+    <!-- End Carrousel mdb -->
+
+  </ion-items>
+  <!-- End Card item -->
+
+  <!-- ------------------------------------- 
+      Footer
+--------------------------------------- -->
+  <footer class="footer_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="single_ftr">
+            <h4 class="sf_title">Universidad de Costa Rica</h4>
+            <h5 class="sf_title">Recinto de Paraiso</h5>
+            <ul>
+              <li>Provincia de Cartago, Paraíso</li>
+              <li>Vida estudiantil <br> (+506) 2511-7561 </li>
+              <li>Direccion <br> (+506) 2511-7564 </li>
+              <li>secretaria.rp@ucr.ac.cr</li>
+            </ul>
+          </div>
+        </div> <!--  End Col -->
+
+        <div class="col-md-3 col-sm-6">
+          <div class="single_ftr">
+            <h4 class="sf_title">Sitio</h4>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#newsRibbon">Noticias</a></li>
+              <li><a href="#professorRibbon">Profesores</a></li>
+              <li><a href="#coursesRibbon">Cursos</a></li>
+            </ul>
+          </div>
+        </div> <!--  End Col -->
+
+        <div class="col-md-3 col-sm-6">
+          <div class="single_ftr">
+            <h4 class="sf_title">Integrantes</h4>
+            <ul>
+              <li>Melvin Astorga</li>
+              <li>Melissa Ramirez</li>
+              <li>Diego Vega Rodriguez</li>
+              <li>Jean Sagot</li>
+            </ul>
+          </div>
+        </div> <!--  End Col -->
+
 
       </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Desarrolladores</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Diego Vega Rodriguez</a>
-          </li>
-          <li>
-            <a href="#!">Melvin Astorga</a>
-          </li>
-          <li>
-            <a href="#!">Melissa Ramirez</a>
-          </li>
-          <li>
-            <a href="#!">Jean Sagot</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
-
-
-
     </div>
-    <!-- Grid row -->
 
-  </div>
-  <!-- Footer Links -->
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> Horizon Solutions</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
+    <div class="ftr_btm_area">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="ftr_social_icon">
+              <ul>
+                <li><a href="https://www.facebook.com/UniversidadCostaRica/"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.linkedin.com/school/universidad-de-costa-rica/about/"><i
+                      class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <p class="copyright_text text-center">&copy; 2020 - Horizon Solutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </ion-content>
-
-

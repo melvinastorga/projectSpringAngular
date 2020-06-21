@@ -1,59 +1,74 @@
+<!-- =============================================
+  Page: UCR Informatica Empresarial admin system
+  Version: 1.2
+  Author:	Horizon Solutions
+  Title: site navbar and menu
+  - Navbar
+  - Navbar menu
+=================================================== -->
 <ion-app>
 
-<!--start toogle-menu-->
+  <!-- ------------------------------------- 
+      Navbar
+--------------------------------------- -->
+  <!--start toogle-menu-->
   <ion-toolbar>
 
+    <!-- menu button-->
     <ion-row>
-      <ion-button  (click)="openCustom()">
-        <ion-icon slot="icon-only" name="menu-outline" ></ion-icon>
+      <ion-button (click)="openCustom()" class="menu-button">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
       </ion-button>
-  
     </ion-row>
+    <!-- menu button-->
+
     <ion-buttons slot="secondary">
-   
-        <ion-routerLink href="#"  color="dark">Registrarse</ion-routerLink>
-        <ion-button>
-        <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
- 
-        <ion-routerLink  href="#" color="dark">Iniciar sesion</ion-routerLink>
-        <ion-button (click)="openDialog()">
-          <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-        </ion-button>
-      
+      <!-- Register button-->
+      <ion-button fill="solid" color="secondary" class="navbar-button">
+        Registrarse
+        <ion-icon name="create-outline" class="navbar-button-icon"></ion-icon>
+      </ion-button>
+      <!-- End Register button-->
+
+      <!-- login button-->
+      <ion-button (click)="openLoginDialog()" fill="solid" color="secondary" class="navbar-button">
+        Iniciar sesion
+        <ion-icon name="person-circle" class="navbar-button-icon"></ion-icon>
+      </ion-button>
+      <!-- End login button-->
     </ion-buttons>
-   
+
   </ion-toolbar>
-<!--end toogle-menu-->
+  <!--end toogle-menu-->
 
-<!--toogle-menu-content-->
-    <ion-content>
+  <!-- ------------------------------------- 
+      Navbar menu 
+--------------------------------------- -->
+  <!--toogle-menu-content-->
+  <ion-content>
+    <ion-menu side="start" menuId="custom" contentId="main">
+      <ion-header>
+        <ion-toolbar class="menu-toolbar">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item><ion-button class="menu-item" fill="transparent">Perfil</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Profesores</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Estudiantes</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Mis Cursos</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Cursos</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Citas</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Noticias</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" fill="transparent">Malla curricular</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item-close" fill="transparent">Cerrar</ion-button></ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  </ion-content>
+  <!--end toogle-menu-content-->
 
-      <ion-menu side="start" menuId="custom"  contentId="main">
-        <ion-header>
-          <ion-toolbar class="menu-toolbar">
-            <ion-title>Menu</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <ion-list>
-            <ion-item>Perfil</ion-item>
-            <ion-item>Profesores</ion-item>
-            <ion-item>Estudiantes</ion-item>
-            <ion-item>Mis Cursos</ion-item>
-            <ion-item>Cursos</ion-item>
-            <ion-item>Citas</ion-item>
-            <ion-item>Noticias</ion-item>
-            <ion-item>Malla curricular</ion-item>
-            <ion-item>Cerrar</ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-menu>
-    
-    </ion-content>
 
-<!--end toogle-menu-content-->
-
-  
   <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

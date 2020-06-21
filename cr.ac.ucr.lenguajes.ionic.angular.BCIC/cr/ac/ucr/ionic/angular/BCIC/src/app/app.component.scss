@@ -1,3 +1,53 @@
+/* ==============================================
+
+Page: UCR Informatica Empresarial admin system
+Version: 1.2
+Author:	Horizon Solutions
+
+ - menu
+ - ion-button
+ - navbar
+
+
+================================================ */
+
+/* ----------------------------
+    menu
+-------------------------------*/
 .my-custom-menu {
-    --width: 500px;
-  }
+  --width: 500px;
+}
+
+/* ----------------------------
+    ion-buton
+-------------------------------*/
+ion-button {
+  text-transform: none;
+}
+
+/* ----------------------------
+    navbar buttons
+-------------------------------*/
+.menu-button {
+  padding-left: 2em;
+}
+.navbar-button {
+  min-width: 150px;
+}
+.navbar-button-icon {
+  padding-left: 0.3em;
+}
+
+.menu-item,
+.menu-item-close {
+  width: 100%;
+  height: 90%;
+}
+
+.menu-item:hover {
+  color: #1578bb;
+}
+
+.menu-item-close:hover {
+  color: red;
+}

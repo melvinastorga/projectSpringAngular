@@ -35,7 +35,7 @@ export class AppComponent {
   
   }
 
-  openDialog(): void {
+  openLoginDialog(): void {
     const dialogRef = this.dialog.open(HomeLoginPage, {
       width: '50%',
       height: '50%',

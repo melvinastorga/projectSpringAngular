@@ -1,6 +1,22 @@
+/* ==============================================
+
+Page: UCR Informatica Empresarial admin system
+Version: 1.2
+Author:	Horizon Solutions
+
+ - Container general settings
+ - Carrousel settings
+ - Professor
+ - Footer
+ - Media
+
+================================================ */
+
+/* ----------------------------
+    Container general settings
+-------------------------------*/
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -26,9 +42,283 @@
   text-decoration: none;
 }
 
-
+/* ----------------------------
+    Carrousel settings
+-------------------------------*/
 .carousel-multi-item {
-
   margin-top: 10%;
 }
 
+/* deprecated - in case we need it later
+#CarrouselContainer{
+  background-color: white;
+  width: 90%; 
+  height: 70%; 
+  align-content: center;
+  text-align: center; 
+  margin-left: 5%; 
+  margin-right: 5%;
+}*/
+
+.mat-card {
+  margin: 5%;
+}
+
+mdb-card {
+  margin: 5%;
+}
+
+.carrouselImage {
+  display: block;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+/* ----------------------------
+    Professor
+-------------------------------*/
+
+.social-prof-button {
+  min-width: 120px;
+}
+
+.prof-dropdown{
+  margin: 1%;
+}
+
+.news-dropdown{
+  margin-top: 2%;
+}
+
+.professor-name{
+  margin: auto; 
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+/* ----------------------------
+    Footer
+-------------------------------*/
+ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-bottom: 0;
+}
+
+.footer_area {
+  padding: 60px 0 20px;
+  position: relative;
+  color: #fff;
+  z-index: 100;
+  background: #222;
+  word-break: break-all;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.single_ftr form {
+  margin-top: 8px;
+}
+
+.single_ftr p {
+  margin-bottom: 10px;
+}
+
+.sf_title {
+  color: #1b74bc;
+  text-transform: uppercase;
+  font-size: 17px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.ftr_logo {
+  float: left;
+  padding: 15px 46px 0 0;
+}
+
+.ftr_logo a img {
+  transition: all 0.4s ease-in-out 0s;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  -o-transition: all 0.4s ease-in-out 0s;
+}
+
+.ftr_logo a:hover img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  opacity: 0.3;
+}
+
+.newsletter_form form {
+  position: relative;
+  display: block;
+}
+
+.newsletter_form {
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+.single_ftr p {
+  display: inline-block;
+}
+
+.newsletter_form .form-control {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  padding: 8px 20px;
+  width: 100%;
+  position: relative;
+  background: transparent;
+  color: #fff;
+  border-radius: 0;
+}
+
+.newsletter_form button {
+  border: inherit;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  box-shadow: none;
+  border: 1px solid transparent;
+  transition: 0.5s;
+  letter-spacing: 0.5px;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  padding: 12px 17px;
+  transition: 0.5s;
+}
+
+.newsletter_form button:hover,
+.newsletter_form button:hover {
+  background: transparent;
+  color: #288fb9;
+  opacity: 0.9;
+}
+
+.newsletter_form ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+  opacity: 1;
+}
+
+.newsletter_form ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+  opacity: 1;
+}
+
+.newsletter_form :-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+  opacity: 1;
+}
+
+.newsletter_form :-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+  opacity: 1;
+}
+
+.form-control {
+}
+
+.form-control:focus {
+  border-color: #288fb9;
+}
+
+.single_ftr li {
+  padding-bottom: 7px;
+  color: #fff;
+}
+
+.single_ftr a {
+  color: #fff;
+}
+
+.single_ftr a:hover {
+  color: #288fb9;
+}
+
+.ftr_social_icon li {
+  display: inline-block;
+  text-align: center;
+  padding: 4px;
+  margin-top: 2px;
+}
+
+.ftr_social_icon ul li a {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-size: 17px;
+  height: 40px;
+  line-height: 32px;
+  padding: 4px 8px;
+  width: 40px;
+  transition: 0.5s;
+}
+
+.ftr_social_icon i {
+  margin-top: 8px;
+}
+
+.ftr_social_icon ul li a:hover {
+  background: #288fb9;
+  border-color: #288fb9;
+  color: #fff;
+}
+
+.ftr_btm_area {
+  background: transparent;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px dotted #888;
+  margin-top: 28px;
+  z-index: 100;
+  position: relative;
+}
+
+.copyright_text {
+  margin: 6px 0;
+}
+
+.payment_mthd_icon li {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 30px;
+  color: #fff;
+}
+
+/* ----------------------------
+    Media for carrousel items
+-------------------------------*/
+
+/*media for tablets (less thank 1350px)*/
+@media screen and (max-width: 1350px) {
+  mdb-carousel-item {
+    padding-bottom: 5%;
+  }
+}
+/*media for screens (bigger than 1350px)*/
+@media screen and (min-width: 1350px) {
+  mdb-carousel-item {
+    padding-bottom: 3%;
+  }
+}
+
+/*media for mobile*/
+@media screen and (max-width: 765px) {
+  mdb-carousel-item {
+    padding-bottom: 10%;
+  }
+}

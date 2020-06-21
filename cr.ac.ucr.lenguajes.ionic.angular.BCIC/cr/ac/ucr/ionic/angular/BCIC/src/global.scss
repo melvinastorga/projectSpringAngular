@@ -9,23 +9,38 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+/* ==============================================
 
-/* Core CSS required for Ionic components to work properly */
+Page: UCR Informatica Empresarial admin system
+Version: 1.2
+Author:	Horizon Solutions
+
+ - Imports
+ - Navbar
+ - General settings
+ - Banner
+ - login
+ - Carousel
+ - Separators-ribbons
+
+================================================ */
+
+/* ----------------------------
+    Imports
+-------------------------------*/
 @import "~@ionic/angular/css/core.css";
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 
 @import "node_modules/angular-bootstrap-md/assets/scss/mdb.scss";
 @import "~ng-uikit-pro-standard/assets/scss/core/colors";
 @import "~ng-uikit-pro-standard/assets/scss/core/variables";
 
-
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -34,168 +49,233 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+/* ----------------------------
+    Navbar
+-------------------------------*/
+ion-toolbar {
+  --ion-background-color: #249dd8;
+  --color: white;
 
-//Navbar
-ion-toolbar{
-  --ion-background-color: #249DD8;
-  --color:white;
-
-//button menu inside navbar
-  ion-row{
-    ion-button{
-      
-        --background: #249DD8;
-        --color: #ffffff;
-        --ion-background-color: #249DD8;
-      }
+  //button menu inside navbar
+  ion-row {
+    ion-button {
+      --background: #249dd8;
+      --color: #ffffff;
+      --ion-background-color: #249dd8;
     }
   }
-  
+}
 
 //side menu header
-ion-menu{
-  ion-toolbar{
-      --ion-background-color:#204C6F;
-      --color:white;
+ion-menu {
+  ion-toolbar {
+    --ion-background-color: #1c98d1;
+    --color: white;
   }
-
 }
 
 //mat-butons colors
-.mat-button, .mat-raised-button{
-  background-color:#249DD8;
+.mat-button,
+.mat-raised-button {
+  background-color: #249dd8;
   color: white;
-} 
-
-
-body {
-    font-family: Roboto, Arial, sans-serif;
-    margin: 0;
-  }
-  .basic-container {
-    padding: 30px;
-  }
-  .version-info {
-    font-size: 8pt;
-    float: right;
-    margin: 8px;
-  }
-
-  .example-container {
-    width: 400px;
-    height: 200px;
-    margin: 12px;
-    border: 1px solid #555;
-  }
-  
-  mat-drawer-content {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-.login-input{
-    width: 60%;
 }
 
+/* ----------------------------
+    General settings
+-------------------------------*/
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+.basic-container {
+  padding: 30px;
+}
+.version-info {
+  font-size: 8pt;
+  float: right;
+  margin: 8px;
+}
 
-  .body {
-   
-    background: url(/assets/img/backgraund.jpg) no-repeat center/cover fixed;
-    margin-top: 20px;
-    height: 85%;
-    width: 100%;
-  }
+.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 12px;
+  border: 1px solid #555;
+}
 
-  ion-content {
-    --background: none;
-  }
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-.mat-dialog-container{
-    background-color: white;
-    color: black;
-    text-align: center;
-  
+ion-content {
+  --background: none;
+}
+
+.mat-dialog-container {
+  background-color: white;
+  color: black;
+  text-align: center;
 }
 
 .mat-form-field-empty.mat-form-field-label {
-    color: black;
+  color: black;
 }
 /* Change label color on focused */
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-    color: #50d0fb !important;
-  }
-  
-  /* underline border color on focused */
-  ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
-    background-color: #50d0fb !important;
-  }
-
-  .carousel-item {
-    &.active, &.carousel-item-right, &.carousel-item-next {
-      display: flex !important;
-      flex-wrap: wrap
-    }
-  }
-
-//separate sections
-  .separator{
-  
-    background-color:  #204C6F;
-    color: white; 
-    text-align: center;
-    height: 8%;
-
-  }
-
-  .separator2{
-  
-    margin-top: 2%;
-    background-color:  #204C6F;
-    color: white; 
-    text-align: center;
-    height: 8%;
-
-  }
-.test{
-    height: 2px;
+  color: #50d0fb !important;
 }
+
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: #50d0fb !important;
+}
+
+/* ----------------------------
+    Banner
+-------------------------------*/
+.banner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(/assets/img/backgraund.jpg) center center no-repeat;
+  background-size: cover;
   
-.carousel-control-next{
+  &:before {
+    content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: .6; 
+  }
+}
+
+.wrapper{
+	max-width: 53.33rem;
+	margin: 0 auto;
+	position: relative;
+	z-index: 10;
+	transform: translateY(-50%);
+	top:50%;
+	text-align: center;
+}
+.wrapper.large-wrap{max-width: 100%;}
+
+.title-font {
+  font-size: 5rem !important; /* 90 / 18 = 5 */
+  margin-bottom: 0.33rem !important;
+  color: #fff;
+  font-family: 'Bree Serif'
+}
+
+@media screen and (max-width: 1350px) {
+  .title-font {
+    font-size: 2.9rem !important;
+  }
+}
+
+.regular{font-weight: 400;}
+
+.double-header-line:before, .double-header-line:after{
+	content: "";
+	display: block;
+	position: absolute;
+	width:7rem;
+	background-color: transparent;
+	height: 4px;
+	border-top: 1px solid #fff;
+	border-bottom:1px solid #fff;
+	top: 20%;
+}
+.double-header-line:before{
+	left: -7.5rem;
+}
+.double-header-line:after{
+	right: -7.5rem;
+}
+
+.subtitle-font {
+  padding-top: 2em;
+  font-size: 1.3333333333333333rem !important; /* 24 / 18 = 1.3333 */
+  color: #fff;
+  font-family: 'Oswald'
+}
+
+.uppercase{text-transform: uppercase;}
+.ls-large{letter-spacing: 8px;}
+
+/* ----------------------------
+    login
+-------------------------------*/
+
+.login-input {
+  width: 60%;
+}
+
+/* ----------------------------
+    Carousel
+-------------------------------*/
+
+.carousel-item {
+  &.active,
+  &.carousel-item-right,
+  &.carousel-item-next {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+}
+
+.carousel-control-next {
   color: black;
 
   width: 25px;
- 
 }
 
-.carousel-control-prev{
-  
-color: black;
+.carousel-control-prev {
+  color: black;
 
-width: 25px;
-
+  width: 25px;
 }
 
-.carousel-indicators li{
-  
-
+.carousel-indicators li {
   background-color: #204c6f;
-
-  
-  }
-
+}
 
 .carousel-control-next-icon {
   fill: black;
   background-color: black;
   color: black;
   border-color: black;
-
 }
 .carousel-control-prev-icon {
   fill: black;
   background-color: black;
   color: black;
   border-color: black;
+}
+
+/* ----------------------------
+    Separators-ribbons
+-------------------------------*/
+.separator {
+  background-color: #239ed7;
+  color: white;
+  text-align: center;
+  height: 10%;
+  padding: 20px 0;
+}
+
+.separator2 {
+  margin-top: 2%;
+  background-color: #239ed7;
+  color: white;
+  text-align: center;
+  height: 10%;
+  padding: 20px 0;
 }
