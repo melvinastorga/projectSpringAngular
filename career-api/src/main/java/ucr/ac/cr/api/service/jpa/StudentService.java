@@ -65,6 +65,6 @@ public class StudentService implements IStudentService {
                 student.getUpdatedAt(),
                 student.getRole(),
                 student.getCarne(),
-                "Insert");
+                "Update");
     }
 }

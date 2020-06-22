@@ -1,6 +1,7 @@
 package ucr.ac.cr.api.entity;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.Date;
 
 @Entity
@@ -18,11 +19,12 @@ import java.util.Date;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Name", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Last_name", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Interests", type = String.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Profile_pic", type = Byte.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Profile_pic", type = byte[].class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Status", type = boolean.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Distric_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Canton_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Province_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Created_by", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Create_at", type = Date.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Updated_by", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Updated_at", type = Date.class),
@@ -38,11 +40,12 @@ import java.util.Date;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Name", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Last_name", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Interests", type = String.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Profile_pic", type = Byte.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Profile_pic", type = byte[].class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Status", type = boolean.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Distric_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Canton_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Province_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Created_by", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Create_at", type = Date.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Updated_by", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Updated_at", type = Date.class),
@@ -50,6 +53,7 @@ import java.util.Date;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Especiality", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Action", type = String.class)
 })
+
 
 
 public class Professor {
