@@ -8,7 +8,9 @@ import java.util.Date;
 @NamedStoredProcedureQuery(name="Student.getStudentById", procedureName = "Get_Students_By_id", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Id", type = Integer.class)})
 
-@NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_Students")
+//@NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_Students")
+
+@NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_All_Students")
 
 @NamedStoredProcedureQuery(name="Student.updateStudent", procedureName = "Insert_Update_Student", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),
@@ -55,7 +57,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int studentId;
-    public boolean status;
+    public boolean studentStatus;
     public String carne;
     public boolean isPresident;
     public int personId;
@@ -64,7 +66,7 @@ public class Student {
     public String name;
     public String lastName;
     public String interests;
-    public boolean statusP;
+    public boolean status;
     public int districId;
     public int cantonId;
     public int provinceId;
@@ -80,8 +82,8 @@ public class Student {
     public Student() {
     }
 
-    public Student(boolean status, String carne, boolean isPresident, int personId, String email, String password, String name, String lastName, String interests, boolean statusP, int districId, int cantonId, int provinceId, int createdBy, Date createAt, int updatedBy, Date updatedAt, String role, String imgString) {
-        this.status = status;
+    public Student(boolean studentStatus, String carne, boolean isPresident, int personId, String email, String password, String name, String lastName, String interests, boolean status, int districId, int cantonId, int provinceId, int createdBy, Date createAt, int updatedBy, Date updatedAt, String role, String imgString) {
+        this.studentStatus = studentStatus;
         this.carne = carne;
         this.isPresident = isPresident;
         this.personId = personId;
@@ -90,7 +92,7 @@ public class Student {
         this.name = name;
         this.lastName = lastName;
         this.interests = interests;
-        this.statusP = statusP;
+        this.status = status;
         this.districId = districId;
         this.cantonId = cantonId;
         this.provinceId = provinceId;
@@ -103,7 +105,7 @@ public class Student {
     }
 
     public Student(boolean status, String carne, boolean isPresident, int personId, String email, String password, String name, String lastName, String interests, byte[] profilePic, boolean statusP, int districId, int cantonId, int provinceId, int createdBy, Date createAt, int updatedBy, Date updatedAt, String role, String imgString) {
-        this.status = status;
+        this.studentStatus = status;
         this.carne = carne;
         this.isPresident = isPresident;
         this.personId = personId;
@@ -113,7 +115,7 @@ public class Student {
         this.lastName = lastName;
         this.interests = interests;
         this.profilePic = profilePic;
-        this.statusP = statusP;
+        this.status = statusP;
         this.districId = districId;
         this.cantonId = cantonId;
         this.provinceId = provinceId;
@@ -133,12 +135,12 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isStudentStatus() {
+        return studentStatus;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setStudentStatus(boolean studentStatus) {
+        this.studentStatus = studentStatus;
     }
 
     public String getCarne() {
@@ -213,12 +215,12 @@ public class Student {
         this.profilePic = profilePic;
     }
 
-    public boolean isStatusP() {
-        return statusP;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setStatusP(boolean statusP) {
-        this.statusP = statusP;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public int getDistricId() {

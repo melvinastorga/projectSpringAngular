@@ -16,10 +16,13 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    @Query(value= "{ call [Get_Students_By_id(:Id)]}", nativeQuery = true)
+    @Query(value= "{ call [Get_Students_By_id](:Id)}", nativeQuery = true)
     Student getStudentById(@Param("Id") Integer id);
 
-    @Query(value= "Get_Students", nativeQuery = true)
+    //@Query(value= "Get_Students", nativeQuery = true)
+    //List<Student> getAllStudent();
+
+    @Query(value= "Get_All_Students", nativeQuery = true)
     List<Student> getAllStudent();
 
     @Procedure(name = "Student.insertStudent")

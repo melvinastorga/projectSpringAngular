@@ -3,7 +3,6 @@ package ucr.ac.cr.api.service.jpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucr.ac.cr.api.entity.Student;
-import ucr.ac.cr.api.entity.StudentDTO;
 import ucr.ac.cr.api.repository.StudentRepository;
 import ucr.ac.cr.api.service.IStudentService;
 
@@ -36,7 +35,7 @@ public class StudentService implements IStudentService {
                 student.getLastName(),
                 student.getInterests(),
                 student.getProfilePic(),
-                student.isStatus(),
+                student.isStudentStatus(),
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
@@ -57,7 +56,7 @@ public class StudentService implements IStudentService {
                 student.getLastName(),
                 student.getInterests(),
                 student.getProfilePic(),
-                student.isStatus(),
+                student.isStudentStatus(),
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
