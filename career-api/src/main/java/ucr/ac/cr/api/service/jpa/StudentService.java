@@ -3,6 +3,7 @@ package ucr.ac.cr.api.service.jpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucr.ac.cr.api.entity.Student;
+import ucr.ac.cr.api.entity.StudentDTO;
 import ucr.ac.cr.api.repository.StudentRepository;
 import ucr.ac.cr.api.service.IStudentService;
 

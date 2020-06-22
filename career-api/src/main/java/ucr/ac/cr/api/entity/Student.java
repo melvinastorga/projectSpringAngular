@@ -8,7 +8,7 @@ import java.util.Date;
 @NamedStoredProcedureQuery(name="Student.getStudentById", procedureName = "Get_Students_By_id", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Id", type = Integer.class)})
 
-@NamedStoredProcedureQuery(name="Student.getAllStudent", procedureName = "Get_Students")
+@NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_Students")
 
 @NamedStoredProcedureQuery(name="Student.updateStudent", procedureName = "Insert_Update_Student", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),
@@ -74,13 +74,33 @@ public class Student {
     public Date updatedAt;
     public String role;
     public String imgString;
-    @Column(name="Profile_pic")
     public byte[] profilePic;
 
 
     public Student() {
     }
 
+    public Student(boolean status, String carne, boolean isPresident, int personId, String email, String password, String name, String lastName, String interests, boolean statusP, int districId, int cantonId, int provinceId, int createdBy, Date createAt, int updatedBy, Date updatedAt, String role, String imgString) {
+        this.status = status;
+        this.carne = carne;
+        this.isPresident = isPresident;
+        this.personId = personId;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.interests = interests;
+        this.statusP = statusP;
+        this.districId = districId;
+        this.cantonId = cantonId;
+        this.provinceId = provinceId;
+        this.createdBy = createdBy;
+        this.createAt = createAt;
+        this.updatedBy = updatedBy;
+        this.updatedAt = updatedAt;
+        this.role = role;
+        this.imgString = imgString;
+    }
 
     public Student(boolean status, String carne, boolean isPresident, int personId, String email, String password, String name, String lastName, String interests, byte[] profilePic, boolean statusP, int districId, int cantonId, int provinceId, int createdBy, Date createAt, int updatedBy, Date updatedAt, String role, String imgString) {
         this.status = status;
