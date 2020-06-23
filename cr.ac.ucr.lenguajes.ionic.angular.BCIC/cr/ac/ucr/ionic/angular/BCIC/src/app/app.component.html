@@ -76,8 +76,8 @@
       <ion-content>
         <ion-list>
           <ion-item><ion-button class="menu-item" fill="transparent">Perfil</ion-button></ion-item>
-          <ion-item><ion-button class="menu-item" fill="transparent">Profesores</ion-button></ion-item>
-          <ion-item><ion-button class="menu-item" fill="transparent">Estudiantes</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" (click)="openProfessorsDialog()" fill="transparent">Profesores</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Mis Cursos</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Cursos</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Citas</ion-button></ion-item>

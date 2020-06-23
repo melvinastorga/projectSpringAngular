@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 import { IonicModule } from '@ionic/angular';
-
-import { HomeLoginPageRoutingModule } from './home-login-routing.module';
+import { ProfessorsPageRoutingModule } from './professors-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeLoginPage } from './home-login.page';
 import { MaterialModule } from '../material.module';
+import { ProfessorsPage } from './professors.page';
 import { CarouselModule,CardsModule, WavesModule,ButtonsModule ,IconsModule,MDBBootstrapModule
   ,ModalModule,ChartsModule,BadgeModule,MDBRootModule,CollapseModule,DropdownModule,NavbarModule
   ,InputsModule,PopoverModule,TooltipModule,CheckboxModule,InputUtilitiesModule,TableModule,StickyHeaderModule,BreadcrumbModule
@@ -19,7 +16,7 @@ import { CarouselModule,CardsModule, WavesModule,ButtonsModule ,IconsModule,MDBB
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeLoginPageRoutingModule,MaterialModule,
+    ProfessorsPageRoutingModule,
     CommonModule,
     FormsModule,
     IonicModule,
@@ -34,6 +31,6 @@ import { CarouselModule,CardsModule, WavesModule,ButtonsModule ,IconsModule,MDBB
     CollapseModule,DropdownModule,NavbarModule
     ,InputsModule,PopoverModule,TooltipModule,CheckboxModule,InputUtilitiesModule,TableModule,StickyHeaderModule,BreadcrumbModule
   ],
-  declarations: [HomeLoginPage]
+  declarations: [ProfessorsPage]
 })
-export class HomeLoginPageModule {}
+export class ProfessorsPageModule {}

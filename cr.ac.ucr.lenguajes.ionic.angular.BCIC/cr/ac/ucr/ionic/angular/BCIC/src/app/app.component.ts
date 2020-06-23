@@ -4,6 +4,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomeLoginPage } from './home-login/home-login.page';
 import { MatDialog } from '@angular/material/dialog';
+import { ProfessorsPage } from './professors/professors.page';
+import { StudentsPage } from './students/students.page';
 
 
 
@@ -41,6 +43,41 @@ export class AppComponent {
       height: '50%',
       data: {name: this.name, animal: this.animal},
     });
+
+    
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+
+  openProfessorsDialog(): void {
+    const dialogRef = this.dialog.open(ProfessorsPage, {
+      width: '130%',
+      height: '95%',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+
+
+  openStudentsDialog(): void {
+    const dialogRef = this.dialog.open(StudentsPage, {
+      width: '130%',
+      height: '95%',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

@@ -70,7 +70,7 @@ ion-toolbar {
 //side menu header
 ion-menu {
   ion-toolbar {
-    --ion-background-color: #1c98d1;
+    --ion-background-color:  #249dd8;
     --color: white ;
   }
 }
@@ -120,6 +120,7 @@ ion-content {
   background-color: white;
   color: black;
   text-align: center;
+  padding: 0px
 }
 
 .mat-form-field-empty.mat-form-field-label {
@@ -280,3 +281,41 @@ ion-content {
   height: 10%;
   padding: 20px 0;
 }
+
+
+/*--------------------
+  Professors page css
+----------------------*/
+
+table {
+  width: 100%;
+  overflow-x: scroll;
+  text-align: left;
+  min-width: 600px;
+
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.separator3 {
+  background-color: #239ed7;
+  color: white;
+  text-align: center;
+  height: 10%;
+  padding: 20px 0;
+}
+
+.mat-tab-group{
+  overflow-y: hidden;
+  width: 100%;
+  text-align: left;
+  height: 90%;
+  overflow-x: scroll;
+}
+
+
+/*--------------------
+----------------------*/

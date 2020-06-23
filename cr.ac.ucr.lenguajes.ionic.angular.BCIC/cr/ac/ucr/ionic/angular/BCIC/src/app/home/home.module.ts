@@ -23,7 +23,7 @@ import { MaterialModule } from '../material.module';
     ReactiveFormsModule,
     CarouselModule,
     WavesModule,
-   CardsModule, AnimatedCardsModule,ButtonsModule,
+    CardsModule, AnimatedCardsModule,ButtonsModule,
     IconsModule,
     MDBBootstrapModule,
     ModalModule,ChartsModule,BadgeModule,MDBRootModule,
