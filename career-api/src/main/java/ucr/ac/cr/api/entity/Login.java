@@ -11,12 +11,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Person")
-
 @NamedStoredProcedureQuery(name = "LoginTest.getLoginTest",procedureName = "SelectLogin", parameters = {
 		@StoredProcedureParameter(mode = ParameterMode.IN, name = "Email", type = String.class),
 		@StoredProcedureParameter(mode = ParameterMode.IN, name = "Password", type = String.class)})
 
-public class LoginTest {
+public class Login {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +24,11 @@ public class LoginTest {
 	private boolean status;
 	
 	
-	public LoginTest() {
+	public Login() {
 	
 	}
 
-	public LoginTest(int personId, String role, boolean status) {
+	public Login(int personId, String role, boolean status) {
 		
 		this.personId = personId;
 		this.role = role;

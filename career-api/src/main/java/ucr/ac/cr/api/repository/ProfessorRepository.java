@@ -29,7 +29,7 @@ public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
                          @Param("Name") String name,
                          @Param("Last_name") String lastName,
                          @Param("Interests") String interests,
-                         @Param("Profile_pic") byte[] profile_pic,
+                         @Param("Profile_pic") byte[] profilePic,
                          @Param("Status") Boolean status,
                          @Param("Distric_id") Integer districId,
                          @Param("Canton_id") Integer cantonId,
@@ -62,5 +62,8 @@ public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
                          @Param("Role") String role,
                          @Param("Especiality") String especiality,
                          @Param("Action") String action);
+
+    @Procedure(name = "Professor.insertProfessor")
+    void insertProfessor(@Param("Person_id") Integer personId);
 
 }

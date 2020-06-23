@@ -6,16 +6,23 @@ import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import ucr.ac.cr.api.entity.Professor;
 import ucr.ac.cr.api.entity.Student;
+import ucr.ac.cr.api.entity.StudentDTO;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.Date;
 import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    @Query(value= "{ call Get_Students_By_id(:Id)}", nativeQuery = true)
+    @Query(value= "{ call [Get_Students_By_id](:Id)}", nativeQuery = true)
     Student getStudentById(@Param("Id") Integer id);
 
-    @Query(value= "Get_Students", nativeQuery = true)
+    //@Query(value= "Get_Students", nativeQuery = true)
+    //List<Student> getAllStudent();
+
+    @Query(value= "Get_All_Students", nativeQuery = true)
     List<Student> getAllStudent();
 
     @Procedure(name = "Student.insertStudent")

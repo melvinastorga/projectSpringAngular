@@ -40,4 +40,6 @@ public class ProfessorController {
     public void updateProfessor(@RequestBody Professor professor){
         service.updateProfessor(professor);
     }
+
+
 }

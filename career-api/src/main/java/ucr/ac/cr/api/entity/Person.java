@@ -5,6 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Person")
+
 @NamedStoredProcedureQuery(name="Person.authenticateUser", procedureName = "SelectLogin", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Email", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Password", type = String.class)})
@@ -13,6 +14,9 @@ import java.util.Date;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Update_by", type = Integer.class)})
 
+@NamedStoredProcedureQuery(name="Person.activatePerson", procedureName = "Reactivate_Person_Account", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Update_by", type = Integer.class)})
 
 public class Person {
 

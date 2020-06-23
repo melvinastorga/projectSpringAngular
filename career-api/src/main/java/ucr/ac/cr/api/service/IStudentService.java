@@ -2,6 +2,7 @@ package ucr.ac.cr.api.service;
 
 import ucr.ac.cr.api.entity.OfficeHours;
 import ucr.ac.cr.api.entity.Student;
+import ucr.ac.cr.api.entity.StudentDTO;
 
 import java.util.List;
 

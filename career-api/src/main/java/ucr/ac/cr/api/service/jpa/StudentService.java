@@ -35,7 +35,7 @@ public class StudentService implements IStudentService {
                 student.getLastName(),
                 student.getInterests(),
                 student.getProfilePic(),
-                student.isStatus(),
+                student.isStudentStatus(),
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
@@ -56,7 +56,7 @@ public class StudentService implements IStudentService {
                 student.getLastName(),
                 student.getInterests(),
                 student.getProfilePic(),
-                student.isStatus(),
+                student.isStudentStatus(),
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
@@ -65,6 +65,6 @@ public class StudentService implements IStudentService {
                 student.getUpdatedAt(),
                 student.getRole(),
                 student.getCarne(),
-                "Insert");
+                "Update");
     }
 }

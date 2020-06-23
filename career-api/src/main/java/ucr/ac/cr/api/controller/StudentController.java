@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucr.ac.cr.api.entity.Professor;
 import ucr.ac.cr.api.entity.Student;
+import ucr.ac.cr.api.entity.StudentDTO;
 import ucr.ac.cr.api.service.jpa.ProfessorService;
 import ucr.ac.cr.api.service.jpa.StudentService;
 
