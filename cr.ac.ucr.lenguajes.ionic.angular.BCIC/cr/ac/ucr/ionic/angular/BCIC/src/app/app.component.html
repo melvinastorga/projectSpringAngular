@@ -15,29 +15,50 @@
   <ion-toolbar>
 
     <!-- menu button-->
-    <ion-row>
-      <ion-button (click)="openCustom()" class="menu-button">
-        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
-      </ion-button>
+    <ion-row style="height: 10%;">
+
+    
+        <ion-button (click)="openCustom()" class="menu-button">
+          <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+        </ion-button>
+
+        <ion-item>
+         <ion-img class="navbar-img"  src="assets/img/firma-tipografica-una-linea-blanco.png">
+         </ion-img>
+      </ion-item>
+  
+
+   
     </ion-row>
     <!-- menu button-->
 
-    <ion-buttons slot="secondary">
-      <!-- Register button-->
-      <ion-button fill="solid" color="secondary" class="navbar-button">
-        Registrarse
-        <ion-icon name="create-outline" class="navbar-button-icon"></ion-icon>
-      </ion-button>
-      <!-- End Register button-->
 
-      <!-- login button-->
-      <ion-button (click)="openLoginDialog()" fill="solid" color="secondary" class="navbar-button">
-        Iniciar sesion
-        <ion-icon name="person-circle" class="navbar-button-icon"></ion-icon>
-      </ion-button>
-      <!-- End login button-->
-    </ion-buttons>
 
+      <ion-buttons slot="secondary">
+        <ion-items>
+
+        <ion-item>
+        <!-- Register button-->
+        <ion-button fill="solid" color="secondary" class="navbar-button">
+          Registrarse
+          <ion-icon name="create-outline" class="navbar-button-icon2"></ion-icon>
+        </ion-button>
+        <!-- End Register button-->
+      </ion-item>
+      <ion-item>
+        <!-- login button-->
+        <ion-button (click)="openLoginDialog()" fill="solid" color="secondary" class="navbar-button">
+          Iniciar sesion
+          <ion-icon name="person-circle" class="navbar-button-icon"></ion-icon>
+        </ion-button>
+        <!-- End login button-->
+      </ion-item>
+        </ion-items>
+
+      </ion-buttons>
+  
+  
+ 
   </ion-toolbar>
   <!--end toogle-menu-->
 

@@ -59,9 +59,10 @@ ion-toolbar {
   //button menu inside navbar
   ion-row {
     ion-button {
-      --background: #249dd8;
-      --color: #ffffff;
-      --ion-background-color: #249dd8;
+      margin-top: 3%;
+      --background: #ffffff;
+      --color:  #249dd8;
+      --ion-background-color:#ffffff;
     }
   }
 }
@@ -70,7 +71,7 @@ ion-toolbar {
 ion-menu {
   ion-toolbar {
     --ion-background-color: #1c98d1;
-    --color: white;
+    --color: white ;
   }
 }
 

@@ -2,7 +2,7 @@
 
 
 <br>
-<h1>Iniciar sesion</h1>
+<h1 class="login-title">Iniciar sesion</h1>
 <p>
   <mat-form-field class="login-input"  appearance="legacy">
     <mat-label>Usuario</mat-label>
@@ -10,19 +10,19 @@
   </mat-form-field>
 </p>
 <p>
-  <mat-form-field  class="login-input"  appearance="legacy">
+  <mat-form-field  class="login-input" color="secondary" appearance="legacy">
     <mat-label>Contrasena</mat-label>
-    <input class="login-input" matInput >
+    <input color="secondary" class="login-input" matInput >
   </mat-form-field>
 </p>
 
  
 <ion-row>
   <ion-col>
-    <button mat-raised-button color="primary">Acceptar</button>
+    <button mat-raised-button color="secondary">Acceptar</button>
   </ion-col>
   <ion-col>
-    <button mat-raised-button color="primary" (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
   </ion-col>
 </ion-row>
      

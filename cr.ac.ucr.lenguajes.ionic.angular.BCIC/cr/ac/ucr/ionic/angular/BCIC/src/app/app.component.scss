@@ -31,11 +31,22 @@ ion-button {
 .menu-button {
   padding-left: 2em;
 }
+.navbar-img{
+  height: max-content;
+  width: 80%;
+
+}
 .navbar-button {
-  min-width: 150px;
+  min-width:min-content;
+
 }
 .navbar-button-icon {
   padding-left: 0.3em;
+  min-width: min-content;
+}
+.navbar-button-icon2{
+  padding-left: 1.0em;
+  min-width: min-content;
 }
 
 .menu-item,
