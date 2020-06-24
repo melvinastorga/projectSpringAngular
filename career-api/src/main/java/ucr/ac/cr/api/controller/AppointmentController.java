@@ -21,7 +21,7 @@ import ucr.ac.cr.api.service.jpa.CourseService;
 
 @RestController
 @CrossOrigin({"*"})
-@RequestMapping("/api")
+@RequestMapping("/api/appointment")
 public class AppointmentController {
 
 	@Autowired
@@ -86,7 +86,7 @@ public class AppointmentController {
 		
 	}
 	
-	@PostMapping("/saveAppointment")
+	@PostMapping("/insertAppointment")
 	public ResponseEntity<?> insertAppointment(@RequestBody Appointment appointment) {
 		service.insertAppointmentSP(appointment);
 		return new ResponseEntity(HttpStatus.CREATED);

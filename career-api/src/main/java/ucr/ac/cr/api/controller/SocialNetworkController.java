@@ -15,7 +15,7 @@ import ucr.ac.cr.api.service.jpa.SocialNetworkService;
 
 @RestController
 @CrossOrigin({"*"})
-@RequestMapping("/api")
+@RequestMapping("/api/socialNetwork")
 public class SocialNetworkController {
 
 	@Autowired

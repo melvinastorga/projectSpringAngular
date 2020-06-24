@@ -23,7 +23,7 @@ import ucr.ac.cr.api.service.jpa.PersonSocialNetworkService;
 
 @RestController
 @CrossOrigin({"*"})
-@RequestMapping("/api")
+@RequestMapping("/api/personSocialNetwork")
 public class PersonSocialNetworkController {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class PersonSocialNetworkController {
 		}
 	}
 	
-	@PostMapping("/savePersonSocialNetwork")
+	@PostMapping("/insertPersonSocialNetwork")
 	public ResponseEntity<?> insertPersonSocialNetwork(@RequestBody PersonSocialNetwork personSocialNetwork) {
 		service.insertPersonSocialNetworkSP(personSocialNetwork.getPersonSocialNetworkPK(), personSocialNetwork);
 		return new ResponseEntity(HttpStatus.CREATED);
@@ -53,7 +53,7 @@ public class PersonSocialNetworkController {
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/deleteSP/{socialNetworkId}/{personId}")
+	@DeleteMapping("/deletePersonSocialNetwork/{socialNetworkId}/{personId}")
 	public void deleteSP(@PathVariable("socialNetworkId") int socialNetworkId, @PathVariable("personId") int personId) {
 		service.deletePersonSocialNetworkSP(socialNetworkId, personId);
 	}

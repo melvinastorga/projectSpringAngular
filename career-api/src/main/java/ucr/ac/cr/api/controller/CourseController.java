@@ -19,23 +19,23 @@ import ucr.ac.cr.api.service.jpa.CourseService;
 
 @RestController
 @CrossOrigin({"*"})
-@RequestMapping("/api")
+@RequestMapping("/api/course")
 public class CourseController {
 	
 	@Autowired
 	private CourseService service;
 
-	@GetMapping("/Activecourses")
+	@GetMapping("/getActivecourses")
 	public List<Course> listActiveCourses(){
 		return service.ListActiveCourses();
 	}
 	
-	@GetMapping("/Offcourses")
+	@GetMapping("/getOffcourses")
 	public List<Course> listOffCourses(){
 		return service.ListOffCourses();
 	}
 	
-	@GetMapping("/GetCourse/{id}")
+	@GetMapping("/getCourse/{id}")
 	public ResponseEntity<Course> getCourseById(@PathVariable Integer id){
 		try {
 			Course course = service.GetCourseById(id);
@@ -46,7 +46,7 @@ public class CourseController {
 		
 	}
 	
-	@PostMapping("/saveCourse")
+	@PostMapping("/insertCourse")
 	public ResponseEntity<?> insertCourse(@RequestBody Course course) {
 		service.insertCourseSP(course);
 		return new ResponseEntity(HttpStatus.CREATED);

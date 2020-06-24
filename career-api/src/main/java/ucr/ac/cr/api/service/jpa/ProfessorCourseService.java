@@ -1,5 +1,7 @@
 package ucr.ac.cr.api.service.jpa;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,20 @@ public class ProfessorCourseService  implements IProfessorCourseService{
 	private ProfessorCourseRepository repoProfessorCourseModel;
 	
 	@Override
-	public ProfessorCourse GetCourseByProfessor(int professorId) {
+	public List<ProfessorCourse> GetCourseByProfessor(int professorId) {
 		
 		return repoProfessorCourseModel.getCourseByProfessor(professorId);
+	}
+
+	@Override
+	public void insertUpdateProfessorCourseSP(ProfessorCourse professorCourse) {
+		repoProfessorCourseModel.insertUpdateProfessorCourseSP(professorCourse.getProfessorId(), professorCourse.getCourseId());
+		
+	}
+
+	@Override
+	public void deleteProfessorCourseSP(ProfessorCourse professorCourse) {
+		repoProfessorCourseModel.deleteProfessorCourseSP(professorCourse.getProfessorCourseId());
 	}
 
 }

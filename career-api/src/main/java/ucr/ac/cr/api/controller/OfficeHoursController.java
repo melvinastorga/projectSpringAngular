@@ -20,7 +20,7 @@ import ucr.ac.cr.api.service.jpa.OfficeHoursService;
 
 @RestController
 @CrossOrigin({"*"})
-@RequestMapping("/api")
+@RequestMapping("/api/officeHours")
 public class OfficeHoursController {
 
 	@Autowired
@@ -47,7 +47,7 @@ public class OfficeHoursController {
 		return service.GetOfficeHoursByCourse(professorCourseId);
 	}
 	
-	@PostMapping("/saveOfficeHours")
+	@PostMapping("/insertOfficeHours")
 	public ResponseEntity<?> insertOfficeHours(@RequestBody OfficeHours officeHours) {
 		service.insertOfficeHours(officeHours);
 		return new ResponseEntity(HttpStatus.CREATED);
