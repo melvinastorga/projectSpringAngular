@@ -1,9 +1,76 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home-register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="container-table" class="no-scroll">
 
-<ion-content>
-
+  <br>
+  <h1 class="register-title">Registrarse</h1>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Correo</mat-label>
+      <input class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" color="secondary" appearance="legacy">
+      <mat-label>Contrasena</mat-label>
+      <input color="secondary" class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Carnet</mat-label>
+      <input class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Nombre</mat-label>
+      <input class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Apellido</mat-label>
+      <input class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Intereses</mat-label>
+      <input class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Canton</mat-label>
+      <mat-select>
+        <mat-option value="option">San Jose</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Canton</mat-label>
+      <mat-select>
+        <mat-option value="option">San Jose</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Canton</mat-label>
+      <mat-select>
+        <mat-option value="option">San Jose</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
 </ion-content>
+
+<div class="container">
+  <ion-row>
+    <ion-col>
+      <button mat-raised-button color="secondary">Acceptar</button>
+    </ion-col>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
+    </ion-col>
+  </ion-row>
+</div>

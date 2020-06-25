@@ -6,6 +6,8 @@ import { HomeLoginPage } from './home-login/home-login.page';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfessorsPage } from './professors/professors.page';
 import { StudentsPage } from './students/students.page';
+import { HomeRegisterPage } from './home-register/home-register.page';
+import { CoursesPage } from './courses/courses.page';
 
 
 
@@ -84,6 +86,38 @@ export class AppComponent {
       this.animal = result;
     });
   }
+
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(HomeRegisterPage, {
+      width: '50%',
+      height: '70%',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openCoursesDialog(): void {
+    const dialogRef = this.dialog.open(CoursesPage, {
+      width: '130%',
+      height: '95%',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
 
 
   initializeApp() {

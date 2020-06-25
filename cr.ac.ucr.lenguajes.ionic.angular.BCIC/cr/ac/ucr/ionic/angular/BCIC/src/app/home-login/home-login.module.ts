@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { HomeLoginPageRoutingModule } from './home-login-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeLoginPage } from './home-login.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
 import { CarouselModule,CardsModule, WavesModule,ButtonsModule ,IconsModule,MDBBootstrapModule
   ,ModalModule,ChartsModule,BadgeModule,MDBRootModule,CollapseModule,DropdownModule,NavbarModule
@@ -19,7 +19,8 @@ import { CarouselModule,CardsModule, WavesModule,ButtonsModule ,IconsModule,MDBB
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeLoginPageRoutingModule,MaterialModule,
+    HomeLoginPageRoutingModule,
+    MaterialModule,
     CommonModule,
     FormsModule,
     IonicModule,

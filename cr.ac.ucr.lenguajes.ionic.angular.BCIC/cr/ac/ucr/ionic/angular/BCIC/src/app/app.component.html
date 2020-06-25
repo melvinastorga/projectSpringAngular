@@ -39,7 +39,7 @@
 
         <ion-item>
         <!-- Register button-->
-        <ion-button fill="solid" color="secondary" class="navbar-button">
+        <ion-button fill="solid" color="secondary" class="navbar-button" (click)="openRegisterDialog()">
           Registrarse
           <ion-icon name="create-outline" class="navbar-button-icon2"></ion-icon>
         </ion-button>
@@ -79,7 +79,7 @@
           <ion-item><ion-button class="menu-item" (click)="openProfessorsDialog()" fill="transparent">Profesores</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Mis Cursos</ion-button></ion-item>
-          <ion-item><ion-button class="menu-item" fill="transparent">Cursos</ion-button></ion-item>
+          <ion-item><ion-button class="menu-item" (click)="openCoursesDialog()" fill="transparent">Cursos</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Citas</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Noticias</ion-button></ion-item>
           <ion-item><ion-button class="menu-item" fill="transparent">Malla curricular</ion-button></ion-item>
