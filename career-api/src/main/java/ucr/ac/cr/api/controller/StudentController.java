@@ -37,6 +37,12 @@ public class StudentController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @PostMapping("/serveStudentAccount/{studentId}/{updatedBy/{action}")
+    public ResponseEntity<?> serveAccount(@PathVariable Integer studentId, Integer updatedBy, String action){
+        service.serveStudentAccount(studentId, updatedBy, action);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @PostMapping("/updateStudent")
     public ResponseEntity<?> updateStudent(@RequestBody Student student){
         service.updateStudent(student);

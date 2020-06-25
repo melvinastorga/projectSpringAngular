@@ -19,11 +19,13 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query(value= "{ call [Get_Students_By_id](:Id)}", nativeQuery = true)
     Student getStudentById(@Param("Id") Integer id);
 
-    //@Query(value= "Get_Students", nativeQuery = true)
-    //List<Student> getAllStudent();
-
     @Query(value= "Get_All_Students", nativeQuery = true)
     List<Student> getAllStudent();
+
+    @Procedure(name = "Student.serveStudentRequest")
+    void serveStudentRequest(@Param("Student_id") Integer personId,
+                       @Param("Updated_by") Integer updatedBy,
+                       @Param("Action") String action);
 
     @Procedure(name = "Student.insertStudent")
     void insertStudent(@Param("Person_id") Integer personId,

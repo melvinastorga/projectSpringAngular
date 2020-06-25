@@ -67,4 +67,9 @@ public class StudentService implements IStudentService {
                 student.getCarne(),
                 "Update");
     }
+
+    @Override
+    public void serveStudentAccount(int studentId, int updatedBy, String action) {
+        studentRepository.serveStudentRequest(studentId, updatedBy, action);
+    }
 }

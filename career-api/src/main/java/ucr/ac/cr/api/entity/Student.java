@@ -52,6 +52,10 @@ import java.util.Date;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Action", type = String.class)
 })
 
+@NamedStoredProcedureQuery(name="Student.serveStudentRequest", procedureName = "Serve_Student_Account", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Student_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Updated_by", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Action", type = String.class)})
 
 public class Student {
     @Id
