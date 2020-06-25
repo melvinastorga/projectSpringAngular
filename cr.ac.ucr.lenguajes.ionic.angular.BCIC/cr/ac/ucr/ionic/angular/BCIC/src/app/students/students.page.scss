@@ -1,23 +1,14 @@
-.container{
+.container {
+  height: 4px;
+  text-align: left;
+}
 
-    height: 4px;
-    text-align: left;
-    
-    }
-    
-    
-     .no-scroll
-    {
-     height: 75%;
-    text-align: left;
-     }
-     
-    
-    
-     ::-webkit-scrollbar,
-     *::-webkit-scrollbar {
-     display: none;
-     }
-     
-     
-     
+.no-scroll {
+  height: 75%;
+  text-align: left;
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}

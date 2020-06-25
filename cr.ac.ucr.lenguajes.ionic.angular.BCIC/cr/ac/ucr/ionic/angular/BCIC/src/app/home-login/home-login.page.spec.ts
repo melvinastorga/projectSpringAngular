@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { HomeLoginPage } from './home-login.page';
+import { HomeLoginPage } from "./home-login.page";
 
-describe('HomeLoginPage', () => {
+describe("HomeLoginPage", () => {
   let component: HomeLoginPage;
   let fixture: ComponentFixture<HomeLoginPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeLoginPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [HomeLoginPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeLoginPage);
@@ -18,7 +18,7 @@ describe('HomeLoginPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

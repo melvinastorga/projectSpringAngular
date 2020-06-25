@@ -61,8 +61,8 @@ ion-toolbar {
     ion-button {
       margin-top: 3%;
       --background: #ffffff;
-      --color:  #249dd8;
-      --ion-background-color:#ffffff;
+      --color: #249dd8;
+      --ion-background-color: #ffffff;
     }
   }
 }
@@ -70,8 +70,8 @@ ion-toolbar {
 //side menu header
 ion-menu {
   ion-toolbar {
-    --ion-background-color:  #249dd8;
-    --color: white ;
+    --ion-background-color: #249dd8;
+    --color: white;
   }
 }
 
@@ -120,7 +120,7 @@ ion-content {
   background-color: white;
   color: black;
   text-align: center;
-  padding: 0px
+  padding: 0px;
 }
 
 .mat-form-field-empty.mat-form-field-label {
@@ -139,41 +139,43 @@ ion-content {
 /* ----------------------------
     Banner
 -------------------------------*/
-.banner{
+.banner {
   position: relative;
   width: 100%;
   height: 100%;
   background: url(/assets/img/backgraund.jpg) center center no-repeat;
   background-size: cover;
-  
+
   &:before {
-    content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.7);
-	opacity: .6; 
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0.6;
   }
 }
 
-.wrapper{
-	max-width: 53.33rem;
-	margin: 0 auto;
-	position: relative;
-	z-index: 10;
-	transform: translateY(-50%);
-	top:50%;
-	text-align: center;
+.wrapper {
+  max-width: 53.33rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  transform: translateY(-50%);
+  top: 50%;
+  text-align: center;
 }
-.wrapper.large-wrap{max-width: 100%;}
+.wrapper.large-wrap {
+  max-width: 100%;
+}
 
 .title-font {
   font-size: 5rem !important; /* 90 / 18 = 5 */
   margin-bottom: 0.33rem !important;
   color: #fff;
-  font-family: 'Bree Serif'
+  font-family: "Bree Serif";
 }
 
 @media screen and (max-width: 1350px) {
@@ -182,35 +184,42 @@ ion-content {
   }
 }
 
-.regular{font-weight: 400;}
+.regular {
+  font-weight: 400;
+}
 
-.double-header-line:before, .double-header-line:after{
-	content: "";
-	display: block;
-	position: absolute;
-	width:7rem;
-	background-color: transparent;
-	height: 4px;
-	border-top: 1px solid #fff;
-	border-bottom:1px solid #fff;
-	top: 20%;
+.double-header-line:before,
+.double-header-line:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 7rem;
+  background-color: transparent;
+  height: 4px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  top: 20%;
 }
-.double-header-line:before{
-	left: -7.5rem;
+.double-header-line:before {
+  left: -7.5rem;
 }
-.double-header-line:after{
-	right: -7.5rem;
+.double-header-line:after {
+  right: -7.5rem;
 }
 
 .subtitle-font {
   padding-top: 2em;
   font-size: 1.3333333333333333rem !important; /* 24 / 18 = 1.3333 */
   color: #fff;
-  font-family: 'Oswald'
+  font-family: "Oswald";
 }
 
-.uppercase{text-transform: uppercase;}
-.ls-large{letter-spacing: 8px;}
+.uppercase {
+  text-transform: uppercase;
+}
+.ls-large {
+  letter-spacing: 8px;
+}
 
 /* ----------------------------
     login
@@ -223,7 +232,8 @@ ion-content {
     login - register
 -------------------------------*/
 
-.login-input, .register-input {
+.login-input,
+.register-input {
   width: 60%;
 }
 /* ----------------------------
@@ -288,7 +298,6 @@ ion-content {
   padding: 20px 0;
 }
 
-
 /*--------------------
   Professors page css
 ----------------------*/
@@ -298,7 +307,6 @@ table {
   overflow-x: scroll;
   text-align: left;
   min-width: 600px;
-
 }
 
 .mat-form-field {
@@ -314,11 +322,10 @@ table {
   padding: 20px 0;
 }
 
-.mat-tab-group{
+.mat-tab-group {
   overflow-y: hidden;
   width: 100%;
   text-align: left;
   height: 90%;
   overflow-x: scroll;
 }
-

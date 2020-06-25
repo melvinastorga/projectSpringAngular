@@ -1,20 +1,68 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "../material.module";
+import {
+  CarouselModule,
+  CardsModule,
+  WavesModule,
+  ButtonsModule,
+  IconsModule,
+  MDBBootstrapModule,
+  ModalModule,
+  ChartsModule,
+  BadgeModule,
+  MDBRootModule,
+  CollapseModule,
+  DropdownModule,
+  NavbarModule,
+  InputsModule,
+  PopoverModule,
+  TooltipModule,
+  CheckboxModule,
+  InputUtilitiesModule,
+  TableModule,
+  StickyHeaderModule,
+  BreadcrumbModule,
+} from "angular-bootstrap-md";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { MyCoursesPageRoutingModule } from './my-courses-routing.module';
+import { MyCoursesPageRoutingModule } from "./my-courses-routing.module";
 
-import { MyCoursesPage } from './my-courses.page';
+import { MyCoursesPage } from "./my-courses.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyCoursesPageRoutingModule
+    MyCoursesPageRoutingModule,
+    IonicModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    CarouselModule,
+    WavesModule,
+    CardsModule,
+    ButtonsModule,
+    IconsModule,
+    MDBBootstrapModule,
+    ModalModule,
+    ChartsModule,
+    BadgeModule,
+    MDBRootModule,
+    CollapseModule,
+    DropdownModule,
+    NavbarModule,
+    InputsModule,
+    PopoverModule,
+    TooltipModule,
+    CheckboxModule,
+    InputUtilitiesModule,
+    TableModule,
+    StickyHeaderModule,
+    BreadcrumbModule,
   ],
-  declarations: [MyCoursesPage]
+  declarations: [MyCoursesPage],
 })
 export class MyCoursesPageModule {}

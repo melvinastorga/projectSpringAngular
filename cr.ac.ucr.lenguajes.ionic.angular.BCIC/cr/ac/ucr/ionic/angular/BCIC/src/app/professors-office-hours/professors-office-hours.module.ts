@@ -1,10 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { IonicModule } from "@ionic/angular";
-import { ProfessorsPageRoutingModule } from "./professors-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "../material.module";
-import { ProfessorsPage } from "./professors.page";
 import {
   CarouselModule,
   CardsModule,
@@ -29,15 +26,18 @@ import {
   BreadcrumbModule,
 } from "angular-bootstrap-md";
 
+import { IonicModule } from "@ionic/angular";
+
+import { ProfessorsOfficeHoursPageRoutingModule } from "./professors-office-hours-routing.module";
+
+import { ProfessorsOfficeHoursPage } from "./professors-office-hours.page";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfessorsPageRoutingModule,
-    CommonModule,
-    FormsModule,
-    IonicModule,
+    ProfessorsOfficeHoursPageRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
     CarouselModule,
@@ -62,6 +62,6 @@ import {
     StickyHeaderModule,
     BreadcrumbModule,
   ],
-  declarations: [ProfessorsPage],
+  declarations: [ProfessorsOfficeHoursPage],
 })
-export class ProfessorsPageModule {}
+export class ProfessorsOfficeHoursPageModule {}
