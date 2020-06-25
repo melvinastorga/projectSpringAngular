@@ -19,7 +19,7 @@ Author:	Horizon Solutions
  - Navbar
  - General settings
  - Banner
- - login
+ - login - register
  - Carousel
  - Separators-ribbons
 
@@ -213,10 +213,10 @@ ion-content {
 .ls-large{letter-spacing: 8px;}
 
 /* ----------------------------
-    login
+    login - register
 -------------------------------*/
 
-.login-input {
+.login-input, .register-input {
   width: 60%;
 }
 

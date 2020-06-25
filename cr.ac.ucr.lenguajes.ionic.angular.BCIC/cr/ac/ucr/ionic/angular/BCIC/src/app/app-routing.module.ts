@@ -31,6 +31,15 @@ const routes: Routes = [
     path: 'my-courses',
     loadChildren: () => import('./my-courses/my-courses.module').then( m => m.MyCoursesPageModule)
   },
+  {
+    path: 'login-register',
+    loadChildren: () => import('./home-login/home-login.module').then( m => m.HomeLoginPageModule)
+  },
+  {
+    path: 'home-register',
+    loadChildren: () => import('./home-register/home-register.module').then( m => m.HomeRegisterPageModule)
+  },
+
   
 ];
 
