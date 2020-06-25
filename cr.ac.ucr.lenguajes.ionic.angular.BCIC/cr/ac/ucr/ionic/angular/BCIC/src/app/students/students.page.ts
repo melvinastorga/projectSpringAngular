@@ -1,9 +1,4 @@
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialog,
-} from "@angular/material/dialog";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 
@@ -40,10 +35,7 @@ const ELEMENT_DATA2: PeriodicElement[] = [
   { position: 10, name: "Neon", weight: 20.1797, symbol: "Ne" },
 ];
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+
 @Component({
   selector: "app-students",
   templateUrl: "./students.page.html",
@@ -51,8 +43,7 @@ export interface DialogData {
 })
 export class StudentsPage implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<StudentsPage>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+
   ) {}
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -72,7 +63,5 @@ export class StudentsPage implements OnInit {
     this.dataSource2.paginator = this.paginator;
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+
 }

@@ -1,16 +1,18 @@
+
+
+<div class="component-container">
 <div class="separator3" id="coursesRibbon">
 
   <h1 style="font-size: 25px; margin-bottom: 5px;">Cursos</h1>
 
 </div>
 
-<ion-content class="container-table" class="no-scroll">
   <mat-tab-group>
 
     <!--First tab-->
     <mat-tab label="Activos">
 
-      <ion-button color="secondary" style="text-align: right;">+</ion-button>
+     
       <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
@@ -58,15 +60,17 @@
 
   </mat-tab-group>
 
-  <!--bUtton to cancel-->
-</ion-content>
-<div class="container">
-  <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+  <ion-row class="row">
+    <ion-items style="margin-left: 10px; margin-top :10px">
+      <ion-button color="secondary" style="text-align: center;">+</ion-button>
+    </ion-items>
 
-  <ion-row style="text-align: center;">
+
+
     <ion-col>
-      <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
+      <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
     </ion-col>
   </ion-row>
+
 </div>

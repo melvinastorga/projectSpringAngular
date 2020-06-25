@@ -1,11 +1,7 @@
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialog,
-} from "@angular/material/dialog";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -27,10 +23,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 10, name: "Neon", weight: 20.1797, symbol: "Ne" },
 ];
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: "app-my-courses",
@@ -39,8 +31,7 @@ export interface DialogData {
 })
 export class MyCoursesPage implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<MyCoursesPage>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    public router:Router
   ) {}
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -57,7 +48,8 @@ export class MyCoursesPage implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  
+goToOfficeHours() {
+  this.router.navigate(['professors-office-hours']);
+};
 }

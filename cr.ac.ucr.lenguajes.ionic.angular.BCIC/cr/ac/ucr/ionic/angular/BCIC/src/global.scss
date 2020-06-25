@@ -59,13 +59,14 @@ ion-toolbar {
   //button menu inside navbar
   ion-row {
     ion-button {
-      margin-top: 3%;
+      margin-top: 2%;
       --background: #ffffff;
       --color: #249dd8;
       --ion-background-color: #ffffff;
     }
   }
 }
+
 
 //side menu header
 ion-menu {
@@ -85,6 +86,17 @@ ion-menu {
 /* ----------------------------
     General settings
 -------------------------------*/
+.component-container{
+  height: 85%;
+  width: 96%;
+  text-align: center;
+  margin-top: 120px;
+  align-content: center;
+  align-items: center;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
@@ -305,8 +317,10 @@ ion-content {
 table {
   width: 100%;
   overflow-x: scroll;
-  text-align: left;
-  min-width: 600px;
+
+  min-width: 650px;
+  align-items: center;
+  align-content: center;
 }
 
 .mat-form-field {
@@ -315,17 +329,52 @@ table {
 }
 
 .separator3 {
-  background-color: #239ed7;
-  color: white;
+
+  color: #239ed7;
   text-align: center;
-  height: 10%;
-  padding: 20px 0;
+  height: 6%;
+  padding: 10px 0;
+
 }
 
 .mat-tab-group {
   overflow-y: hidden;
   width: 100%;
-  text-align: left;
-  height: 90%;
+  height: 75%;
   overflow-x: scroll;
+  padding: 1px;
+}
+
+.mat-row {
+  height: auto;
+}
+
+.mat-cell {
+  padding: 8px 8px 8px 0;
+  min-width: 30px;
+}
+
+.mat-table{
+
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px;
+
+  .mat-cell {
+    padding: 8px 8px 8px 0;
+    min-width: 30px;
+    margin-left: 100px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .mat-header-cell{
+    padding: 8px 8px 8px 0;
+    min-width: 30px;
+    margin-left: 100px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }

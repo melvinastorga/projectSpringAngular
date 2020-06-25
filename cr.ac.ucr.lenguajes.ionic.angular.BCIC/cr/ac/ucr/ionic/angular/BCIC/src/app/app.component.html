@@ -22,10 +22,10 @@
         <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
       </ion-button>
 
-      <ion-item>
+      <ion-items>
         <ion-img class="navbar-img" src="assets/img/firma-tipografica-una-linea-blanco.png">
         </ion-img>
-      </ion-item>
+      </ion-items>
 
 
 
@@ -37,9 +37,9 @@
     <ion-buttons slot="secondary">
       <ion-items>
 
-        <ion-item>
+        <ion-item style="color: white;">
           <!-- Register button-->
-          <ion-button fill="solid" color="secondary" class="navbar-button" (click)="openRegisterDialog()">
+          <ion-button  color="bgColor" class="navbar-button" (click)="openRegisterDialog()">
             Registrarse
             <ion-icon name="create-outline" class="navbar-button-icon2"></ion-icon>
           </ion-button>
@@ -47,7 +47,7 @@
         </ion-item>
         <ion-item>
           <!-- login button-->
-          <ion-button (click)="openLoginDialog()" fill="solid" color="secondary" class="navbar-button">
+          <ion-button (click)="openLoginDialog()" color="bgColor" class="navbar-button">
             Iniciar sesion
             <ion-icon name="person-circle" class="navbar-button-icon"></ion-icon>
           </ion-button>
@@ -85,7 +85,7 @@
             <ion-button class="menu-item" (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button>
           </ion-item>
           <ion-item>
-            <ion-button class="menu-item" fill="transparent">Mis Cursos</ion-button>
+            <ion-button class="menu-item" (click)="openMyCoursesDialog()" fill="transparent">Mis Cursos</ion-button>
           </ion-item>
           <ion-item>
             <ion-button class="menu-item" (click)="openCoursesDialog()" fill="transparent">Cursos</ion-button>
