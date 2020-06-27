@@ -77,4 +77,9 @@ public class StudentService implements IStudentService {
     public List<Student> getStudentstoAttend() {
         return studentRepository.getStudentsToAttend();
     }
+
+    @Override
+    public List<Student> getStudentsOff() {
+        return studentRepository.getStudentsOff();
+    }
 }

@@ -36,6 +36,11 @@ public class StudentController {
         return service.getStudentstoAttend();
     }
 
+    @GetMapping("/getStudentsOff")
+    public List<Student> getStudentsOff(){
+        return service.getStudentsOff();
+    }
+
     @PostMapping("/postStudent")
     public ResponseEntity<?> insertStudent(@RequestBody Student student){
         service.insertStudent(student);

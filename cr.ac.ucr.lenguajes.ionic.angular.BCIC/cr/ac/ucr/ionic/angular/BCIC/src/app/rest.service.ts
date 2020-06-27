@@ -66,6 +66,17 @@ getStudentToAttend(): Observable<any> {
     );
 }
 
+getStudentsOff(): Observable<any> {
+  var path;
+  this.currentendPoint.subscribe((result) => (path = result));
+  return this.http
+    .get(path + "/getStudentsOff")
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>("getData"))
+    );
+}
+
 serveStudentAccount(studentId, updatedBy, action) {
   var path;
   this.currentendPoint.subscribe((result) => (path = result));
