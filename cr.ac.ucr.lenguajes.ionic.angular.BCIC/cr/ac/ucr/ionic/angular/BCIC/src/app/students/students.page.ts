@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
+import { RestService } from '../rest.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -42,15 +44,21 @@ const ELEMENT_DATA2: PeriodicElement[] = [
   styleUrls: ["./students.page.scss"],
 })
 export class StudentsPage implements OnInit {
-  constructor(
 
-  ) {}
+  constructor(public rest:RestService, private route:ActivatedRoute, private router:Router) {  
+  }
+
+  students:any=[];
+  studentsToAttend:any=[];
+
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ["name", "weight", "actions"];
-  displayedColumns2: string[] = ["name", "weight", "actions"];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ["name", "lastName", "actions"];
+  displayedColumns2: string[] = ["name", "lastName", "studentId"];
+  
+  dataSource = new MatTableDataSource(ELEMENT_DATA2);
   dataSource2 = new MatTableDataSource(ELEMENT_DATA2);
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -61,7 +69,36 @@ export class StudentsPage implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator = this.paginator;
+    this.getStudents();
+    this.getStudentsToAttend();
   }
 
+
+  getStudents(){
+    this.students = [];
+    this.rest.getStudents().subscribe((data:{})=>{
+      this.students = data
+      this.dataSource = new MatTableDataSource(this.students);
+      
+    });
+  }
+
+  getStudentsToAttend(){
+    this.studentsToAttend = [];
+    this.rest.getStudentToAttend().subscribe((data:{})=>{
+      this.studentsToAttend = data
+      this.dataSource2 = new MatTableDataSource(this.studentsToAttend);
+      
+    });
+  }
+
+  serveAccount(){
+    this.studentsToAttend = [];
+    this.rest.getStudentToAttend().subscribe((data:{})=>{
+      this.studentsToAttend = data
+      this.dataSource2 = new MatTableDataSource(this.studentsToAttend);
+      
+    });
+  }
 
 }

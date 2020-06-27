@@ -12,6 +12,10 @@ import java.util.Date;
 
 @NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_All_Students")
 
+@NamedStoredProcedureQuery(name="Student.getStudentToAttend", resultClasses = {Student.class}, procedureName = "Get_StudentsToAttend")
+
+@NamedStoredProcedureQuery(name="Student.getStudentOff", resultClasses = {Student.class}, procedureName = "Get_Students_Off")
+
 @NamedStoredProcedureQuery(name="Student.updateStudent", procedureName = "Insert_Update_Student", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Email", type = String.class),
@@ -31,6 +35,7 @@ import java.util.Date;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Carne", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Action", type = String.class)
 })
+
 
 @NamedStoredProcedureQuery(name="Student.insertStudent", procedureName = "Insert_Update_Student", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),

@@ -35,7 +35,7 @@ public class StudentService implements IStudentService {
                 student.getLastName(),
                 student.getInterests(),
                 student.getProfilePic(),
-                student.isStudentStatus(),
+                false,
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
@@ -71,5 +71,10 @@ public class StudentService implements IStudentService {
     @Override
     public void serveStudentAccount(int studentId, int updatedBy, String action) {
         studentRepository.serveStudentRequest(studentId, updatedBy, action);
+    }
+
+    @Override
+    public List<Student> getStudentstoAttend() {
+        return studentRepository.getStudentsToAttend();
     }
 }

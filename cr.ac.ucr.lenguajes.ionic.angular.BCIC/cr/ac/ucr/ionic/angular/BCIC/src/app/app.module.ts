@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MDBSpinningPreloader } from "ng-uikit-pro-standard";
+import { IonicStorageModule } from '@ionic/storage';
+
 
 import {
   ButtonsModule,
@@ -34,7 +36,7 @@ import {
   InputUtilitiesModule,
   TableModule,
   StickyHeaderModule,
-  BreadcrumbModule,
+  BreadcrumbModule
 } from "angular-bootstrap-md";
 
 @NgModule({
@@ -69,6 +71,7 @@ import {
     StickyHeaderModule,
     BreadcrumbModule,
     CardsModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

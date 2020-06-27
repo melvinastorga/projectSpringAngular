@@ -12,4 +12,5 @@ public interface IStudentService {
     void insertStudent(Student officeHours);
     void updateStudent(Student officeHours);
     void serveStudentAccount(int studentId, int updatedBy, String action);
+    List<Student> getStudentstoAttend();
 }

@@ -22,7 +22,7 @@ export class RestService {
   public currentUsername = this.username.asObservable();
 
   private endPoint = new BehaviorSubject(
-    "https://guerrilla-api-b78225.herokuapp.com/"
+    "http://localhost:8080/api"
   );
   public currentendPoint = this.endPoint.asObservable();
 
@@ -41,6 +41,50 @@ export class RestService {
     let body = res;
     return body || {};
   }
+
+// Student methods
+
+getStudents(): Observable<any> {
+  var path;
+  this.currentendPoint.subscribe((result) => (path = result));
+  return this.http
+    .get(path + "/getAllStudent")
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>("getData"))
+    );
+}
+
+getStudentToAttend(): Observable<any> {
+  var path;
+  this.currentendPoint.subscribe((result) => (path = result));
+  return this.http
+    .get(path + "/getStudentToAttend")
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>("getData"))
+    );
+}
+
+serveStudentAccount(studentId, updatedBy, action) {
+  var path;
+  this.currentendPoint.subscribe((result) => (path = result));
+  return this.http
+    .post(
+      path +
+        "serveStudentAccount?studentId=" +
+        studentId +
+        "&updatedBy=" +
+        updatedBy +
+        "&action=" +
+        action,
+      httpOptions
+    )
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>("ranking"))
+    );
+}
 
   public async getCurrentUser() {
     return new Promise((response) => {
