@@ -33,26 +33,25 @@ export class ProfessorsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource2.paginator = this.paginator;
-  }
 
-  getProfessors(){
-    this.professors = [];
-    this.rest.getProfessor().subscribe((data:{})=>{
-      this.professors = data
+    this.rest.getProfessor().subscribe((data)=>{
+      console.log(data);
+      this.professors = data;
       this.dataSource = new MatTableDataSource(this.professors);
+      this.dataSource.paginator = this.paginator;
       
     });
+
+    this.rest.getProfessorsOff().subscribe((data)=>{
+      this.professorsOff = data;
+      this.dataSource2 = new MatTableDataSource(this.professorsOff);
+      this.dataSource2.paginator = this.paginator;
+      
+    });
+
+
+
   }
 
-  getProfessorsOff(){
-    this.professorsOff = [];
-    this.rest.getProfessorsOff().subscribe((data:{})=>{
-      this.professorsOff = data
-      this.dataSource2 = new MatTableDataSource(this.professorsOff);
-      
-    });
-  }
 
 }

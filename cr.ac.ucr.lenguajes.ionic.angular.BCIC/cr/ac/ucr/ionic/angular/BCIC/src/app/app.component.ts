@@ -70,6 +70,12 @@ export class AppComponent {
     this.router.navigate(["professors"]);
   }
 
+  
+  home(): void {
+    this.openCustom();
+    this.router.navigate(["home"]);
+  }
+
   openStudentsDialog(): void {
     this.openCustom();
     this.router.navigate(["students"]);

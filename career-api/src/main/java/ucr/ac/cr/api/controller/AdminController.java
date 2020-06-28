@@ -1,13 +1,11 @@
 package ucr.ac.cr.api.controller;
 
-import jdk.net.SocketFlow;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucr.ac.cr.api.entity.Admin;
-import ucr.ac.cr.api.entity.President;
-import ucr.ac.cr.api.entity.Professor;
 import ucr.ac.cr.api.service.jpa.AdminService;
 
 @RestController

@@ -1,28 +1,8 @@
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { Router } from '@angular/router';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: "Hydrogen", weight: 1.0079, symbol: "H" },
-  { position: 2, name: "Helium", weight: 4.0026, symbol: "He" },
-  { position: 3, name: "Lithium", weight: 6.941, symbol: "Li" },
-  { position: 4, name: "Beryllium", weight: 9.0122, symbol: "Be" },
-  { position: 5, name: "Boron", weight: 10.811, symbol: "B" },
-  { position: 6, name: "Carbon", weight: 12.0107, symbol: "C" },
-  { position: 7, name: "Nitrogen", weight: 14.0067, symbol: "N" },
-  { position: 8, name: "Oxygen", weight: 15.9994, symbol: "O" },
-  { position: 9, name: "Fluorine", weight: 18.9984, symbol: "F" },
-  { position: 10, name: "Neon", weight: 20.1797, symbol: "Ne" },
-];
-
+import { Router } from "@angular/router";
+import { RestService } from "../rest.service";
 
 @Component({
   selector: "app-my-courses",
@@ -30,14 +10,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./my-courses.page.scss"],
 })
 export class MyCoursesPage implements OnInit {
-  constructor(
-    public router:Router
-  ) {}
+  dataSource: any;
+  dataSource2: any;
+  myCourses: [];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ["name", "weight", "actions"];
+  displayedColumns: string[] = ["Code", "Name", "Term", "actions"];
 
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(public router: Router, public rest: RestService) {}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -45,11 +25,15 @@ export class MyCoursesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this.rest.getProfessorCourses(12).subscribe((data) => {
+      this.myCourses = data;
+      console.log(data);
+      this.dataSource = new MatTableDataSource(this.myCourses);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
-  
-goToOfficeHours() {
-  this.router.navigate(['professors-office-hours']);
-};
+  goToOfficeHours() {
+    this.router.navigate(["professors-office-hours"]);
+  }
 }
