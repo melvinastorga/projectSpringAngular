@@ -12,6 +12,8 @@ import java.util.Date;
 
 @NamedStoredProcedureQuery(name="Professor.getAllProfessor", procedureName = "Get_Professors")
 
+@NamedStoredProcedureQuery(name="Professor.getProfessorsOff", procedureName = "Get_Professors_Off")
+
 @NamedStoredProcedureQuery(name="Professor.updateProfessor", procedureName = "Insert_Update_Professor", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Person_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Email", type = String.class),

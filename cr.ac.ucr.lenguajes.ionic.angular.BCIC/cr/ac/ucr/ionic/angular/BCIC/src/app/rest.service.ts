@@ -97,6 +97,30 @@ serveStudentAccount(studentId, updatedBy, action) {
     );
 }
 
+//professor methods
+
+getProfessor(): Observable<any> {
+  var path;
+  this.currentendPoint.subscribe((result) => (path = result));
+  return this.http
+    .get(path + "/getAllProfessor")
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>("getData"))
+    );
+}
+
+getProfessorsOff(): Observable<any> {
+  var path;
+  this.currentendPoint.subscribe((result) => (path = result));
+  return this.http
+    .get(path + "/getProfessorsOff")
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>("getData"))
+    );
+}
+
   public async getCurrentUser() {
     return new Promise((response) => {
       this.storage.get("name").then((val) => {

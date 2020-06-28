@@ -30,6 +30,11 @@ public class ProfessorController {
         return service.getAllProfessor();
     }
 
+    @GetMapping("/getProfessorsOff")
+    public List<Professor> getProfessorsOff(){
+        return service.getProfessorsOff();
+    }
+
     @PostMapping("/postProfessor")
     public ResponseEntity<?> insertProfessor(@RequestBody Professor professor){
          service.insertProfessor(professor);

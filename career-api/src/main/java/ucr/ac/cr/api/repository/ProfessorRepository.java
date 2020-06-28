@@ -22,6 +22,9 @@ public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
 @Query(value= "Get_Professors", nativeQuery = true)
     List<Professor> getAllProfessor();
 
+@Query(value= "Get_Professors_Off", nativeQuery = true)
+    List<Professor> getProfessorsOff();
+
 @Procedure(name = "Professor.insertProfessor")
     void insertProfessor(@Param("Person_id") Integer personId,
                          @Param("Email") String email,

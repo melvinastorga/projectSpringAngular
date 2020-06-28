@@ -10,4 +10,5 @@ public interface IProfesorService {
     public void insertProfessor(Professor professor);
     public void updateProfessor(Professor professor);
     public List<Professor> getAllProfessor();
+    public List<Professor> getProfessorsOff();
 }

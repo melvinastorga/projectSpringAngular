@@ -29,6 +29,12 @@ public class ProfessorService implements IProfesorService {
     }
 
     @Override
+    public List<Professor> getProfessorsOff(){
+
+        return professorRepository.getProfessorsOff();
+    }
+
+    @Override
     public void insertProfessor(Professor professor){
 
          professorRepository.insertProfessor(0,
@@ -46,7 +52,7 @@ public class ProfessorService implements IProfesorService {
                 professor.getCreateAt(),
                 professor.getUpdatedBy(),
                 professor.getUpdatedAt(),
-                professor.getRole(),
+                "Professor",
                 professor.getEspeciality(),
                 "Insert");
     }
@@ -69,7 +75,7 @@ public class ProfessorService implements IProfesorService {
                 professor.getCreateAt(),
                 professor.getUpdatedBy(),
                 professor.getUpdatedAt(),
-                professor.getRole(),
+                "Professor",
                 professor.getEspeciality(),
                 "Update");
     }
