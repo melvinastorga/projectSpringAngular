@@ -378,3 +378,42 @@ table {
     text-align: center;
   }
 }
+
+
+/*--------------------
+        Comments
+----------------------*/
+
+.comments-container{
+
+  height: 450px;
+}
+
+.comment-area{
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top:  10px;
+}
+
+.card-comments-content{
+ 
+  color: black;
+  margin-bottom: 5px;
+  padding: 8px 8px 8px 10px;
+  text-align: left;
+  
+ 
+}
+
+.card-comments-header{
+  border-radius: 25px;
+  margin-bottom: 5px;
+  color: #239ed7;
+  padding: 8px 8px 8px 10px;
+
+  ;
+}
+.card-comments{
+
+}

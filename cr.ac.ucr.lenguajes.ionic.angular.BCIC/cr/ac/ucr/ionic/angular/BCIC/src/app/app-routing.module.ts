@@ -57,6 +57,10 @@ const routes: Routes = [
         (m) => m.ProfessorsOfficeHoursPageModule
       ),
   },
+  {
+    path: 'comments',
+    loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,4 +1,10 @@
 import { Component, HostListener, OnInit } from "@angular/core";
+import { Platform, MenuController } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { CommentsPage } from '../comments/comments.page';
 
 @Component({
   selector: "app-home",
@@ -6,7 +12,14 @@ import { Component, HostListener, OnInit } from "@angular/core";
   styleUrls: ["home.page.scss"],
 })
 export class HomePage implements OnInit {
-  constructor() {}
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar,
+    private menu: MenuController,
+    public dialog: MatDialog,
+    public router: Router
+  ) {}
 
   CAROUSEL_BREAKPOINT = 768;
   carouselDisplayMode = "multiple";
@@ -100,6 +113,19 @@ export class HomePage implements OnInit {
     } else {
       this.carouselDisplayMode = "multiple";
     }
+  }
+
+  openCommentsDialog(): void {
+    const dialogRef = this.dialog.open(CommentsPage, {
+      width: "500px",
+      height: "92%",
+     
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+ 
+    });
   }
 
   @HostListener("window:resize")

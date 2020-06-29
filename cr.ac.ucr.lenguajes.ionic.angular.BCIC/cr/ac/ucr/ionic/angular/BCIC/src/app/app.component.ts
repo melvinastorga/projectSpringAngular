@@ -10,6 +10,7 @@ import { HomeRegisterPage } from "./home-register/home-register.page";
 import { CoursesPage } from "./courses/courses.page";
 import { MyCoursesPage } from "./my-courses/my-courses.page";
 import { Router } from "@angular/router";
+import { CommentsPage } from './comments/comments.page';
 
 @Component({
   selector: "app-root",
@@ -64,6 +65,8 @@ export class AppComponent {
       this.animal = result;
     });
   }
+
+
 
   openProfessorsDialog(): void {
     this.openCustom();
