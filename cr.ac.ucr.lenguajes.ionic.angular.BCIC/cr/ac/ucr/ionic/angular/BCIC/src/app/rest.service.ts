@@ -133,6 +133,36 @@ export class RestService {
 
   //--------------------Student methods------------------------
 
+  getStudentById(studentId){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path +
+        "getStudentById?id=" +
+        studentId, 
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
+  deleteStudent(studentId, updatedBy){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .delete(path +
+        "desactivateAccount?personId=" +
+        studentId
+        + "&updatedBy=" +
+        updatedBy,
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
   getStudents(): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
