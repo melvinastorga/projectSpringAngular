@@ -1,0 +1,54 @@
+
+
+CREATE DATABASE Examen_II_Lenguajes_B78225
+
+USE Examen_II_Lenguajes_B78225
+
+CREATE TABLE Major(
+major_id INT IDENTITY primary key,
+major NVARCHAR(20),
+semesters INT
+)
+INSERT INTO Major values('Japones',10);
+
+
+
+Create Procedure get_majors
+as begin 
+
+select * from Major
+
+end
+
+Create Procedure get_major (@major_id int)
+as begin 
+
+select * from Major where major_id = @major_id 
+
+end
+
+Create Procedure insert_update_major (
+@major_id int, 
+@major NVARCHAR(20), 
+@semesters int, 
+@action varchar(20))
+as begin 
+
+If @action = 'insert'
+begin
+insert into Major values (@major, @Semesters) 
+end
+
+if @action = 'update'
+begin
+Update Major set major = @major, semesters = @semesters where major_id = @major_id 
+
+end
+end
+
+Create procedure delete_major (@major_id int)
+as begin 
+
+Delete from Major where major_id = @major_id
+
+end

@@ -45,4 +45,32 @@ export class CoursesPage implements OnInit {
    
  
   }
+
+delete(id){
+
+  this.rest.deleteCourses(id).subscribe((data)=>{
+
+    console.log(data);
+
+  });
+}
+
+get(id){
+
+  this.rest.getCourse(id).subscribe((data)=>{
+
+    console.log(data);
+
+  });
+
+}
+
+put(){
+
+}
+
+create(){
+
+}
+
 }
