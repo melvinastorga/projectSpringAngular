@@ -1,14 +1,14 @@
-.login-input.placeholder {
-  color: black;
+.register-input.placeholder{
+color: black;
 }
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: black;
-  opacity: 1; /* Firefox */
-}
-
-//login title
-.login-title {
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+  }
+  
+  //register title
+.register-title{
   color: #249dd8;
   font-weight: bold;
+  
 }
