@@ -2,6 +2,11 @@ import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { RestService } from "../rest.service";
+import { CourseDetailsPage } from '../course-details/course-details.page';
+import { MatDialog } from '@angular/material/dialog';
+import { CourseCreateUpdatePage } from '../course-create-update/course-create-update.page';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-courses",
@@ -18,7 +23,7 @@ export class CoursesPage implements OnInit {
   displayedColumns: string[] = ["Code", "Name", "Term", "actions"];
   displayedColumns2: string[] = ["Code", "Name", "Term", "actions"];
 
-  constructor(public rest: RestService) {
+  constructor(public rest: RestService,  public dialog: MatDialog, public alertController: AlertController,    public router: Router ,) {
 
   }
 
@@ -50,27 +55,77 @@ delete(id){
 
   this.rest.deleteCourses(id).subscribe((data)=>{
 
-    console.log(data);
+    this.presentAlert();
+    this.ngOnInit();
 
   });
 }
 
-get(id){
+
+put(id){
 
   this.rest.getCourse(id).subscribe((data)=>{
 
-    console.log(data);
+    const dialogRef = this.dialog.open(CourseCreateUpdatePage, {
+    
+      width: "500px",
+      height: "80%",
+      data:{data}
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    }); 
+
+  });
+}
+
+create(){
+ 
+    const dialogRef = this.dialog.open(CourseCreateUpdatePage, {
+    
+      width: "500px",
+      height: "80%",
+      data: null,
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    }); 
+
+}
+
+
+
+get(id): void {
+
+  this.rest.getCourse(id).subscribe((data)=>{
+
+    const dialogRef = this.dialog.open(CourseDetailsPage, {
+    
+      width: "500px",
+      height: "80%",
+      data: data,
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  
 
   });
 
 }
 
-put(){
+async presentAlert() {
+  const alert = await this.alertController.create({
+    cssClass: "my-custom-class",
+    header: "Aviso",
+    message: "El curso se ha eliminado con exito",
+    buttons: ["OK"],
+  });
 
-}
-
-create(){
-
+  await alert.present();
 }
 
 }

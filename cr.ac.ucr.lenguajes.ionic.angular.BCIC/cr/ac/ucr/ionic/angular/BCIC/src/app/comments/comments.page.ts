@@ -6,8 +6,7 @@ import {
 } from "@angular/material/dialog";
 
 export interface DialogData {
-  animal: string;
-  name: string;
+
 }
 @Component({
   selector: 'app-comments',
