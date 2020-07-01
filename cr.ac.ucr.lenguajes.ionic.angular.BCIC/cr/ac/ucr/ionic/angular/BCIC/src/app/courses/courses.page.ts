@@ -56,7 +56,7 @@ delete(id){
   this.rest.deleteCourses(id).subscribe((data)=>{
 
     this.presentAlert();
-    this.router.navigate(["courses"]);
+    this.ngOnInit();
 
   });
 }
