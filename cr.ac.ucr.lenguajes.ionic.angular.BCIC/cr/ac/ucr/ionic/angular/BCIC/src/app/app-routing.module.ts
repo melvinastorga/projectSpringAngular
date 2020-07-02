@@ -60,7 +60,15 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
+  },  {
+    path: 'professor-details',
+    loadChildren: () => import('./professor-details/professor-details.module').then( m => m.ProfessorDetailsPageModule)
   },
+  {
+    path: 'professor-create-update',
+    loadChildren: () => import('./professor-create-update/professor-create-update.module').then( m => m.ProfessorCreateUpdatePageModule)
+  },
+
 ];
 
 @NgModule({

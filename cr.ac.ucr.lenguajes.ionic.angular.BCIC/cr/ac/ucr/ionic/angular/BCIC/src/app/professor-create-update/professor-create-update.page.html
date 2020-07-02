@@ -1,0 +1,85 @@
+<h1 class="title">{{action}} Profesores</h1>
+
+<ion-content class="modal-container">
+
+
+  <br>
+
+  <p>
+    <mat-form-field class="input-form" appearance="legacy">
+      <mat-label>Nombre</mat-label>
+      <input class="input" [(ngModel)]="name" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input-form" color="secondary" appearance="legacy">
+      <mat-label>Apellidos</mat-label>
+      <input color="secondary" class="input" [(ngModel)]="lastName" matInput>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="input-from" color="secondary" appearance="legacy">
+      <mat-label>Correo</mat-label>
+      <input color="secondary" class="input" [(ngModel)]="mail" matInput>
+    </mat-form-field>
+  </p>
+
+
+  <p>
+    <mat-form-field class="input-form" color="secondary" appearance="legacy">
+      <mat-label>Especialidad</mat-label>
+      <input color="secondary" class="input" [(ngModel)]="specialty" matInput>
+    </mat-form-field>
+  </p>
+
+  <ion-item>
+    <ion-label>Provincia</ion-label>
+    <ion-select placeholder="Select One"  [(ngModel)]="province">
+      <ion-select-option value="Cartago">Cartago</ion-select-option>
+      <ion-select-option value="San Jose">San Jose</ion-select-option>
+      <ion-select-option value="Zapote">Zapote</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Canton</ion-label>
+    <ion-select value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="canton"> 
+      <ion-select-option value="Cartago">Cartago</ion-select-option>
+      <ion-select-option value="San Jose">San Jose</ion-select-option>
+      <ion-select-option value="Zapote">Zapote</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Distrito</ion-label>
+    <ion-select value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="district">
+      <ion-select-option value="Cartago">Cartago</ion-select-option>
+      <ion-select-option value="San Jose">San Jose</ion-select-option>
+      <ion-select-option value="Zapote">Zapote</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <p>
+    <mat-form-field>
+      <mat-label>Intereses</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5" [(ngModel)]="interests"></textarea>
+    </mat-form-field>
+  </p>
+
+</ion-content>
+
+<div class="comment-area">
+
+  <ion-row>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="post()">{{action}}</button>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
+    </ion-col>
+  </ion-row>
+</div>

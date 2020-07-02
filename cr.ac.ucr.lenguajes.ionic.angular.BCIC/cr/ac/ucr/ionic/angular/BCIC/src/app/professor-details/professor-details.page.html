@@ -1,0 +1,40 @@
+<ion-content class="modal-container">
+  <br>
+  <h1 class="login-title">Detalles</h1>
+  <br>
+  <br>
+  <p>
+      <mat-label>Correo: {{data.data.email}}</mat-label>
+
+  </p>
+  <p>
+      <mat-label>Nombre: {{data.data.name}}</mat-label>
+  </p>
+  <p>
+      <mat-label>Apellido: {{data.data.lastName}}</mat-label>
+  </p>
+  <p>
+      <mat-label>Intereses: {{data.data.interests}}</mat-label>
+  </p>
+  <p>
+      <mat-label>Provincia: {{data.data.provinceId}}</mat-label>
+  </p>
+  <p>
+      <mat-label>Canton: {{data.data.cantonId}}</mat-label>
+  </p>
+  <p>
+      <mat-label>Distrito: {{data.data.districId}}</mat-label>
+  </p>
+  <p>
+      <mat-label>Especialidad: {{data.data.especiality}}</mat-label>
+  </p>
+
+
+  <ion-row>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="onNoClick()">Volver</button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

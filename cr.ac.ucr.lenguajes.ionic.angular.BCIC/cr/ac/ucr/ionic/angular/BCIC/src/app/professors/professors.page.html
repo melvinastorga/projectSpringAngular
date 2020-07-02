@@ -1,4 +1,3 @@
-<!--Cambio a profesores-->
 
 <div class="component-container">
 <div class="separator3" id="coursesRibbon">
@@ -36,9 +35,9 @@
         <ng-container matColumnDef="professorId">
           <th mat-header-cell *matHeaderCellDef> Opciones </th>
           <td mat-cell *matCellDef="let element">
-            <button size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button">Detalles</button>
+            <button size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button" (click)="getProfessorDetailsId(element.professorId)">Detalles</button>
             <button size="sm" mdbBtn color="warning" mdbWavesEffect class="social-prof-button">Promover</button>
-            <button size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button">x</button>
+            <button size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button" (click)="delete(element.professorId)">x</button>
           </td>
         </ng-container>
 
@@ -103,7 +102,7 @@
 
   <ion-row class="row">
     <ion-items style="margin-left: 10px; margin-top :10px">
-      <ion-button color="secondary" style="text-align: center;">+</ion-button>
+      <ion-button color="secondary" style="text-align: center;" (click)="create()">+</ion-button>
     </ion-items>
 
 

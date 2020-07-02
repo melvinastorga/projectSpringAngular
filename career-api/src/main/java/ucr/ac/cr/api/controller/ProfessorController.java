@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ucr.ac.cr.api.entity.Course;
 import ucr.ac.cr.api.entity.OfficeHours;
 import ucr.ac.cr.api.entity.Professor;
 import ucr.ac.cr.api.service.jpa.ProfessorService;
@@ -46,5 +47,11 @@ public class ProfessorController {
         service.updateProfessor(professor);
     }
 
+    @PostMapping("/deleteProfessor")
+    public void deleteProfessor(@RequestBody Professor professor){
+
+        service.deleteProfessorSP(professor);
+
+    }
 
 }

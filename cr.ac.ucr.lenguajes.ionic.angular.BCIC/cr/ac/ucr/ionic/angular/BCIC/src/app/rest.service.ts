@@ -210,6 +210,59 @@ export class RestService {
         catchError(this.handleError<any>("getData"))
       );
   }
+
+  getProfessorById(professorId){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path +
+        "/getProfessorById/" +
+        professorId, 
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
+  putProfessor(professor): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/professor/updateProfessor",professor,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("putProfessor"))
+      );
+  }
+
+  postProfessor(professor): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/professor/postProfessor",professor,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postCourse"))
+      );
+  }
+
+  deleteProfessor(id): Observable<any> {
+
+    var course = {
+      "professorId":id
+    }
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/professor/deleteProfessor",course,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("deleteCourse"))
+      );
+  }
+
+
   //--------------------------------------------------------------
 
   //-----------------------Courses methods------------------------
