@@ -54,9 +54,15 @@ public class StudentController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @PostMapping("/serveStudentAccount/{studentId}/{updatedBy/{action}")
-    public ResponseEntity<?> serveAccount(@PathVariable Integer studentId, Integer updatedBy, String action){
-        service.serveStudentAccount(studentId, updatedBy, action);
+    @PostMapping("/acceptStudentAccount/{studentId}/{updatedBy}")
+    public ResponseEntity<?> acceptAccount(@PathVariable Integer studentId, @PathVariable Integer updatedBy){
+        service.serveStudentAccount(studentId, updatedBy, "Accept");
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/rejectStudentAccount/{studentId}/{updatedBy}")
+    public ResponseEntity<?> rejectAccount(@PathVariable Integer studentId, @PathVariable Integer updatedBy){
+        service.serveStudentAccount(studentId, updatedBy, "Reject");
         return new ResponseEntity(HttpStatus.OK);
     }
 

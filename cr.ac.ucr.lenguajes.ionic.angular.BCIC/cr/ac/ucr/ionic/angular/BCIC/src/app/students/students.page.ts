@@ -77,13 +77,22 @@ export class StudentsPage implements OnInit {
     });
   }
 
-  serveAccount(){
+  serveAccount(studentId, action){
     this.studentsToAttend = [];
-    this.rest.getStudentToAttend().subscribe((data:{})=>{
-      this.studentsToAttend = data
-      this.dataSource2 = new MatTableDataSource(this.studentsToAttend);
+    
+      if(action == "Accept")
+      this.rest.acceptStudentAccount(studentId, 14).subscribe((data:{})=>{
+      this.presentAlert("La cuenta del estudiante ha sido aceptada");
       
+    this.ngOnInit();
     });
+      else 
+      this.rest.rejectStudentAccount(studentId, 14).subscribe((data:{})=>{
+      this.presentAlert("La cuenta del estudiante ha sido rechazada");
+      
+    this.ngOnInit();
+    });
+       
   }
 
   getStudentById(id): void {
@@ -108,19 +117,29 @@ export class StudentsPage implements OnInit {
 
   deleteStudent(studentId){
 
-    this.rest.deleteStudent(studentId, 1).subscribe((data)=>{
+    this.rest.deleteStudent(studentId, 14).subscribe((data)=>{
   
-      this.presentAlert();
+      this.presentAlert("La cuenta del estudiante ha sido eliminada con éxito");
       this.ngOnInit();
   
     });
   }
 
-  async presentAlert() {
+  activateStudentAccount(studentId){
+    this.rest.activateStudentAccount(studentId, 14).subscribe((data)=>{
+
+      this.presentAlert("La cuenta del estudiante ha sido activada con éxito");
+      this.ngOnInit();
+  
+    });
+  }
+
+
+  async presentAlert(message) {
     const alert = await this.alertController.create({
       cssClass: "my-custom-class",
       header: "Aviso",
-      message: "El estudiante se ha eliminado con exito",
+      message: message,
       buttons: ["OK"],
     });
   

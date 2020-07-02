@@ -16,6 +16,9 @@ public class StudentService implements IStudentService {
     @Autowired
     StudentRepository studentRepository;
 
+    @Autowired
+    SendMailService emailService;
+
     @Override
     public List<Student> listAllStudent(){
         return studentRepository.getAllStudent();
@@ -71,6 +74,17 @@ public class StudentService implements IStudentService {
     @Override
     public void serveStudentAccount(int studentId, int updatedBy, String action) {
         studentRepository.serveStudentRequest(studentId, updatedBy, action);
+        Student student = studentRepository.getStudentById(studentId);
+        if(action.equals("Accept")){
+            emailService.sendMail("revistaparaiso123@gmail.com", student.getEmail(),
+                    "Solicitud de Cuenta Acceptada",
+                    "El Centro de Informática le informa que su cuenta ha sido acceptada");
+        }else{
+            emailService.sendMail("revistaparaiso123@gmail.com", student.getEmail(),
+                    "Solicitud de Cuenta Rechazada",
+                    "El Centro de Informática le informa que su cuenta ha sido rechazada, contacte al centro para más información");
+        }
+
     }
 
     @Override

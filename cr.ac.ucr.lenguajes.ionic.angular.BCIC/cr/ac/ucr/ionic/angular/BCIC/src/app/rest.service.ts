@@ -163,6 +163,22 @@ export class RestService {
       );
   }
 
+  activateStudentAccount(studentId, updatedBy){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path +
+        "/activateAccount/" +
+        studentId
+        + "/" +
+        updatedBy,
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
   getStudents(): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
@@ -196,18 +212,16 @@ export class RestService {
       );
   }
 
-  serveStudentAccount(studentId, updatedBy, action) {
+  acceptStudentAccount(studentId, updatedBy) {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
       .post(
         path +
-          "serveStudentAccount?studentId=" +
+          "/acceptStudentAccount/" +
           studentId +
-          "&updatedBy=" +
-          updatedBy +
-          "&action=" +
-          action,
+          "/" +
+          updatedBy,
         httpOptions
       )
       .pipe(
@@ -215,6 +229,45 @@ export class RestService {
         catchError(this.handleError<any>("ranking"))
       );
   }
+
+  rejectStudentAccount(studentId, updatedBy) {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(
+        path +
+          "/rejectStudentAccount/" +
+          studentId +
+          "/" +
+          updatedBy,
+        httpOptions
+      )
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("ranking"))
+      );
+  }
+
+  promoteStudentToPresident(studentId, updatedBy) {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(
+        path +
+          "/president/promoteStudent/" +
+          studentId +
+          "/" +
+          updatedBy,
+        httpOptions
+      )
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("ranking"))
+      );
+  }
+
+  
+
   //--------------------------------------------------------------
 
   //---------------------Professors methods-----------------------
