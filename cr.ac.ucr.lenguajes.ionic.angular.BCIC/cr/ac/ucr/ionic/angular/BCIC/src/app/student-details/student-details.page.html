@@ -1,0 +1,51 @@
+<ion-content class="modal-container">
+  <br>
+
+  <h1 class="title">Detalles</h1>
+  <br>
+  <br>
+  <p>
+  
+      <mat-label>Nombre: {{data.student.name}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Apellido: {{data.student.lastName}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Carnet: {{data.student.carne}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Distrito: {{data.locationNames.districtName}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Canton: {{data.locationNames.cantonName}}</mat-label>
+
+  </p>
+  <p>
+
+    <mat-label>Provincia: {{data.locationNames.provinceName}}</mat-label>
+
+</p>
+
+ 
+</ion-content>
+
+<div class="modal-options-area">
+
+  <ion-row>
+   <ion-col>
+     <button mat-raised-button color="secondary" (click)="onNoClick()">Aceptar</button>
+   </ion-col>
+ </ion-row>
+
+
+</div>
+

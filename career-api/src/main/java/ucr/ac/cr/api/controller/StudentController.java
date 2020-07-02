@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ucr.ac.cr.api.entity.Professor;
-import ucr.ac.cr.api.entity.Student;
-import ucr.ac.cr.api.entity.StudentDTO;
+import ucr.ac.cr.api.entity.*;
+import ucr.ac.cr.api.service.jpa.LocationNameService;
 import ucr.ac.cr.api.service.jpa.ProfessorService;
 import ucr.ac.cr.api.service.jpa.StudentService;
 
@@ -19,11 +18,19 @@ public class StudentController {
     @Autowired
     private StudentService service;
 
-    @GetMapping("/getStudentById/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable Integer id){
+    @Autowired
+    private LocationNameService locationNameService;
 
+    @GetMapping("/getStudentById/{id}")
+    public ResponseEntity<UserModel> getStudentById(@PathVariable Integer id){
+        UserModel user = new UserModel();
         Student student = service.getStudentById(id);
-        return new ResponseEntity<Student>(student, HttpStatus.OK);
+
+        LocationNames locationNames = locationNameService.getLocationNames(student.getProvinceId(), student.getCantonId(), student.getDistricId());
+        user.setStudent(student);
+        user.setLocationNames(locationNames);
+
+        return new ResponseEntity<UserModel>(user, HttpStatus.OK);
     }
 
     @GetMapping("/getAllStudent")

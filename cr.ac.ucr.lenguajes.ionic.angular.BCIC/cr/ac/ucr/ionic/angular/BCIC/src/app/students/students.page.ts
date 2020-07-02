@@ -3,6 +3,9 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentDetailsPage } from '../student-details/student-details.page';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -12,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class StudentsPage implements OnInit {
 
-  constructor(public rest:RestService, private route:ActivatedRoute, private router:Router) {  
+  constructor(public rest:RestService, public dialog: MatDialog, public alertController: AlertController, private route:ActivatedRoute, private router:Router) {  
   }
 
   students:any=[];
@@ -81,6 +84,47 @@ export class StudentsPage implements OnInit {
       this.dataSource2 = new MatTableDataSource(this.studentsToAttend);
       
     });
+  }
+
+  getStudentById(id): void {
+
+    this.rest.getStudentById(id).subscribe((data)=>{
+  
+      const dialogRef = this.dialog.open(StudentDetailsPage, {
+      
+        width: "500px",
+        height: "80%",
+        data: data,
+      });
+    
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log("The dialog was closed");
+      });
+    
+  
+    });
+  
+  }
+
+  deleteStudent(studentId){
+
+    this.rest.deleteStudent(studentId, 1).subscribe((data)=>{
+  
+      this.presentAlert();
+      this.ngOnInit();
+  
+    });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Aviso",
+      message: "El estudiante se ha eliminado con exito",
+      buttons: ["OK"],
+    });
+  
+    await alert.present();
   }
 
 }

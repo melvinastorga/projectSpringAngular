@@ -60,7 +60,11 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
+  },  {
+    path: 'student-details',
+    loadChildren: () => import('./student-details/student-details.module').then( m => m.StudentDetailsPageModule)
   },
+
 ];
 
 @NgModule({

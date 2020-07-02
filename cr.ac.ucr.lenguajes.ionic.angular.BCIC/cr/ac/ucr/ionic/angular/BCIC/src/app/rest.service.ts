@@ -138,7 +138,7 @@ export class RestService {
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
       .get(path +
-        "getStudentById?id=" +
+        "/getStudentById/" +
         studentId, 
         httpOptions)
       .pipe(
@@ -152,9 +152,9 @@ export class RestService {
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
       .delete(path +
-        "desactivateAccount?personId=" +
+        "/desactivateAccount/" +
         studentId
-        + "&updatedBy=" +
+        + "/" +
         updatedBy,
         httpOptions)
       .pipe(
