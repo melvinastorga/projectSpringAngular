@@ -60,11 +60,15 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
-  },  {
-    path: 'student-details',
-    loadChildren: () => import('./student-details/student-details.module').then( m => m.StudentDetailsPageModule)
   },
-
+  {
+    path: 'course-details',
+    loadChildren: () => import('./course-details/course-details.module').then( m => m.CourseDetailsPageModule)
+  },
+  {
+    path: 'course-create-update',
+    loadChildren: () => import('./course-create-update/course-create-update.module').then( m => m.CourseCreateUpdatePageModule)
+  },
 ];
 
 @NgModule({
