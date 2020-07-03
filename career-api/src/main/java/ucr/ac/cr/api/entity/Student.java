@@ -8,7 +8,6 @@ import java.util.Date;
 @NamedStoredProcedureQuery(name="Student.getStudentById", procedureName = "Get_Students_By_id", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Id", type = Integer.class)})
 
-//@NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_Students")
 
 @NamedStoredProcedureQuery(name="Student.getAllStudent", resultClasses = {Student.class}, procedureName = "Get_All_Students")
 
@@ -59,7 +58,7 @@ import java.util.Date;
 
 @NamedStoredProcedureQuery(name="Student.serveStudentRequest", procedureName = "Serve_Student_Account", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Student_id", type = Integer.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Updated_by", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Update_by", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Action", type = String.class)})
 
 public class Student {

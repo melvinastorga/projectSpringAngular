@@ -30,7 +30,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Procedure(name = "Student.serveStudentRequest")
     void serveStudentRequest(@Param("Student_id") Integer personId,
-                       @Param("Updated_by") Integer updatedBy,
+                       @Param("Update_by") Integer updatedBy,
                        @Param("Action") String action);
 
     @Procedure(name = "Student.insertStudent")
