@@ -69,6 +69,10 @@ const routes: Routes = [
     path: 'course-create-update',
     loadChildren: () => import('./course-create-update/course-create-update.module').then( m => m.CourseCreateUpdatePageModule)
   },
+  {
+    path: 'student-details',
+    loadChildren: () => import('./student-details/student-details.module').then( m => m.StudentDetailsPageModule)
+  },
 ];
 
 @NgModule({
