@@ -133,6 +133,52 @@ export class RestService {
 
   //--------------------Student methods------------------------
 
+  getStudentById(studentId){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path +
+        "/getStudentById/" +
+        studentId, 
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
+  deleteStudent(studentId, updatedBy){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .delete(path +
+        "/desactivateAccount/" +
+        studentId
+        + "/" +
+        updatedBy,
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
+  activateStudentAccount(studentId, updatedBy){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path +
+        "/activateAccount/" +
+        studentId
+        + "/" +
+        updatedBy,
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
+
   getStudents(): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
@@ -166,18 +212,16 @@ export class RestService {
       );
   }
 
-  serveStudentAccount(studentId, updatedBy, action) {
+  acceptStudentAccount(studentId, updatedBy) {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
       .post(
         path +
-          "serveStudentAccount?studentId=" +
+          "/acceptStudentAccount/" +
           studentId +
-          "&updatedBy=" +
-          updatedBy +
-          "&action=" +
-          action,
+          "/" +
+          updatedBy,
         httpOptions
       )
       .pipe(
@@ -185,6 +229,43 @@ export class RestService {
         catchError(this.handleError<any>("ranking"))
       );
   }
+
+  rejectStudentAccount(studentId, updatedBy) {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(
+        path +
+          "/rejectStudentAccount/" +
+          studentId +
+          "/" +
+          updatedBy,
+        httpOptions
+      )
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("ranking"))
+      );
+  }
+
+  promoteStudentToPresident(studentId, updatedBy) {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(
+        path +
+          "/president/promoteStudent/" +
+          studentId +
+          "/" +
+          updatedBy,
+        httpOptions
+      )
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("ranking"))
+      );
+  }
+  
   //--------------------------------------------------------------
 
   //---------------------Professors methods-----------------------
@@ -210,59 +291,6 @@ export class RestService {
         catchError(this.handleError<any>("getData"))
       );
   }
-
-  getProfessorById(professorId){
-    var path;
-    this.currentendPoint.subscribe((result) => (path = result));
-    return this.http
-      .get(path +
-        "/getProfessorById/" +
-        professorId, 
-        httpOptions)
-      .pipe(
-        map(this.extractData),
-        catchError(this.handleError<any>("getData"))
-      );
-  }
-
-  putProfessor(professor): Observable<any> {
-    var path;
-    this.currentendPoint.subscribe((result) => (path = result));
-    return this.http
-      .post(path + "/professor/updateProfessor",professor,httpOptions)
-      .pipe(
-        map(this.extractData),
-        catchError(this.handleError<any>("putProfessor"))
-      );
-  }
-
-  postProfessor(professor): Observable<any> {
-    var path;
-    this.currentendPoint.subscribe((result) => (path = result));
-    return this.http
-      .post(path + "/professor/postProfessor",professor,httpOptions)
-      .pipe(
-        map(this.extractData),
-        catchError(this.handleError<any>("postCourse"))
-      );
-  }
-
-  deleteProfessor(id): Observable<any> {
-
-    var course = {
-      "professorId":id
-    }
-    var path;
-    this.currentendPoint.subscribe((result) => (path = result));
-    return this.http
-      .post(path + "/professor/deleteProfessor",course,httpOptions)
-      .pipe(
-        map(this.extractData),
-        catchError(this.handleError<any>("deleteCourse"))
-      );
-  }
-
-
   //--------------------------------------------------------------
 
   //-----------------------Courses methods------------------------
@@ -297,6 +325,56 @@ export class RestService {
       .pipe(
         map(this.extractData),
         catchError(this.handleError<any>("getProfessorCourses"))
+      );
+  }
+
+  
+   getCourse(id): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path + "/course/getCourse/"+id)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getCourse"))
+      );
+  }
+
+  deleteCourses(id): Observable<any> {
+
+    var course = {
+      "courseId":id
+    }
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/course/deleteCourse",course,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("deleteCourse"))
+      );
+  }
+
+
+ putCourses(course): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/course/updateCourse",course,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("putCourse"))
+      );
+  }
+
+  postCourses(course): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/course/insertCourse",course,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postCourse"))
       );
   }
 
