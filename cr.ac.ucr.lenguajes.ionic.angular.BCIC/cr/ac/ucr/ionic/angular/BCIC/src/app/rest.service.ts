@@ -448,6 +448,16 @@ export class RestService {
       );
   }
 
+  postNews(news): Observable<any> {
+    //https://localhost:44358/api/notice/PostNotice
+    return this.http
+      .post(this.endPointNewsApi + "/notice/PostNotice",news,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postNews"))
+      );
+  }
+
   //-------------------------Places Methods------------------------
 
   
