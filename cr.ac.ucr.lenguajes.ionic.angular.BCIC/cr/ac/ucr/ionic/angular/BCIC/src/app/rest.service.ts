@@ -49,7 +49,7 @@ export class RestService {
   private endPoint = new BehaviorSubject("http://localhost:8080/api");
   public currentendPoint = this.endPoint.asObservable();
 
-  private endPointNewsApi = "http://localhost:44358/api";
+  private endPointNewsApi = "https://localhost:44358/api";
 
   //----------------------------------------------------------
 
