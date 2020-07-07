@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Proyecto_DDMS_API.Converters;
 
 namespace Proyecto_DDMS_API
 {
@@ -25,7 +26,21 @@ namespace Proyecto_DDMS_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+            .AddJsonOptions(options =>
+             options.JsonSerializerOptions.Converters.Add(new IntToStringConverter()));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("GetAllPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200", "http://localhost:4200/students", "http://localhost:8080")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +54,8 @@ namespace Proyecto_DDMS_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
