@@ -35,9 +35,9 @@
         <ng-container matColumnDef="studentId">
           <th mat-header-cell *matHeaderCellDef> Opciones </th>
           <td mat-cell *matCellDef="let element">
-            <button size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button">Detalles</button>
-            <button size="sm" mdbBtn color="warning" mdbWavesEffect class="social-prof-button">Promover</button>
-            <button size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button">x</button>
+            <button (click)="getStudentById(element.studentId)" size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button">Detalles</button>
+            <button (click)="promoteStudent(element.studentId)" size="sm" mdbBtn color="warning" mdbWavesEffect class="social-prof-button">Promover</button>
+            <button (click)="deleteStudent(element.studentId)" size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button">x</button>
           </td>
         </ng-container>
 
@@ -82,9 +82,8 @@
           <ng-container matColumnDef="studentId">
             <th mat-header-cell *matHeaderCellDef> Opciones </th>
             <td mat-cell *matCellDef="let element">
-              <button ng-click="getStudentById(element.studentId)" size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button">Detalles</button>
-              <button ng-click="serveAccount(element.studentId)" size="sm" mdbBtn color="success" mdbWavesEffect class="social-prof-button">Aceptar</button>
-              <button ng-click="serveAccount(element.studentId)" size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button">Rechazar</button>
+              <button (click)="serveAccount(element.studentId,'Accept')" size="sm" mdbBtn color="success" mdbWavesEffect class="social-prof-button">Aceptar</button>
+              <button (click)="serveAccount(element.studentId, 'Reject')" size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button">Rechazar</button>
             </td>
           </ng-container>
 
@@ -128,8 +127,7 @@
           <ng-container matColumnDef="studentId">
             <th mat-header-cell *matHeaderCellDef> Opciones </th>
             <td mat-cell *matCellDef="let element">
-              <button size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button">Detalles</button>
-              <button size="sm" mdbBtn color="success" mdbWavesEffect class="social-prof-button">Activar</button>
+              <button (click)="activateStudentAccount(element.studentId)" size="sm" mdbBtn color="success" mdbWavesEffect class="social-prof-button">Activar</button>
             </td>
           </ng-container>
 

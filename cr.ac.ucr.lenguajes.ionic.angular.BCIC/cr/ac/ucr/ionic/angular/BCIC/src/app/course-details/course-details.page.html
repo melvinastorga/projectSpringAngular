@@ -1,0 +1,47 @@
+
+<ion-content class="modal-container">
+  <br>
+
+  <h1 class="title">Detalles</h1>
+  <br>
+  <br>
+  <p>
+  
+      <mat-label>Sigla: {{data.code}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Curso: {{data.name}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Creditos: {{data.credits}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Bloque: {{data.term}}</mat-label>
+
+  </p>
+  <p>
+
+      <mat-label>Descripcion: {{data.description}}</mat-label>
+
+  </p>
+
+ 
+</ion-content>
+
+<div class="modal-options-area">
+
+  <ion-row>
+   <ion-col>
+     <button mat-raised-button color="secondary" (click)="onNoClick()">Aceptar</button>
+   </ion-col>
+ </ion-row>
+
+
+</div>
+

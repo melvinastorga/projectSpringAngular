@@ -1,0 +1,59 @@
+
+  <h1 class="title">{{action}} Cursos</h1>
+
+<ion-content class="modal-container">
+
+
+  <br>
+
+  <p>
+    <mat-form-field class="input-form" appearance="legacy">
+      <mat-label>Sigla</mat-label>
+      <input class="input" [(ngModel)]="code" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input-form" color="secondary" appearance="legacy">
+      <mat-label>Curso</mat-label>
+      <input color="secondary" class="input" [(ngModel)]="course" matInput>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="input-from" color="secondary" appearance="legacy">
+      <mat-label>Creditos</mat-label>
+      <input color="secondary" class="input" type="number" [(ngModel)]="credits" matInput>
+    </mat-form-field>
+  </p>
+
+
+  <p>
+    <mat-form-field class="input-form" color="secondary" appearance="legacy">
+      <mat-label>Bloque</mat-label>
+      <input color="secondary" class="input" type="number" [(ngModel)]="term" matInput>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+  </p>
+
+</ion-content>
+
+<div class="comment-area">
+
+  <ion-row>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="post()">{{action}}</button>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
+    </ion-col>
+  </ion-row>
+</div>
