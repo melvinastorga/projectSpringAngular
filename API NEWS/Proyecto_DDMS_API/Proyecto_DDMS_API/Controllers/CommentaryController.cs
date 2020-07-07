@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -11,12 +13,14 @@ using Proyecto_DDMS_API.Models;
 namespace Proyecto_DDMS_API.Controllers
 {
     [Route("api/[controller]")]
+    [AllowAnonymous]
     [ApiController]
     public class CommentaryController : ControllerBase
     {
         Proyecto_Lenguajes_DMMS_2Context _context = new Proyecto_Lenguajes_DMMS_2Context();
 
         // GET: api/Commentary
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Commentary>>> GetCommentary()
@@ -24,6 +28,7 @@ namespace Proyecto_DDMS_API.Controllers
             return await _context.Commentary.ToListAsync();
         }
 
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpGet]
         public IEnumerable<Commentary> GetAllCommentaries()
@@ -38,7 +43,7 @@ namespace Proyecto_DDMS_API.Controllers
             }
         }
 
-
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpGet]
         public IActionResult GetAllCommentariesSP()
@@ -52,6 +57,7 @@ namespace Proyecto_DDMS_API.Controllers
 
 
         // GET: api/Commentary/5
+        [EnableCors("GetAllPolicy")]
         [Route("[action]/{id}")]
         [HttpGet]
         public IActionResult GetCommentary(int id)
@@ -71,6 +77,7 @@ namespace Proyecto_DDMS_API.Controllers
         // PUT: api/Commentary/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpPut]
         public IActionResult PutCommentary(Commentary commentary)
@@ -92,6 +99,7 @@ namespace Proyecto_DDMS_API.Controllers
         // POST: api/Commentary
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpPost]
         public IActionResult PostCommentary(Commentary commentary)
@@ -111,6 +119,7 @@ namespace Proyecto_DDMS_API.Controllers
         }
 
         // DELETE: api/Commentary/5
+        [EnableCors("GetAllPolicy")]
         [Route("[action]/{id}")]
         [HttpDelete]
         public IActionResult DeleteCommentary(int id)

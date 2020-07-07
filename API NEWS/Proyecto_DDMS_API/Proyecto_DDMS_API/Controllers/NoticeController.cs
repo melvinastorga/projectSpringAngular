@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -11,6 +13,7 @@ using Proyecto_DDMS_API.Models;
 namespace Proyecto_DDMS_API.Controllers
 {
     [Route("api/[controller]")]
+    [AllowAnonymous]
     [ApiController]
     public class NoticeController : ControllerBase
     {
@@ -18,6 +21,7 @@ namespace Proyecto_DDMS_API.Controllers
 
 
         // GET: api/Notice  ya
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Notice>>> GetNotice()
@@ -26,6 +30,7 @@ namespace Proyecto_DDMS_API.Controllers
         }
 
         //Ya
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpGet]
         public IEnumerable<Notice> GetAllNotices()
@@ -41,6 +46,7 @@ namespace Proyecto_DDMS_API.Controllers
         }
 
         //ya
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpGet]
         public IActionResult GetAllNoticesSP()
@@ -52,6 +58,7 @@ namespace Proyecto_DDMS_API.Controllers
         }
 
         // GET: api/Notice/5  Ya
+        [EnableCors("GetAllPolicy")]
         [Route("[action]/{id}")]
         [HttpGet]
         public IActionResult GetNotice(int id)
@@ -72,6 +79,7 @@ namespace Proyecto_DDMS_API.Controllers
         // PUT: api/Notice/5  Ya
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpPut]
         public IActionResult PutNotice(Notice notice)
@@ -93,6 +101,7 @@ namespace Proyecto_DDMS_API.Controllers
         // POST: api/Notice  Ya
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [EnableCors("GetAllPolicy")]
         [Route("[action]")]
         [HttpPost]
         public IActionResult PostNotice(Notice notice)
@@ -113,6 +122,7 @@ namespace Proyecto_DDMS_API.Controllers
         }
 
         // DELETE: api/Notice/5  ya
+        [EnableCors("GetAllPolicy")]
         [Route("[action]/{id}")]
         [HttpDelete]
         public IActionResult DeleteNotice(int id)

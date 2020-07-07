@@ -26,79 +26,7 @@ export class HomePage implements OnInit {
   CAROUSEL_BREAKPOINT = 768;
   carouselDisplayMode = "multiple";
 
-  newsCards = [
-    {
-      title: "Card Title 1",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
-    },
-    {
-      title: "Card Title 2",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 3",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 4",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 5",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content ",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 6",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 7",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 8",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 9",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-  ];
+  newsCards = [];
 
   coursesCards = [
     {
@@ -262,31 +190,32 @@ export class HomePage implements OnInit {
 
   async forTofillnews() {
    
-   
+    return new Promise((response) => {
     this.rest.getNews().subscribe((data) => {
-      console.log("f");
-      
+    
       for (let index = 0; index < data.length; index++) {
-      
         var item = {
-          title: data.title,
-          description: data.noticeString,
+          title: data[index].title,
+          description:  data[index].noticeString,
           buttonText: "Comentarios",
           img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
         };
 
         this.newsCards.push(item);
        
+        console.log(item)
 
       }
+      response("");
     });
+  });
  
   }
 
   async ngOnInit() {
 
-    console.log("llego");
     var fillNews=await this.forTofillnews();
+
 
     this.slidesNews = this.chunk(this.newsCards, 3);
     this.slidesProfessors = this.chunk(this.coursesCards, 3);
