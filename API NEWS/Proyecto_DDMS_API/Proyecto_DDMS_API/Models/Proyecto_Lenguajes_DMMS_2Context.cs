@@ -61,6 +61,10 @@ namespace Proyecto_DDMS_API.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.PersonId).HasColumnName("Person_id");
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
