@@ -260,23 +260,34 @@ export class HomePage implements OnInit {
     return R;
   }
 
-  forTofillnews() {
-    
+  async forTofillnews() {
+   
+   
     this.rest.getNews().subscribe((data) => {
+      console.log("f");
+      
       for (let index = 0; index < data.length; index++) {
+      
         var item = {
           title: data.title,
-          description: data.noticestring,
+          description: data.noticeString,
           buttonText: "Comentarios",
           img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
         };
 
         this.newsCards.push(item);
+       
+
       }
     });
+ 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    console.log("llego");
+    var fillNews=await this.forTofillnews();
+
     this.slidesNews = this.chunk(this.newsCards, 3);
     this.slidesProfessors = this.chunk(this.coursesCards, 3);
     this.slidesCourses = this.chunk(this.professorsCards, 5);
@@ -286,6 +297,8 @@ export class HomePage implements OnInit {
     } else {
       this.carouselDisplayMode = "multiple";
     }
+
+
   }
 
   openCommentsDialog(): void {

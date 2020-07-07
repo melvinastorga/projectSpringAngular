@@ -49,7 +49,7 @@ export class RestService {
   private endPoint = new BehaviorSubject("http://localhost:8080/api");
   public currentendPoint = this.endPoint.asObservable();
 
-  private endPointNewsApi = "https://localhost:44358/api";
+  private endPointNewsApi = "http://localhost:44358/api";
 
   //----------------------------------------------------------
 
@@ -441,9 +441,7 @@ export class RestService {
   getNews(){
     
     return this.http
-      .get(this.endPointNewsApi +
-        "/notice/GetAllNoticesSP/" +
-        httpOptions)
+      .get(this.endPointNewsApi+"/notice/GetAllNoticesSP",httpOptions)
       .pipe(
         map(this.extractData),
         catchError(this.handleError<any>("getNews"))
