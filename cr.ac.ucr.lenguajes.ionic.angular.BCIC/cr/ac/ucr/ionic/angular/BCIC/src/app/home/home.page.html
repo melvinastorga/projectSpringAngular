@@ -114,19 +114,32 @@
         <br>
         <br>
         <!-- Carrousel scroller-->
-        <div class="col-md-4" style="padding: 8px 8px 8px 10px;" *ngFor="let card of item; let cardIndex = index">
+        <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
 
           <!-- Card -->
-        <div style="width: 80%; height: auto;  padding: 8px 8px 8px 10px;">
-          <mat-tab-group  style="margin-left: 20%;">
+        <div style="width: 80%; height: auto; ">
+          <mat-tab-group  style="margin-left: 13%;">
             <mat-tab label="Descripcion"> 
-              <div style="width: 100%">
+              <div style="width: 80%;height: 200px;">
                 <label >hola</label>
               </div>
             </mat-tab>
             <mat-tab label="Professores"> 
-              <div style="width: 100%">
-                <label >hola2</label>
+              <div style="width: 80%; height:200px;">
+                <ion-items>
+                  <div class="row">
+
+                    <div class="col-md">
+                      Mock
+                    </div>
+
+                    <div class="col-sm" style="text-align: right;">
+                      <ion-button color="secondary"> Horario</ion-button>
+                    </div>
+
+                  </div>
+                </ion-items>
+               
               </div> 
             </mat-tab>
           </mat-tab-group>
