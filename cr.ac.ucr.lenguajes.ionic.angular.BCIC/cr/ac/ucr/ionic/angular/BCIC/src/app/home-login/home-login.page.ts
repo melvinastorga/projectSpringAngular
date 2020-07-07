@@ -9,6 +9,7 @@ export interface DialogData {
   animal: string;
   name: string;
 }
+
 @Component({
   selector: "app-home-login",
   templateUrl: "./home-login.page.html",

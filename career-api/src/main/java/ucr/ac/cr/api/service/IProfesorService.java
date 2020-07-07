@@ -9,6 +9,7 @@ public interface IProfesorService {
     public Professor getProfessorById(int id);
     public void insertProfessor(Professor professor);
     public void updateProfessor(Professor professor);
+    public void deleteProfessorSP(Professor professor);
     public List<Professor> getAllProfessor();
     public List<Professor> getProfessorsOff();
 }
