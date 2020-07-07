@@ -80,7 +80,11 @@ const routes: Routes = [
   {
     path: 'professor-create-update',
     loadChildren: () => import('./professor-create-update/professor-create-update.module').then( m => m.ProfessorCreateUpdatePageModule)
+  },  {
+    path: 'news',
+    loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule)
   },
+
 ];
 
 @NgModule({

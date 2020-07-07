@@ -72,7 +72,8 @@
 
             <!-- Card actions-->
             <mat-card-actions style="height: 80px;">
-              <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect (click)="openCommentsDialog()">Comentar</button>
+              <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect
+                (click)="openCommentsDialog()">Comentar</button>
             </mat-card-actions>
             <!-- End Card actions-->
           </mat-card>
@@ -101,46 +102,114 @@
 
     <br>
     <br>
+    <h4 class="title" style="font-size: 25px;">Bloque:{{termt}}</h4>
+  
 
     <!-- Carrousel mdb -->
     <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
-    <mdb-carousel-item *ngFor="let item of slidesCourses; let i = index">
+      <mdb-carousel-item *ngFor="let item of slidesCourses; let i = index">
 
         <br>
         <br>
         <!-- Carrousel scroller-->
         <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
-
+          <br>
+          <br>
           <!-- Card -->
-        <div style="width: 80%; height: auto; ">
-          <mat-tab-group  style="margin-left: 13%;">
-            <mat-tab label="Descripcion"> 
-              <div style="width: 80%;height: 200px;">
-                <label >hola</label>
-              </div>
-            </mat-tab>
-            <mat-tab label="Professores"> 
-              <div style="width: 80%; height:200px;">
-                <ion-items>
+          <div style="width: 100%; height: auto; border: 2px solid #239ed7;   border-radius: 10px;">
+
+          <div style="height: 30px; width: 100%; background-color:  #239ed7; border-radius: 3px;">
+
+            <h3 style="text-align: center;color: white; font-weight: bold; padding: 2px 2px 2px;">Nombre</h3>
+
+          </div>
+            <mat-tab-group style="overflow: hidden !important;">
+              <mat-tab label="Informacion">
+                <div style="width: 80%; height:200px;padding: 8px 8px 8px 10px; text-align: center;">
+                  <ion-items>
+                    <div class="row">
+
+                      <div class="col-md">
+                        Sigla: 
+                      </div>
+
+                      <div class="col-md" style="text-align: left;">
+                        {{card.code}}
+                      </div>
+
+                    </div>
+
+                    <div class="row" style="text-align: left;">
+
+                      <div class="col-md">
+                        Curso:
+                      </div>
+
+                      {{card.name}}
+                   
+
+                    </div>
+
+                    <div class="row">
+
+                      <div class="col-md">
+                        Creditos: 
+                      </div>
+
+                      <div class="col-md" style="text-align: left;">
+                        {{card.credits}}
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+
+                      <div class="col-md">
+                        Semestre:
+                      </div>
+
+                      <div class="col-md" style="text-align: left;">
+                        {{card.term}}
+                      </div>
+
+                    </div>
+                  </ion-items>
+
+                </div>
+              </mat-tab>
+              <mat-tab label="Descripcion">
+                <div style="width: 80%;height: 200px;padding: 8px 8px 8px 10px;">
+                  <ion-items>
                   <div class="row">
-
                     <div class="col-md">
-                      Mock
+                      {{card.description}}
                     </div>
-
-                    <div class="col-sm" style="text-align: right;">
-                      <ion-button color="secondary"> Horario</ion-button>
-                    </div>
-
                   </div>
                 </ion-items>
-               
-              </div> 
-            </mat-tab>
-          </mat-tab-group>
-        </div>
-         
-          
+                </div>
+              </mat-tab>
+              <mat-tab label="Profesores">
+                <div style="width: 80%; height:200px;padding: 8px 8px 8px 10px; text-align: center;">
+                  <ion-items>
+                    <div class="row">
+
+                      <div class="col-md">
+                        Mock
+                      </div>
+
+                      <div class="col-sm" style="text-align: right;">
+                        <ion-button color="secondary"> Horario</ion-button>
+                      </div>
+
+                    </div>
+                  </ion-items>
+
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+
+
           <!-- End Card -->
         </div>
         <!-- End Carrousel scroller-->

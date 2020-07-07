@@ -228,8 +228,6 @@ ul {
   opacity: 1;
 }
 
-.form-control {
-}
 
 .form-control:focus {
   border-color: #288fb9;
@@ -321,4 +319,16 @@ ul {
   mdb-carousel-item {
     padding-bottom: 10%;
   }
+}
+
+.title {
+  color: #249dd8;
+  font-weight: bold;
+  text-align: center;
+}
+
+.row{
+margin-top:15px;
+text-align: left;
+margin-left:2px;
 }
