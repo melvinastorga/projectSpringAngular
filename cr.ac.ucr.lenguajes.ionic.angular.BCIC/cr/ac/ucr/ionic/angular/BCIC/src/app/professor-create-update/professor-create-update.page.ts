@@ -12,6 +12,8 @@ export interface DialogData {
   templateUrl: './professor-create-update.page.html',
   styleUrls: ['./professor-create-update.page.scss'],
 })
+
+
 export class ProfessorCreateUpdatePage implements OnInit {
   action = "";
   name = "";
@@ -23,6 +25,8 @@ export class ProfessorCreateUpdatePage implements OnInit {
   district = "";
   interests = "";
   message = "";
+  var 
+  
 
   constructor(
     public dialogRef: MatDialogRef<ProfessorCreateUpdatePage>,
@@ -31,6 +35,13 @@ export class ProfessorCreateUpdatePage implements OnInit {
     public router: Router,
     public alertController: AlertController
   ) {}
+
+
+  foods  = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ]
 
   ngOnInit() {
     if (this.data != null) {

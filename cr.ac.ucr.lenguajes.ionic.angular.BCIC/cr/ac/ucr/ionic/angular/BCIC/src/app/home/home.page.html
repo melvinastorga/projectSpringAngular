@@ -38,7 +38,7 @@
 
     <!-- Carrousel mdb -->
     <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
-      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+      <mdb-carousel-item *ngFor="let item of slidesNews; let i = index">
 
         <!-- Carrousel scroller-->
         <div class="col-md-4 " *ngFor="let card of item; let cardIndex = index">
@@ -104,31 +104,35 @@
   <!-- Card item -->
   <ion-items>
 
+    <br>
+    <br>
+
     <!-- Carrousel mdb -->
     <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
-      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+    <mdb-carousel-item *ngFor="let item of slidesCourses; let i = index">
 
+        <br>
+        <br>
         <!-- Carrousel scroller-->
-        <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
+        <div class="col-md-4" style="padding: 8px 8px 8px 10px;" *ngFor="let card of item; let cardIndex = index">
 
           <!-- Card -->
-          <mdb-card class="my-1 h-100">
-            <ion-item>
-              <ion-img class="carrouselImage"
-                src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
-              </ion-img>
-            </ion-item>
-
-            <mdb-card-body>
-              <mdb-card-title>
-                <h4>{{card.title}}</h4>
-              </mdb-card-title>
-              <p>{{card.description}}</p>
-            </mdb-card-body>
-            <mdb-card-footer style="height: 120px">
-              <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
-            </mdb-card-footer>
-          </mdb-card>
+        <div style="width: 80%; height: auto;  padding: 8px 8px 8px 10px;">
+          <mat-tab-group  style="margin-left: 20%;">
+            <mat-tab label="Descripcion"> 
+              <div style="width: 100%">
+                <label >hola</label>
+              </div>
+            </mat-tab>
+            <mat-tab label="Professores"> 
+              <div style="width: 100%">
+                <label >hola2</label>
+              </div> 
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+         
+          
           <!-- End Card -->
         </div>
         <!-- End Carrousel scroller-->
@@ -152,7 +156,7 @@
   <ion-items>
     <!-- Carrousel mdb -->
     <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
-      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+      <mdb-carousel-item *ngFor="let item of slidesProfessors; let i = index">
 
         <!-- Carrousel scroller-->
         <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
