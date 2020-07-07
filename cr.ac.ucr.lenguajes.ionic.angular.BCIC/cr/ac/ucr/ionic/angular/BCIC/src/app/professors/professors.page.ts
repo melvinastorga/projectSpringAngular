@@ -94,7 +94,7 @@ create(){
 
 delete(id){
 
-  this.rest.deleteProfessor(id).subscribe((data)=>{
+  this.rest.deleteProfessor(id,16).subscribe((data)=>{
 
     this.presentAlert();
     this.ngOnInit();

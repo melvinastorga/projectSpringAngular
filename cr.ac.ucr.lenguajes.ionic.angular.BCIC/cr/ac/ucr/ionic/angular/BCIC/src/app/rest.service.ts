@@ -328,18 +328,19 @@ export class RestService {
       );
   }
 
-  deleteProfessor(id): Observable<any> {
-
-    var course = {
-      "professorId":id
-    }
+  deleteProfessor(studentId, updatedBy){
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
-      .post(path + "/professor/deleteProfessor",course,httpOptions)
+      .delete(path +
+        "/desactivateAccount/" +
+        studentId
+        + "/" +
+        updatedBy,
+        httpOptions)
       .pipe(
         map(this.extractData),
-        catchError(this.handleError<any>("deleteCourse"))
+        catchError(this.handleError<any>("getData"))
       );
   }
   //--------------------------------------------------------------

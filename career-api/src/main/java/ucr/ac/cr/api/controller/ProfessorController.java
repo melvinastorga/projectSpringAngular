@@ -47,11 +47,5 @@ public class ProfessorController {
         service.updateProfessor(professor);
     }
 
-    @PostMapping("/deleteProfessor")
-    public void deleteProfessor(@RequestBody Professor professor){
-
-        service.deleteProfessorSP(professor);
-
-    }
 
 }
