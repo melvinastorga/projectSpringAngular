@@ -448,6 +448,42 @@ export class RestService {
       );
   }
 
+  //-------------------------Places Methods------------------------
+
+  
+  getDistric(provinceId, cantonId): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path + "/getDistric/"+provinceId+"/"+cantonId, httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getDistrict"))
+      );
+  }
+
+  getCanton(provinceId): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path + "/getCanton/"+provinceId)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getCanton"))
+      );
+  }
+
+  getProvince(): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path + "/getProvinces")
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getProvince"))
+      );
+  }
+
   //-------------------------Errors handler------------------------
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
