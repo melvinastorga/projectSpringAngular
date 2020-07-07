@@ -32,39 +32,35 @@
       <input color="secondary" class="input" [(ngModel)]="specialty" matInput>
     </mat-form-field>
   </p>
-  <p>
+
   <mat-form-field appearance="fill">
-    <mat-label>Cars</mat-label>
-    <select matNativeControl required>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
+    <mat-label>Provincia</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
-</p>
-  <p>
+
+  
   <mat-form-field appearance="fill">
-    <mat-label>Cars</mat-label>
-    <select matNativeControl required>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
+    <mat-label>Canton</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
-</p>
-  <p>
+
+   
   <mat-form-field appearance="fill">
-    <mat-label>Cars</mat-label>
-    <select matNativeControl required>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
+    <mat-label>Distrito</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
-</p>
   
   <p>
     <mat-form-field>
