@@ -84,10 +84,11 @@ namespace Proyecto_DDMS_API.Controllers
         [HttpPut]
         public IActionResult PutNotice(Notice notice)
         {
-            var result = _context.Database.ExecuteSqlRaw("InsertUpdateNotice {0}, {1}, {2}, {3}",
+            var result = _context.Database.ExecuteSqlRaw("InsertUpdateNotice {0}, {1}, {2}, {3}, {4}",
                                  notice.NoticeId,
                                  notice.PersonId,
                                  notice.NoticeString,
+                                 notice.Title,
                                  "Update");
 
             if (result == 0)
@@ -106,10 +107,11 @@ namespace Proyecto_DDMS_API.Controllers
         [HttpPost]
         public IActionResult PostNotice(Notice notice)
         {
-            var result = _context.Database.ExecuteSqlRaw("InsertUpdateNotice {0}, {1}, {2}, {3}",
+            var result = _context.Database.ExecuteSqlRaw("InsertUpdateNotice {0}, {1}, {2}, {3}, {4}",
                                 notice.NoticeId,
                                 notice.PersonId,
                                 notice.NoticeString,
+                                notice.Title,
                                 "Insert");
 
             if (result == 0)
