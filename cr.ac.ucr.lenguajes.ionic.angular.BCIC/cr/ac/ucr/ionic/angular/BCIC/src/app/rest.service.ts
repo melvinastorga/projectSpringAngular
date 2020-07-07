@@ -49,6 +49,8 @@ export class RestService {
   private endPoint = new BehaviorSubject("http://localhost:8080/api");
   public currentendPoint = this.endPoint.asObservable();
 
+  private endPointNewsApi = "https://localhost:44358/api";
+
   //----------------------------------------------------------
 
   //----------change or set session variables values---------
@@ -434,6 +436,20 @@ export class RestService {
 
   //---------------------------------------------------------------
 
+  //-------------------------News Methods------------------------
+
+  getNews(){
+    
+    return this.http
+      .get(this.endPointNewsApi +
+        "/notice/GetAllNoticesSP/" +
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getNews"))
+      );
+  }
+
   //-------------------------Errors handler------------------------
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -449,3 +465,5 @@ export class RestService {
   }
   //---------------------------------------------------------------
 }
+
+
