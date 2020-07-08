@@ -102,8 +102,25 @@
 
     <br>
     <br>
-    <h4 class="title" style="font-size: 25px;">Bloque:{{termt}}</h4>
-  
+    <div style="text-align: center;">
+      <ion-item>
+        <div class="col-md-8">
+          <h4 class="title" style="font-size: 25px;">Bloque:{{blockSelected}}</h4>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Bloque</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let block of blocks" (click)="forTofillCourses2(block.value)" [value]="block.value">
+                {{block.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </ion-item>
+    </div>
+
+
 
     <!-- Carrousel mdb -->
     <mdb-carousel [interval]="'0'" [isControls]="true" class="carousel-multi-item multi-animation">
@@ -118,19 +135,20 @@
           <!-- Card -->
           <div style="width: 100%; height: auto; border: 2px solid #239ed7;   border-radius: 10px;">
 
-          <div style="height: 30px; width: 100%; background-color:  #239ed7; border-radius: 3px;">
+            <div style="height: 30px; width: 100%; background-color:  #239ed7; border-radius: 3px;">
 
-            <h3 style="text-align: center;color: white; font-weight: bold; padding: 2px 2px 2px;">Nombre</h3>
+              <h3 style="text-align: center;color: white; font-weight: bold; padding: 2px 2px 2px;">Nombre</h3>
 
-          </div>
+
+            </div>
             <mat-tab-group style="overflow: hidden !important;">
               <mat-tab label="Informacion">
-                <div style="width: 80%; height:200px;padding: 8px 8px 8px 10px; text-align: center;">
+                <div style="width: 80%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
                   <ion-items>
                     <div class="row">
 
                       <div class="col-md">
-                        Sigla: 
+                        Sigla:
                       </div>
 
                       <div class="col-md" style="text-align: left;">
@@ -141,19 +159,20 @@
 
                     <div class="row" style="text-align: left;">
 
-                      <div class="col-md">
+                      <div class="col-md" style="text-align: left;">
+
                         Curso:
                       </div>
-
-                      {{card.name}}
-                   
+                      <div class="col-md">
+                        {{card.name}}
+                      </div>
 
                     </div>
 
                     <div class="row">
 
                       <div class="col-md">
-                        Creditos: 
+                        Creditos:
                       </div>
 
                       <div class="col-md" style="text-align: left;">
@@ -178,18 +197,18 @@
                 </div>
               </mat-tab>
               <mat-tab label="Descripcion">
-                <div style="width: 80%;height: 200px;padding: 8px 8px 8px 10px;">
-                  <ion-items>
-                  <div class="row">
-                    <div class="col-md">
-                      {{card.description}}
-                    </div>
+                <div style="width: 90%;height: 220px;padding: 8px 8px 8px 10px;">
+
+                  <div class="row2">
+
+                    {{card.description}}
+
                   </div>
-                </ion-items>
+
                 </div>
               </mat-tab>
               <mat-tab label="Profesores">
-                <div style="width: 80%; height:200px;padding: 8px 8px 8px 10px; text-align: center;">
+                <div style="width: 80%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
                   <ion-items>
                     <div class="row">
 

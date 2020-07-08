@@ -25,8 +25,8 @@ export class HomePage implements OnInit {
 
   CAROUSEL_BREAKPOINT = 768;
   carouselDisplayMode = "multiple";
-  termt = "";
   newsCards = [];
+  blockSelected:1;
 
   coursesCards = [];
 
@@ -107,6 +107,19 @@ export class HomePage implements OnInit {
   slidesProfessors: any = [[]];
   slidesCourses: any = [[]];
   slidesNews: any = [[]];
+  
+
+  
+  blocks  = [
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+    {value: '4', viewValue: '4'},
+    {value: '5', viewValue: '5'},
+    {value: '6', viewValue: '6'},
+    {value: '7', viewValue: '7'},
+    {value: '8', viewValue: '8'},
+  ]
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -117,9 +130,12 @@ export class HomePage implements OnInit {
   }
 
   async forTofillnews() {
+
+    this.blockSelected=1;
     return new Promise((response) => {
       this.rest.getNews().subscribe((data) => {
         for (let index = 0; index < data.length; index++) {
+
           var item = {
             title: data[index].title,
             description: data[index].noticeString,
@@ -134,12 +150,16 @@ export class HomePage implements OnInit {
     });
   }
 
-  async forTofillCourses() {
+  async forTofillCourses(num) {
+    this.blockSelected=num;
+    this.slidesCourses = [[]];
+    this.coursesCards = [];
     return new Promise((response) => {
       this.rest.getCourses().subscribe((data) => {
-        console.log(data)
+    
         for (let index = 0; index < data.length; index++) {
           
+          if(data[index].term==num){
           var item = {
             name: data[index].name,
             description: data[index].description,
@@ -150,14 +170,32 @@ export class HomePage implements OnInit {
 
           this.coursesCards.push(item);
         }
+      }
         response("");
       });
     });
   }
 
+
+  async forTofillCourses2(num) {
+  
+    var fillCourses = await this.forTofillCourses(num);
+
+    this.slidesNews = this.chunk(this.newsCards, 3);
+    this.slidesProfessors = this.chunk(this.professorsCards, 3);
+    this.slidesCourses = this.chunk(this.coursesCards, 5);
+
+    if (window.innerWidth <= this.CAROUSEL_BREAKPOINT) {
+      this.carouselDisplayMode = "single";
+    } else {
+      this.carouselDisplayMode = "multiple";
+    }
+    
+  }
+
   async ngOnInit() {
     var fillNews = await this.forTofillnews();
-    var fillCourses = await this.forTofillCourses();
+    var fillCourses = await this.forTofillCourses(1);
 
     this.slidesNews = this.chunk(this.newsCards, 3);
     this.slidesProfessors = this.chunk(this.professorsCards, 3);
