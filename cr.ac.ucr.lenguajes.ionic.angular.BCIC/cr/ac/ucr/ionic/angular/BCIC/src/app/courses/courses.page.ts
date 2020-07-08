@@ -95,7 +95,7 @@ export class CoursesPage implements OnInit {
   }
 
   Asing(id) {
-    console.log(id);
+   
     const dialogRef = this.dialog.open(AsingCoursesPage, {
       width: "500px",
       height: "50%",
@@ -133,7 +133,7 @@ export class CoursesPage implements OnInit {
   }
 
   openMyCoursesDialog(id) {
-    console.log(id);
+   
     this.rest.setprofessorCourseId(id);
     this.router.navigate(["remove-professor-courses"]);
   }
