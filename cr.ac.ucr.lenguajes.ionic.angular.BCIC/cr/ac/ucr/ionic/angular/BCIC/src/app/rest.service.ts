@@ -131,6 +131,7 @@ export class RestService {
   private extractData(res: Response) {
     let body = res;
     return body || {};
+    
   }
 
   //--------------------Student methods------------------------
@@ -267,6 +268,27 @@ export class RestService {
         catchError(this.handleError<any>("ranking"))
       );
   }
+  postStudent(student): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/postStudent",student,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postStudent"))
+      );
+  }
+  
+  putStudent(student): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/updateStudent",student,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("putStudent"))
+      );
+  }
   
   //--------------------------------------------------------------
 
@@ -307,6 +329,24 @@ export class RestService {
         catchError(this.handleError<any>("getData"))
       );
   }
+
+  getProfessorByCourse(courseId){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path +
+        "/courseProfessor/getProfessorByCourse/" +
+        courseId, 
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getProfessorsByCourse"))
+      );
+     
+  }
+
+  
+  
 
   putProfessor(professor): Observable<any> {
     var path;
@@ -432,7 +472,20 @@ export class RestService {
       );
   }
 
-
+  getCoursesByProfessor(professorId){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path +
+        "/professorCourse/getCourseByProfessor/" +
+        professorId, 
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getProfessorsByCourse"))
+      );
+     
+  }
 
   //---------------------------------------------------------------
 

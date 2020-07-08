@@ -26,100 +26,28 @@ export class HomePage implements OnInit {
   CAROUSEL_BREAKPOINT = 768;
   carouselDisplayMode = "multiple";
   newsCards = [];
-  blockSelected:1;
+  blockSelected: 1;
 
   coursesCards = [];
 
-  professorsCards = [
-    {
-      title: "Card Title 1",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
-    },
-    {
-      title: "Card Title 2",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 3",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 4",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 5",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content ",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 6",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 7",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 8",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-    {
-      title: "Card Title 9",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card content",
-      buttonText: "Comentarios",
-      img:
-        "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-    },
-  ];
+  professorsCards = [];
 
   slidesProfessors: any = [[]];
   slidesCourses: any = [[]];
   slidesNews: any = [[]];
-  
+  professors: any;
+  courses: any;
 
-  
-  blocks  = [
-    {value: '1', viewValue: '1'},
-    {value: '2', viewValue: '2'},
-    {value: '3', viewValue: '3'},
-    {value: '4', viewValue: '4'},
-    {value: '5', viewValue: '5'},
-    {value: '6', viewValue: '6'},
-    {value: '7', viewValue: '7'},
-    {value: '8', viewValue: '8'},
-  ]
+  blocks = [
+    { value: "1", viewValue: "1" },
+    { value: "2", viewValue: "2" },
+    { value: "3", viewValue: "3" },
+    { value: "4", viewValue: "4" },
+    { value: "5", viewValue: "5" },
+    { value: "6", viewValue: "6" },
+    { value: "7", viewValue: "7" },
+    { value: "8", viewValue: "8" },
+  ];
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -130,12 +58,10 @@ export class HomePage implements OnInit {
   }
 
   async forTofillnews() {
-
-    this.blockSelected=1;
+    this.blockSelected = 1;
     return new Promise((response) => {
       this.rest.getNews().subscribe((data) => {
         for (let index = 0; index < data.length; index++) {
-
           var item = {
             title: data[index].title,
             description: data[index].noticeString,
@@ -151,34 +77,67 @@ export class HomePage implements OnInit {
   }
 
   async forTofillCourses(num) {
-    this.blockSelected=num;
+    this.blockSelected = num;
     this.slidesCourses = [[]];
     this.coursesCards = [];
     return new Promise((response) => {
       this.rest.getCourses().subscribe((data) => {
-    
         for (let index = 0; index < data.length; index++) {
-          
-          if(data[index].term==num){
-          var item = {
-            name: data[index].name,
-            description: data[index].description,
-            code: data[index].code,
-            term:data[index].term,
-            credits:data[index].credits
-          };
+          if (data[index].term == num) {
+            var item = {
+              name: data[index].name,
+              description: data[index].description,
+              code: data[index].code,
+              term: data[index].term,
+              credits: data[index].credits,
+              id: data[index].courseId,
+            };
 
-          this.coursesCards.push(item);
+            this.coursesCards.push(item);
+          }
         }
-      }
         response("");
       });
     });
   }
 
+  async forTofillProfessors() {
+    return new Promise((response) => {
+      this.rest.getProfessor().subscribe((data) => {
+        for (let index = 0; index < data.length; index++) {
+          var item = {
+            id: data[index].professorId,
+            name: data[index].name,
+            lastName: data[index].lastName,
+            email: data[index].email,
+            interests: data[index].interests,
+            especiality: data[index].especiality,
+            img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+          };
 
+          this.professorsCards.push(item);
+        }
+        response("");
+      });
+    });
+  }
+
+  getProfessors(courseId) {
+    this.professors = [];
+
+    this.rest.getProfessorByCourse(courseId).subscribe((data) => {
+      this.professors = data;
+    });
+  }
+
+  getCourses(professorId) {
+    this.courses = [];
+
+    this.rest.getCoursesByProfessor(professorId).subscribe((data) => {
+      this.courses = data;
+    });
+  }
   async forTofillCourses2(num) {
-  
     var fillCourses = await this.forTofillCourses(num);
 
     this.slidesNews = this.chunk(this.newsCards, 3);
@@ -190,12 +149,12 @@ export class HomePage implements OnInit {
     } else {
       this.carouselDisplayMode = "multiple";
     }
-    
   }
 
   async ngOnInit() {
     var fillNews = await this.forTofillnews();
     var fillCourses = await this.forTofillCourses(1);
+    var forTofillProfessors = await this.forTofillProfessors();
 
     this.slidesNews = this.chunk(this.newsCards, 3);
     this.slidesProfessors = this.chunk(this.professorsCards, 3);

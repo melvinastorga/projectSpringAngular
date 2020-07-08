@@ -71,7 +71,7 @@
             <!-- End Card content-->
 
             <!-- Card actions-->
-            <mat-card-actions style="height: 80px;">
+            <mat-card-actions style="height: 80px; text-align: center;">
               <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect
                 (click)="openCommentsDialog()">Comentar</button>
             </mat-card-actions>
@@ -137,11 +137,11 @@
 
             <div style="height: 30px; width: 100%; background-color:  #239ed7; border-radius: 3px;">
 
-              <h3 style="text-align: center;color: white; font-weight: bold; padding: 2px 2px 2px;">Nombre</h3>
+              <h3 style="text-align: center;color: white; font-weight: bold; padding: 2px 2px 2px;">{{card.name}}</h3>
 
 
             </div>
-            <mat-tab-group style="overflow: hidden !important;">
+            <mat-tab-group style="overflow: hidden !important;" (click)="getProfessors(card.id)">
               <mat-tab label="Informacion">
                 <div style="width: 80%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
                   <ion-items>
@@ -153,18 +153,6 @@
 
                       <div class="col-md" style="text-align: left;">
                         {{card.code}}
-                      </div>
-
-                    </div>
-
-                    <div class="row" style="text-align: left;">
-
-                      <div class="col-md" style="text-align: left;">
-
-                        Curso:
-                      </div>
-                      <div class="col-md">
-                        {{card.name}}
                       </div>
 
                     </div>
@@ -210,10 +198,10 @@
               <mat-tab label="Profesores">
                 <div style="width: 80%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
                   <ion-items>
-                    <div class="row">
+                    <div *ngFor="let professor of professors" class="row">
 
                       <div class="col-md">
-                        Mock
+                        {{professor.professorName}} {{professor.lastName}}
                       </div>
 
                       <div class="col-sm" style="text-align: right;">
@@ -271,7 +259,7 @@
             <!-- Card name -->
             <mdb-card-body>
               <mdb-card-title>
-                <h4 class="professor-name">Alexis jesus madrigal cordero</h4>
+                <h4 class="professor-name">{{card.name}} {{card.lastName}}</h4>
               </mdb-card-title>
             </mdb-card-body>
             <!-- End Card name -->
@@ -285,17 +273,50 @@
                     Informacion
                   </mat-panel-title>
                 </mat-expansion-panel-header>
+                <div style="width: 100%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
+                  <ion-items>
+                    <ion-item>
+                      <div class="row3">
+                        Nombre:
+                        {{card.name}} {{card.lastName}}
+                      </div>
+                    </ion-item>
 
-                <p>
-                  The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                  A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                  bred for hunting.
-                </p>
+                    <ion-item>
+                      <div class="row3">
+
+                        Correo:
+                        {{card.email}}
+
+
+                      </div>
+                    </ion-item>
+
+                    <ion-item>
+                      <div class="row3">
+
+                        Especialidad:
+                        {{card.especiality}}
+
+                      </div>
+                    </ion-item>
+                    <ion-item>
+                      <div class="row3">
+
+                        Intereses:
+
+                        {{card.interests}}
+
+                      </div>
+                    </ion-item>
+                  </ion-items>
+
+                </div>
               </mat-expansion-panel>
               <!-- End Dropdown  info -->
 
               <!-- Dropdown  courses-->
-              <mat-expansion-panel class="prof-dropdown">
+              <mat-expansion-panel class="prof-dropdown" (click)="getCourses(card.id)">
 
                 <mat-expansion-panel-header>
                   <mat-panel-title>
@@ -306,15 +327,14 @@
                 <!-- Professor course item-->
                 <ion-items>
                   <br>
-                  <div class="row">
+                  <div class="row" *ngFor="let course of courses">
                     <div class="col-md">
-                      Redes
+                      {{course.courseName}}
                     </div>
 
                     <!-- Professor schedule-->
-                    <div class="col-sm">
-                      <ion-button color="secondary"> Horario</ion-button>
-                    </div>
+                    <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect
+                    >Horas consulta</button>
                     <!-- End Professor schedule-->
 
                   </div>
@@ -322,20 +342,7 @@
                 <!-- End Professor course item-->
 
                 <!-- End Professor course item-->
-                <ion-items>
-                  <div class="row">
-
-                    <div class="col-md">
-                      Programacion I
-                    </div>
-
-                    <div class="col-sm">
-                      <ion-button color="secondary"> Horario</ion-button>
-                    </div>
-
-                  </div>
-                </ion-items>
-                <!-- End Professor course item-->
+      
               </mat-expansion-panel>
               <!-- End Dropdown  courses-->
             </mdb-card-body>
