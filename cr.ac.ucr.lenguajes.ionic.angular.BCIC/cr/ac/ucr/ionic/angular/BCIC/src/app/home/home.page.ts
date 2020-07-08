@@ -29,8 +29,10 @@ export class HomePage implements OnInit {
   blockSelected: 1;
 
   coursesCards = [];
-
+  professor:any;
+  professor1:any;
   professorsCards = [];
+  profesortest:any;
 
   slidesProfessors: any = [[]];
   slidesCourses: any = [[]];
@@ -106,11 +108,12 @@ export class HomePage implements OnInit {
       this.rest.getProfessor().subscribe((data) => {
         for (let index = 0; index < data.length; index++) {
           var item = {
-            id: data[index].professorId,
+            professorId: data[index].professorId,
             name: data[index].name,
             lastName: data[index].lastName,
             email: data[index].email,
             interests: data[index].interests,
+            courseId:data[index].courseId,
             especiality: data[index].especiality,
             img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
           };
@@ -126,6 +129,7 @@ export class HomePage implements OnInit {
     this.professors = [];
 
     this.rest.getProfessorByCourse(courseId).subscribe((data) => {
+    
       this.professors = data;
     });
   }
@@ -133,7 +137,9 @@ export class HomePage implements OnInit {
   getCourses(professorId) {
     this.courses = [];
 
+    console.log(professorId);
     this.rest.getCoursesByProfessor(professorId).subscribe((data) => {
+      console.log(data);
       this.courses = data;
     });
   }
