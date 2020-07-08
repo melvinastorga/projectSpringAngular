@@ -1,10 +1,10 @@
-<h1 class="title">{{action}} Profesores</h1>
 
-<ion-content class="modal-container">
+
+<ion-content class="container-table" class="no-scroll">
 
 
   <br>
-
+  <h1 class="title">{{action}} Profesores</h1>
   <p>
     <mat-form-field class="input-form" appearance="legacy">
       <mat-label>Nombre</mat-label>
@@ -21,7 +21,7 @@
   <p>
     <mat-form-field class="input-from" color="secondary" appearance="legacy">
       <mat-label>Correo</mat-label>
-      <input color="secondary" class="input" [(ngModel)]="mail" matInput>
+      <input color="secondary" class="input" [(ngModel)]="email" matInput>
     </mat-form-field>
   </p>
 
@@ -33,35 +33,33 @@
     </mat-form-field>
   </p>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Provincia</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Provincia</mat-label>
+      <mat-select [(ngModel)]="provinceId"  >
+        <mat-option (click)="getCanton(provinceId)" *ngFor="let province of provinces" [value]="province.provinceId">
+          {{province.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Canton</mat-label>
+      <mat-select [(ngModel)]="cantonId">
+        <mat-option (click)="getDistrict()" *ngFor="let canton of cantons" [value]="canton.cantonId">
+          {{canton.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>District</mat-label>
+      <mat-select [(ngModel)]="districtId" >
+      <mat-option *ngFor="let district of districts" [value]="district.districId">
+        {{district.name}}</mat-option>
     </mat-select>
-  </mat-form-field>
-
-  
-  <mat-form-field appearance="fill">
-    <mat-label>Canton</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-   
-  <mat-form-field appearance="fill">
-    <mat-label>Distrito</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  
+    </mat-form-field>
+  </p>
   <p>
     <mat-form-field>
       <mat-label>Intereses</mat-label>
@@ -70,13 +68,27 @@
     </mat-form-field>
   </p>
 
+  <!-- Icon as placeholder when no file picked -->
+<i class="material-icons">cloud_upload</i>
+
+<!-- file input, accepts images only. Detect when file has been picked/changed with Angular's native (change) event listener -->
+<input type="file" accept="image/*" (change)="updateSource($event)">
+
+<!-- img placeholder when a file has been picked. shows only when 'source' is not empty -->
+<img *ngIf="source" [src]="source" src="">
+
+<form (ngSubmit)="submitPhoto()">
+  <image-preview (onChange)="getFile($event)"></image-preview>
+  <button type="submit">Upload</button>
+</form>
+
 </ion-content>
 
-<div class="comment-area">
+<div class="container">
 
   <ion-row>
     <ion-col>
-      <button mat-raised-button color="secondary" (click)="post()">{{action}}</button>
+      <button mat-raised-button color="secondary" (click)="postProfessor()">{{action}}</button>
     </ion-col>
     <ion-col>
     </ion-col>
