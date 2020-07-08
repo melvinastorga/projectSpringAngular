@@ -7,6 +7,9 @@ import ucr.ac.cr.api.repository.StudentRepository;
 import ucr.ac.cr.api.service.IStudentService;
 
 import javax.transaction.Transactional;
+import java.io.UnsupportedEncodingException;
+import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -30,7 +33,14 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void insertStudent(Student student){
+    public void insertStudent(Student student) throws UnsupportedEncodingException {
+
+
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
+
+        student.setProfilePic(stringToByte(student.imgString));
+
         studentRepository.insertStudent(0,
                 student.getEmail(),
                 student.getPassword(),
@@ -42,10 +52,10 @@ public class StudentService implements IStudentService {
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
-                student.getCreateAt(),
-                student.getUpdatedBy(),
-                student.getUpdatedAt(),
-                student.getRole(),
+                date,
+                student.personId,
+                date,
+                "Student",
                 student.getCarne(),
                 "Insert");
     }
@@ -95,5 +105,12 @@ public class StudentService implements IStudentService {
     @Override
     public List<Student> getStudentsOff() {
         return studentRepository.getStudentsOff();
+    }
+
+    public byte[] stringToByte(String string) throws UnsupportedEncodingException {
+        byte[] name = Base64.getEncoder().encode(string.getBytes());
+        byte[] decodedString = Base64.getDecoder().decode(new String(name).getBytes("UTF-8"));
+        System.out.println(new String(decodedString));
+        return name;
     }
 }

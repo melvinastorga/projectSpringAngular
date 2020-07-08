@@ -9,6 +9,7 @@ import ucr.ac.cr.api.service.jpa.LocationNameService;
 import ucr.ac.cr.api.service.jpa.ProfessorService;
 import ucr.ac.cr.api.service.jpa.StudentService;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
@@ -49,7 +50,7 @@ public class StudentController {
     }
 
     @PostMapping("/postStudent")
-    public ResponseEntity<?> insertStudent(@RequestBody Student student){
+    public ResponseEntity<?> insertStudent(@RequestBody Student student) throws UnsupportedEncodingException {
         service.insertStudent(student);
         return new ResponseEntity(HttpStatus.CREATED);
     }
