@@ -80,9 +80,6 @@
   <image-preview (onChange)="getFile($event)"></image-preview>
   <button type="submit">Upload</button>
 </form>
-
-<button type="button" class="btn btn-primary" (click)="postStudent()">Save</button>
-
 </ion-content>
 
 <div class="container">
@@ -90,7 +87,7 @@
 
   <ion-row>
     <ion-col>
-      <button mat-raised-button color="secondary">Acceptar</button>
+      <button mat-raised-button color="secondary" (click)="postStudent()">Acceptar</button>
     </ion-col>
     <ion-col>
       <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
