@@ -30,13 +30,16 @@ export class AsingCoursesPage implements OnInit {
 
   asing() {
     
-    
+    console.log(this.id)    
 
     var courseProfessor = {
       courseId: this.data,
       professorId: this.id,
     };
-    
+
+    this.rest.postProfessorCourse(courseProfessor).subscribe((data)=>{
+      
+    })
   }
 
   onNoClick(): void {

@@ -88,6 +88,10 @@ const routes: Routes = [
     path: 'asing-courses',
     loadChildren: () => import('./asing-courses/asing-courses.module').then( m => m.AsingCoursesPageModule)
   },
+  {
+    path: 'remove-professor-courses',
+    loadChildren: () => import('./remove-professor-courses/remove-professor-courses.module').then( m => m.RemoveProfessorCoursesPageModule)
+  },
 
 ];
 

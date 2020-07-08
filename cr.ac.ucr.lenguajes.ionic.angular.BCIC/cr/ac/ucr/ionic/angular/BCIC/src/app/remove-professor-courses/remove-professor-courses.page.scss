@@ -1,0 +1,15 @@
+.container {
+    height: 2px;
+    text-align: left;
+  }
+  
+  .no-scroll {
+    height: 80%;
+    text-align: left;
+  }
+  
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  

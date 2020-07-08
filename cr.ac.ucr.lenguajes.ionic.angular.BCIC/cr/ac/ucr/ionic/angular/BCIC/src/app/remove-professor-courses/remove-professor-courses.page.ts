@@ -8,11 +8,11 @@ import { AlertController } from "@ionic/angular";
 import { CourseDetailsPage } from "../course-details/course-details.page";
 
 @Component({
-  selector: "app-my-courses",
-  templateUrl: "./my-courses.page.html",
-  styleUrls: ["./my-courses.page.scss"],
+  selector: "app-remove-professor-courses",
+  templateUrl: "./remove-professor-courses.page.html",
+  styleUrls: ["./remove-professor-courses.page.scss"],
 })
-export class MyCoursesPage implements OnInit {
+export class RemoveProfessorCoursesPage implements OnInit {
   dataSource: any;
   dataSource2: any;
   myCourses: [];
@@ -33,7 +33,13 @@ export class MyCoursesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.rest.getProfessorCourses(12).subscribe((data) => {
+    var professorId;
+    this.rest.currentprofessorCourseId.subscribe(
+      (message) => (professorId = message)
+    );
+    console.log(professorId);
+
+    this.rest.getProfessorCourses(professorId).subscribe((data) => {
       this.myCourses = data;
       console.log(data);
       this.dataSource = new MatTableDataSource(this.myCourses);
@@ -41,9 +47,7 @@ export class MyCoursesPage implements OnInit {
     });
   }
 
-  goToOfficeHours() {
-    this.router.navigate(["professors-office-hours"]);
-  }
+  remove(id) {}
 
   get(id): void {
     this.rest.getCourse(id).subscribe((data) => {

@@ -50,6 +50,7 @@ export class RestService {
   public currentendPoint = this.endPoint.asObservable();
 
   private endPointNewsApi = "https://localhost:44358/api";
+  
 
   //----------------------------------------------------------
 

@@ -1,4 +1,3 @@
-
 <ion-content class="modal-container2">
   <br>
 
@@ -8,27 +7,29 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Profesores</mat-label>
-    <mat-select>
-      <mat-option [(ngModel)]="id"  *ngFor="let professor of  professors" value="professor.professorId">
+    <mat-select [(ngModel)]="id">
+      <mat-option *ngFor="let professor of  professors" value="{{professor.professorId}}">
         {{professor.name}} {{professor.lastName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-   
-  
- 
+
+
+
 </ion-content>
 
 <div class="modal-options-area">
 
   <ion-row>
-   <ion-col>
-     <button mat-raised-button color="secondary" (click)="onNoClick()">Aceptar</button>
-   </ion-col>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="asing()">Aceptar</button>
+    </ion-col>
+    <ion-col>
+      <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
+    </ion-col>
 
- </ion-row>
+  </ion-row>
 
 
 </div>
-
