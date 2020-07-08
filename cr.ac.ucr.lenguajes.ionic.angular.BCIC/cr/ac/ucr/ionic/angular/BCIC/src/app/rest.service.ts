@@ -453,6 +453,19 @@ export class RestService {
       );
   }
 
+ deleteProfessorCourses(id): Observable<any> {
+  var professorCourse = {
+      "professorCourseId":id
+    }
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/professorCourse/deleteProfessorCourse",professorCourse,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("deleteProfessorCourses"))
+      );
+  }
 
  putCourses(course): Observable<any> {
     var path;
