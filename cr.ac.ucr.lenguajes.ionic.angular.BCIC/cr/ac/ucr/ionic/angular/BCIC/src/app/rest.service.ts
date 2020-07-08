@@ -106,13 +106,17 @@ export class RestService {
 
   //-------------------------Login----------------------------
 
-  login(user): Observable<any> {
+
+  login(loginModel): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
-      .post(path + "guerrilla/" + user.name, user, httpOptions)
-      .pipe(map(this.extractData), catchError(this.handleError<any>("login")));
+      .post(path + "/authenticateUser", loginModel, httpOptions)
+      .pipe(
+        map(this.extractData), 
+      catchError(this.handleError<any>("login")));
   }
+
   //----------------------------------------------------------
 
   //-------------------------Logout---------------------------

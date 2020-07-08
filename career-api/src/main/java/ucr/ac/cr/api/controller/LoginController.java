@@ -6,11 +6,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 import ucr.ac.cr.api.entity.*;
@@ -36,13 +32,13 @@ public class LoginController {
 	@Autowired
 	private LocationNameService locationNameService;
 
-	@GetMapping("/authenticateUser/{email}/{password}")
-	public ResponseEntity<UserModel> getLoginTest(@PathVariable String email, @PathVariable String password){
+	@PostMapping("/authenticateUser")
+	public ResponseEntity<UserModel> getLoginTest(@RequestBody LoginModel loginModel){
 		UserModel user = new UserModel();
 		try {
-			Login login = service.GetLogin(email, password);
+			Login login = service.GetLogin(loginModel.getEmail(), loginModel.getPassword());
 
-			if(login.getRole()=="Student" && login.isStatus()){
+			if(login.getRole().equals("Student") && login.isStatus()){
 
 				Student student = studentService.getStudentById(login.getPersonId());
 				LocationNames locationNames = locationNameService.getLocationNames(student.getProvinceId(), student.getCantonId(), student.getDistricId());

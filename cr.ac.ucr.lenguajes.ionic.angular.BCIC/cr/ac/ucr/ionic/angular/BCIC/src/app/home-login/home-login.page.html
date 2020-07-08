@@ -6,20 +6,20 @@
   <p>
     <mat-form-field class="login-input" appearance="legacy">
       <mat-label>Usuario</mat-label>
-      <input class="login-input" matInput>
+      <input [(ngModel)]="email" class="login-input" matInput>
     </mat-form-field>
-  </p>
+  </p >
   <p>
     <mat-form-field class="login-input" color="secondary" appearance="legacy">
       <mat-label>Contrasena</mat-label>
-      <input color="secondary" class="login-input" matInput>
+      <input [(ngModel)]="password" color="secondary" class="login-input" matInput>
     </mat-form-field>
   </p>
 
 
   <ion-row>
     <ion-col>
-      <button mat-raised-button color="secondary">Acceptar</button>
+      <button mat-raised-button color="secondary" (click)="login()">Acceptar</button>
     </ion-col>
     <ion-col>
       <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
