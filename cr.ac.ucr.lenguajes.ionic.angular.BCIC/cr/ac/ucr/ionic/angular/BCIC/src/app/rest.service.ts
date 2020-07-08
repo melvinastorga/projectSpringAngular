@@ -106,13 +106,17 @@ export class RestService {
 
   //-------------------------Login----------------------------
 
-  login(user): Observable<any> {
+
+  login(loginModel): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
-      .post(path + "guerrilla/" + user.name, user, httpOptions)
-      .pipe(map(this.extractData), catchError(this.handleError<any>("login")));
+      .post(path + "/authenticateUser", loginModel, httpOptions)
+      .pipe(
+        map(this.extractData), 
+      catchError(this.handleError<any>("login")));
   }
+
   //----------------------------------------------------------
 
   //-------------------------Logout---------------------------
@@ -469,6 +473,17 @@ export class RestService {
       .pipe(
         map(this.extractData),
         catchError(this.handleError<any>("postCourse"))
+      );
+  }
+
+  postProfessorCourse(professorCourse): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/professorCourse/insertUpdateProfessorCourse",professorCourse,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postProfessorCourse"))
       );
   }
 

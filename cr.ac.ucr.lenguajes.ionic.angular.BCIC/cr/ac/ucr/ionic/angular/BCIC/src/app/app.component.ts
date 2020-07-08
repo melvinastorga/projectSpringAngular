@@ -11,6 +11,7 @@ import { CoursesPage } from "./courses/courses.page";
 import { MyCoursesPage } from "./my-courses/my-courses.page";
 import { Router } from "@angular/router";
 import { CommentsPage } from './comments/comments.page';
+import { RestService } from './rest.service';
 
 @Component({
   selector: "app-root",
@@ -27,7 +28,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private menu: MenuController,
     public dialog: MatDialog,
-    public router: Router
+    public router: Router, 
+    public rest:RestService
   ) {
     this.initializeApp();
   }
@@ -42,7 +44,7 @@ export class AppComponent {
     const dialogRef = this.dialog.open(HomeLoginPage, {
       width: "50%",
       height: "50%",
-      data: { name: this.name, animal: this.animal },
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -57,7 +59,7 @@ export class AppComponent {
     const dialogRef = this.dialog.open(HomeRegisterPage, {
       width: "50%",
       height: "70%",
-      data: { name: this.name, animal: this.animal },
+      data: { },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -66,6 +68,24 @@ export class AppComponent {
     });
   }
 
+  openUpdateDialog(id): void {
+
+    this.rest.getStudentById(id).subscribe((data:{})=>{
+      
+    const dialogRef = this.dialog.open(HomeRegisterPage, {
+      width: "50%",
+      height: "70%",
+      data: { data },
+    });
+    
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+      this.animal = result;
+    });
+
+  });
+
+  }
 
 
   openProfessorsDialog(): void {

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material/dial
 import { RestService } from '../rest.service';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogData } from '../home-login/home-login.page';
 
 
 
@@ -16,10 +17,16 @@ export class HomeRegisterPage implements OnInit {
 
   @Output() onChange: EventEmitter<File> = new EventEmitter<File>();
 
-  constructor( public rest:RestService, public dialog: MatDialog, public alertController: AlertController, private route:ActivatedRoute, private router:Router,
-    public dialogRef: MatDialogRef<HomeRegisterPage>,
-    
+  constructor( public rest:RestService,
+     public dialog: MatDialog,
+     public alertController: AlertController,
+     private route:ActivatedRoute,
+     private router:Router,
+     public dialogRef: MatDialogRef<HomeRegisterPage>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
+
+
   provinces: any=[]
   cantons: any=[]
   districts: any=[]
@@ -91,7 +98,6 @@ var student = {
 
 }
 
-console.log(student)
 
 this.rest.postStudent(student).subscribe(() => {
   console.log(student)
@@ -137,15 +143,7 @@ projectImage(file: File) {
 onNoClick(): void {
   this.dialogRef.close();
 }
-  /*
-  $scope.getCanton = function() {
-    this.rest.getCanton(provinceId).subscribe((data)=>{
-      this.canton = data
-      this.ngOnInit();
-      console.log(data)
-    });
-  }
-  */
+  
 
 
 }
