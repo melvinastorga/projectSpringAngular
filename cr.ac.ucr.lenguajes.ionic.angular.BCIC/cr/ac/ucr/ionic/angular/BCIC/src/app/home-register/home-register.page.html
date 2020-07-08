@@ -4,38 +4,38 @@
   <h1 class="register-title">Registrarse</h1>
   <p>
     <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Nombre</mat-label>
+      <input [(ngModel)]="name" class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
+      <mat-label>Apellidos</mat-label>
+      <input [(ngModel)]="lastName" class="register-input" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="register-input" appearance="legacy">
       <mat-label>Correo</mat-label>
-      <input class="register-input" matInput>
+      <input [(ngModel)]="email" class="register-input" matInput>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field class="register-input" color="secondary" appearance="legacy">
       <mat-label>Contrasena</mat-label>
-      <input color="secondary" class="register-input" matInput>
+      <input [(ngModel)]="password" color="secondary" class="register-input" matInput>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field class="register-input" appearance="legacy">
       <mat-label>Carnet</mat-label>
-      <input class="register-input" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field class="register-input" appearance="legacy">
-      <mat-label>Nombre</mat-label>
-      <input class="register-input" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field class="register-input" appearance="legacy">
-      <mat-label>Apellido</mat-label>
-      <input class="register-input" matInput>
+      <input [(ngModel)]="carne" class="register-input" matInput>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field class="register-input" appearance="legacy">
       <mat-label>Intereses</mat-label>
-      <input class="register-input" matInput>
+      <input [(ngModel)]="interests" class="register-input" matInput>
     </mat-form-field>
   </p>
   <p>
@@ -59,15 +59,35 @@
   <p>
     <mat-form-field appearance="fill">
       <mat-label>District</mat-label>
-      <mat-select >
+      <mat-select [(ngModel)]="districtId" >
       <mat-option *ngFor="let district of districts" [value]="district.districId">
         {{district.name}}</mat-option>
     </mat-select>
     </mat-form-field>
   </p>
+
+  <!-- Icon as placeholder when no file picked -->
+<i class="material-icons">cloud_upload</i>
+
+<!-- file input, accepts images only. Detect when file has been picked/changed with Angular's native (change) event listener -->
+<input type="file" accept="image/*" (change)="updateSource($event)">
+
+<!-- img placeholder when a file has been picked. shows only when 'source' is not empty -->
+<img *ngIf="source" [src]="source" src="">
+
+
+<form (ngSubmit)="submitPhoto()">
+  <image-preview (onChange)="getFile($event)"></image-preview>
+  <button type="submit">Upload</button>
+</form>
+
+<button type="button" class="btn btn-primary" (click)="postStudent()">Save</button>
+
 </ion-content>
 
 <div class="container">
+
+
   <ion-row>
     <ion-col>
       <button mat-raised-button color="secondary">Acceptar</button>
