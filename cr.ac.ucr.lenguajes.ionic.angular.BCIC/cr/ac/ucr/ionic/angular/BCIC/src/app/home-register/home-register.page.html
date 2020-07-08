@@ -40,26 +40,29 @@
   </p>
   <p>
     <mat-form-field appearance="fill">
-      <mat-label>Canton</mat-label>
-      <mat-select>
-        <mat-option value="option">San Jose</mat-option>
+      <mat-label>Provincia</mat-label>
+      <mat-select [(ngModel)]="provinceId"  >
+        <mat-option (click)="getCanton(provinceId)" *ngFor="let province of provinces" [value]="province.provinceId">
+          {{province.name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="fill">
       <mat-label>Canton</mat-label>
-      <mat-select>
-        <mat-option value="option">San Jose</mat-option>
+      <mat-select [(ngModel)]="cantonId">
+        <mat-option (click)="getDistrict()" *ngFor="let canton of cantons" [value]="canton.cantonId">
+          {{canton.name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="fill">
-      <mat-label>Canton</mat-label>
-      <mat-select>
-        <mat-option value="option">San Jose</mat-option>
-      </mat-select>
+      <mat-label>District</mat-label>
+      <mat-select >
+      <mat-option *ngFor="let district of districts" [value]="district.districId">
+        {{district.name}}</mat-option>
+    </mat-select>
     </mat-form-field>
   </p>
 </ion-content>
