@@ -476,6 +476,17 @@ export class RestService {
       );
   }
 
+  postProfessorCourse(professorCourse): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path + "/professorCourse/insertUpdateProfessorCourse",professorCourse,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postProfessorCourse"))
+      );
+  }
+
   getCoursesByProfessor(professorId){
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
