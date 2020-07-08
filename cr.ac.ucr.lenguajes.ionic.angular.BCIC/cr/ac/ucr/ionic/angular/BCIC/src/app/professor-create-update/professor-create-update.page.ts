@@ -98,7 +98,7 @@ getCanton(provinceId){
 
   getDistrict(){
     console.log(this.provinceId, this.cantonId)
-  this.rest.getDistric(this.provinceId, this.cantonId).subscribe((data)=>{
+    this.rest.getDistric(this.provinceId, this.cantonId).subscribe((data)=>{
     this.districts = data
     this.ngOnInit();
 });

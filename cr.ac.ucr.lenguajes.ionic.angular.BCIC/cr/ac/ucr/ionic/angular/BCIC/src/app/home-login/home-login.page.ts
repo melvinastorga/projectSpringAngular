@@ -5,11 +5,9 @@ import {
   MatDialog,
 } from "@angular/material/dialog";
 import { RestService } from '../rest.service';
+import { DialogData } from '../professor-details/professor-details.page';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+
 
 @Component({
   selector: "app-home-login",
@@ -20,13 +18,18 @@ export class HomeLoginPage implements OnInit {
   constructor(
     public rest:RestService,
     public dialogRef: MatDialogRef<HomeLoginPage>,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   email=''
   password=''
+  userId: any
+  userName:any
+  userRole:any
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 
   login(): void {
@@ -35,24 +38,34 @@ export class HomeLoginPage implements OnInit {
       "email": this.email,
       "password": this.password
     }
-    
-    console.log(this.email, this.password)
-    this.rest.login(loginModel).subscribe((data:{})=>{
-      console.log(data)
-  });
-  }
 
-  setUserId(userId):void{
-    this.rest.setUserId(userId)
-  }
+    this.rest.login(loginModel).subscribe((data1)=>{ 
 
-  setUser(username):void{
-    this.rest.setUser(username)
-  }
+      var contentData = data1;
+      console.log(contentData);
 
-  setRole(userRole):void{
-    this.rest.setRole(userRole)
-  }
+
+      if (contentData.student != null) {
+
+        console.log(contentData.student.personId)
+        this.rest.setUserId(contentData.student.personId)
+
+        this.rest.setRole(contentData.student.userRole)
+
+        this.rest.setUser(contentData.student.email)
+
+      console.log(this.userId)
+
+      }else if(contentData.professor!=null){
+
+      this.rest.setUserId(contentData.professor.personId) 
+
+      this.rest.setRole(contentData.professor.userRole)
+
+      this.rest.setUser(contentData.professor.email)
+
+      }})}
+
 
   onNoClick(): void {
     this.dialogRef.close();
