@@ -141,7 +141,7 @@
 
 
             </div>
-            <mat-tab-group style="overflow: hidden !important;" (click)="getProfessors(card.id)">
+            <mat-tab-group style="overflow: hidden !important;">
               <mat-tab label="Informacion">
                 <div style="width: 80%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
                   <ion-items>
@@ -196,18 +196,29 @@
                 </div>
               </mat-tab>
               <mat-tab label="Profesores">
-                <div style="width: 80%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
+                <div style="width: 100%; height:220px;padding: 8px 8px 8px 10px; text-align: center;">
+
+
                   <ion-items>
-                    <div *ngFor="let professor of professors" class="row">
+                    <div class="col-sm" style="text-align: right;">
+                      <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect
+                        (click)="getProfessors(card.id)">+</button>
+                    </div>
 
-                      <div class="col-md">
-                        {{professor.professorName}} {{professor.lastName}}
+                    <div *ngFor="let professor of professors" class="row3">
+
+                      <div *ngIf="professor.courseId === card.id">
+                        <div class="col-md">
+                          {{professor.professorName}} {{professor.lastName}}
+                        </div>
+
+
+                        <div class="col-sm">
+                          <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Horas
+                            consulta</button>
+
+                        </div>
                       </div>
-
-                      <div class="col-sm" style="text-align: right;">
-                        <ion-button color="secondary"> Horario</ion-button>
-                      </div>
-
                     </div>
                   </ion-items>
 
@@ -316,7 +327,7 @@
               <!-- End Dropdown  info -->
 
               <!-- Dropdown  courses-->
-              <mat-expansion-panel class="prof-dropdown" (click)="getCourses(card.id)">
+              <mat-expansion-panel class="prof-dropdown" (click)="getCourses(card.professorId)">
 
                 <mat-expansion-panel-header>
                   <mat-panel-title>
@@ -327,22 +338,25 @@
                 <!-- Professor course item-->
                 <ion-items>
                   <br>
-                  <div class="row" *ngFor="let course of courses">
+                  <div *ngFor="let course of courses" class="row3">
+
+                    <div *ngIf="course.professorId === card.professorId">
                     <div class="col-md">
                       {{course.courseName}}
                     </div>
 
                     <!-- Professor schedule-->
-                    <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect
-                    >Horas consulta</button>
+                    <button size="sm" mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Horas
+                      consulta</button>
                     <!-- End Professor schedule-->
 
+                  </div>
                   </div>
                 </ion-items>
                 <!-- End Professor course item-->
 
                 <!-- End Professor course item-->
-      
+
               </mat-expansion-panel>
               <!-- End Dropdown  courses-->
             </mdb-card-body>
