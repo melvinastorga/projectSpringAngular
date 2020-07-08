@@ -14,7 +14,6 @@ import { CourseDetailsPage } from "../course-details/course-details.page";
 })
 export class RemoveProfessorCoursesPage implements OnInit {
   dataSource: any;
-  dataSource2: any;
   myCourses: [];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -32,22 +31,33 @@ export class RemoveProfessorCoursesPage implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngOnInit() {
+  ngOnInit(){
     var professorId;
+
+    this.dataSource=[];
+    this.myCourses = [];
     this.rest.currentprofessorCourseId.subscribe(
       (message) => (professorId = message)
     );
-    console.log(professorId);
 
     this.rest.getProfessorCourses(professorId).subscribe((data) => {
       this.myCourses = data;
-      console.log(data);
+   
       this.dataSource = new MatTableDataSource(this.myCourses);
       this.dataSource.paginator = this.paginator;
+
     });
   }
 
-  remove(id) {}
+  remove(id) {
+
+    this.rest.deleteProfessorCourses(id).subscribe((data)=>{
+
+      this.ngOnInit();
+      this.presentAlert();
+    } );
+
+  }
 
   get(id): void {
     this.rest.getCourse(id).subscribe((data) => {
@@ -61,5 +71,16 @@ export class RemoveProfessorCoursesPage implements OnInit {
         console.log("The dialog was closed");
       });
     });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Aviso",
+      message: "El curso se ha eliminado con exito",
+      buttons: ["OK"],
+    });
+
+    await alert.present();
   }
 }

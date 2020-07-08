@@ -50,7 +50,9 @@ export class RestService {
   public currentendPoint = this.endPoint.asObservable();
 
   private endPointNewsApi = "https://localhost:44358/api";
-  
+
+  private professorCourseId = new BehaviorSubject("");
+  public currentprofessorCourseId= this.professorCourseId.asObservable();
 
   //----------------------------------------------------------
 
@@ -59,6 +61,11 @@ export class RestService {
   public setUser(username: string) {
     this.username.next(username);
     this.storage.set("name", username);
+  }
+  public setprofessorCourseId(professorCourseId: string) {
+
+    this.professorCourseId.next(professorCourseId);
+  
   }
   public setUserId(id: string) {
     this.userId.next(id);
