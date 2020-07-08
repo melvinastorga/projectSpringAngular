@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CourseCreateUpdatePage } from '../course-create-update/course-create-update.page';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AsingCoursesPage } from '../asing-courses/asing-courses.page';
 
 @Component({
   selector: "app-courses",
@@ -22,6 +23,7 @@ export class CoursesPage implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   displayedColumns: string[] = ["Code", "Name", "Term", "actions"];
   displayedColumns2: string[] = ["Code", "Name", "Term", "actions"];
+  
 
   constructor(public rest: RestService,  public dialog: MatDialog, public alertController: AlertController,    public router: Router ,) {
 
@@ -92,6 +94,22 @@ create(){
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
     }); 
+
+}
+
+Asing(id){
+ 
+ 
+  console.log(id);
+  const dialogRef = this.dialog.open(AsingCoursesPage, {
+    width: "500px",
+    height: "50%",
+    data:id,
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log("The dialog was closed");
+  }); 
 
 }
 

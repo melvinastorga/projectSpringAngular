@@ -1,0 +1,34 @@
+
+<ion-content class="modal-container2">
+  <br>
+
+  <h1 class="title">Asignar cursos</h1>
+  <br>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Profesores</mat-label>
+    <mat-select>
+      <mat-option [(ngModel)]="id"  *ngFor="let professor of  professors" value="professor.professorId">
+        {{professor.name}} {{professor.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+   
+  
+ 
+</ion-content>
+
+<div class="modal-options-area">
+
+  <ion-row>
+   <ion-col>
+     <button mat-raised-button color="secondary" (click)="onNoClick()">Aceptar</button>
+   </ion-col>
+
+ </ion-row>
+
+
+</div>
+
