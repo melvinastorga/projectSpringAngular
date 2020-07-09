@@ -162,8 +162,10 @@ export class AppComponent {
 
   logout(): void {
     this.openCustom();
+   
+    this.rest.logout(); 
     this.router.navigate(["home"]);
-    this.rest.logout();
+    this.initializeApp();
   }
 
   home(): void {
