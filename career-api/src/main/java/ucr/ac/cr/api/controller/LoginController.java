@@ -46,7 +46,7 @@ public class LoginController {
 				user.setStudent(student);
 				user.setLocationNames(locationNames);
 
-			}else if(login.getRole().equals("professor") && login.isStatus()){
+			}else if(login.getRole().equals("Professor") && login.isStatus()){
 
 				Professor professor = professorService.getProfessorById(login.getPersonId());
 				LocationNames locationNames = locationNameService.getLocationNames(professor.getProvinceId(), professor.getCantonId(), professor.getDistricId());

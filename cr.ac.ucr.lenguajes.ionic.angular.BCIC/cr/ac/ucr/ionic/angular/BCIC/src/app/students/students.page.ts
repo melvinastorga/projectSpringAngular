@@ -22,6 +22,8 @@ export class StudentsPage implements OnInit {
   studentsToAttend:any=[];
   studentsOff:any=[];
   president:any
+  userId:any
+  presidentName:any
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -48,6 +50,7 @@ export class StudentsPage implements OnInit {
     this.getStudents();
     this.getStudentsToAttend();
     this.getStudentsOff();
+    this.getPresident();
   }
 
 
@@ -136,11 +139,22 @@ export class StudentsPage implements OnInit {
   }
 
   promoteStudent(studentId){
-    this.rest.promoteStudentToPresident(studentId, 14).subscribe((data)=>{
+    this.rest.getCurrentUserId()
+    this.rest.currentRole.subscribe( (message) => (this.userId = message) );
 
-      this.presentAlert("La cuenta del estudiante ha sido activada con éxito");
-      this.ngOnInit();
+      this.rest.promoteStudentToPresident(studentId, this.userId).subscribe((data)=>{
+
+      this.presentAlert("El estudiante ha sido promovido con éxito");
+      this.ngOnInit()
   
+    });
+  }
+
+  getPresident(){
+
+      this.rest.getPresident().subscribe((data)=>{
+      this.presidentName = data.name + " " + data.lastName
+          
     });
   }
 
