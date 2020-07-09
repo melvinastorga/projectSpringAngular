@@ -47,32 +47,32 @@ export class HomeLoginPage implements OnInit {
 
       var contentData = data1;
 
+      console.log(data1)
 
       if (contentData.student != null) {
 
         this.rest.setUserId(contentData.student.personId)
 
-        this.rest.setRole(contentData.student.userRole)
+        this.rest.setRole(contentData.student.role)
 
         this.rest.setUser(contentData.student.email)
 
         this.rest.setSuperUser(contentData.student.isPresident)
  
-        console.log(contentData.student.isPresident)
-        console.log(contentData.student.personId)
+        console.log(contentData.student.userRole)
 
       }else if(contentData.professor!=null){
 
       this.rest.setUserId(contentData.professor.personId) 
 
-      this.rest.setRole(contentData.professor.userRole)
+      this.rest.setRole(contentData.professor.role)
 
       this.rest.setUser(contentData.professor.email)
 
       this.rest.setSuperUser(contentData.professor.isAdmin)
 
       console.log(contentData.professor.isAdmin)
-      console.log(contentData.professor.personId)
+      console.log(contentData.professor.userRole)
 
       }})}
 
