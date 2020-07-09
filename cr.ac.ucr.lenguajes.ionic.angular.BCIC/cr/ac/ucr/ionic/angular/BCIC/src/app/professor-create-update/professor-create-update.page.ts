@@ -53,6 +53,7 @@ export class ProfessorCreateUpdatePage implements OnInit {
   updatedBy: 0
   updatedAt :Date = new Date();
   imgString: ''
+  imageElement:any
   role: ''
 
 
@@ -75,6 +76,15 @@ export class ProfessorCreateUpdatePage implements OnInit {
       this.getDistrict()
       this.districId = contentData.districId;
       this.interests = contentData.interests;
+      this.profilePic = contentData.student.profilePic
+      this.date = new Date();
+      this.updatedBy = 0
+      this.updatedAt = new Date();
+      this.role = contentData.student.role
+
+      this.source = this.imgString
+      this.imageElement = document.createElement("img");
+      this.imageElement.setAttribute('src', this.imgString);
 
     } else {
       this.action = "Crear";
@@ -170,6 +180,7 @@ getCanton(provinceId){
         this.data.data.canton = this.cantons;
         this.data.data.distric = this.districts;
         this.data.data.interests = this.interests;
+        this.data.data.imgString = this.imgString;
 
         this.rest.putProfessor(this.data.data).subscribe(() => {
           this.message="El profesor sea ha actualizado con exito";
