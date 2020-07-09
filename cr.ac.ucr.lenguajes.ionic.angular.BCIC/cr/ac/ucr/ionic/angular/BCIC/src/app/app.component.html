@@ -37,15 +37,15 @@
     <ion-buttons slot="secondary">
       <ion-items>
 
-        <ion-item style="color: white;">
+        <ion-item *ngIf='hide!==""' style="color: white;">
           <!-- Register button-->
-          <ion-button  color="bgColor" class="navbar-button" (click)="openRegisterDialog()">
+          <ion-button  color="bgColor" class="navbar-button"  (click)="openRegisterDialog()">
             Registrarse
             <ion-icon name="create-outline" class="navbar-button-icon2"></ion-icon>
           </ion-button>
           <!-- End Register button-->
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf='hide!==""'>
           <!-- login button-->
           <ion-button (click)="openLoginDialog()" color="bgColor" class="navbar-button">
             Iniciar sesion
@@ -108,7 +108,7 @@
           <ion-item>
             <ion-button class="menu-item-close" fill="transparent" (click)="openCustom()">Cerrar</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="student" ||  hide "professor"'>
+          <ion-item *ngIf='hide=="student" ||  hide "professor" ||  hide "admin" ||  hide "president"'>
             <ion-button class="menu-item-close" (click)="logout()" fill="transparent">Cerrar Sesion</ion-button>
           </ion-item>
         </ion-list>
