@@ -309,6 +309,20 @@ export class RestService {
         catchError(this.handleError<any>("putStudent"))
       );
   }
+
+  getPresident(studentId, updatedBy) {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(
+        path +
+          "/president/getPresident"
+      )
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("ranking"))
+      );
+  }
   
   //--------------------------------------------------------------
 
