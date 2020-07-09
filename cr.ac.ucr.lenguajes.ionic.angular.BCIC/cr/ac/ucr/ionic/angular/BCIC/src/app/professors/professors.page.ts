@@ -77,6 +77,10 @@ getProfessorDetailsId(id){
   });
 }
 
+putProfessor(){
+
+}
+
 create(){
  
   const dialogRef = this.dialog.open(ProfessorCreateUpdatePage, {

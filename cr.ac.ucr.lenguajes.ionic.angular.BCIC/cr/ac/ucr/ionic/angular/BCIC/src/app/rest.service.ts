@@ -356,10 +356,7 @@ export class RestService {
       );
      
   }
-
   
-  
-
   putProfessor(professor): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
@@ -378,7 +375,7 @@ export class RestService {
       .post(path + "/professor/postProfessor",professor,httpOptions)
       .pipe(
         map(this.extractData),
-        catchError(this.handleError<any>("postCourse"))
+        catchError(this.handleError<any>("postProfessor"))
       );
   }
 

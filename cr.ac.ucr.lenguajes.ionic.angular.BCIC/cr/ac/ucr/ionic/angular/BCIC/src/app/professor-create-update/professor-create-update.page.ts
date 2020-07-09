@@ -4,7 +4,6 @@ import { RestService } from "../rest.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from "@ionic/angular";
 
-
 export interface DialogData {
   data: any;
 }
@@ -30,11 +29,11 @@ export class ProfessorCreateUpdatePage implements OnInit {
     public alertController: AlertController
   ) {}
 
-  action = "";
-  name: '';
-  lastName: '';
-  email: '';
-  specialty: '';
+  action = ""
+  name= ""
+  lastName = ""
+  email = ""
+  specialty = ""
 
   provinces: any=[]
   cantons: any=[]
@@ -45,14 +44,14 @@ export class ProfessorCreateUpdatePage implements OnInit {
 
   profilePic: [71,107,98]
   
-  interests: '';
+  interests = ""
 
   date: Date = new Date();
   updatedBy: 0
   updatedAt :Date = new Date();
   imgString: ''
 
-  message = "";
+  message = ""
 
   ngOnInit() {
     this.getProvince();
@@ -64,9 +63,9 @@ export class ProfessorCreateUpdatePage implements OnInit {
       this.lastName = contentData.lastName;
       this.email = contentData.mail;
       this.specialty = contentData.specialty;
-      this.provinces = contentData.province;
-      this.cantons = contentData.canton;
-      this.districts = contentData.district;
+      this.provinces = contentData.provinceId;
+      this.cantons = contentData.cantonId;
+      this.districts = contentData.districtId;
       this.interests = contentData.interests;
 
     } else {
@@ -92,7 +91,6 @@ export class ProfessorCreateUpdatePage implements OnInit {
 getCanton(provinceId){
     this.rest.getCanton(provinceId).subscribe((data)=>{
       this.cantons = data
-      this.ngOnInit();
   });
   }
 
@@ -100,11 +98,10 @@ getCanton(provinceId){
     console.log(this.provinceId, this.cantonId)
     this.rest.getDistric(this.provinceId, this.cantonId).subscribe((data)=>{
     this.districts = data
-    this.ngOnInit();
 });
 }
 
-  postProfessor() {
+  post() {
     if (
       this.name == "" ||
       this.lastName == "" ||
@@ -121,20 +118,20 @@ getCanton(provinceId){
     } else {
       if (this.action == "Crear") {
         var newProfessor = {
-          "name": this.name,
-          "lastName": this.lastName,
-          "email": this.email,
-          "specialty": this.specialty,
-          "provinceId": this.provinceId,
-          "cantonId":this.cantonId,
-          "districId":this.districtId,
-          "interests": this.interests,
-          "createAt":this.date,
-          "updatedBy": 0,
-          "updatedAt":this.date,
-          "imgString": this.imgString,
-          "profilePic": [71,107,98],
-          "role": "professor"
+          name: this.name,
+          lastName: this.lastName,
+          email: this.email,
+          specialty: this.specialty,
+          provinceId: this.provinceId,
+          cantonId:this.cantonId,
+          districId:this.districtId,
+          interests: this.interests,
+          createAt:this.date,
+          updatedBy: 0,
+          updatedAt:this.date,
+          imgString: this.imgString,
+          profilePic: [71,107,98],
+          role: "professor"
         };
 
         this.rest.postProfessor(newProfessor).subscribe(() => {
