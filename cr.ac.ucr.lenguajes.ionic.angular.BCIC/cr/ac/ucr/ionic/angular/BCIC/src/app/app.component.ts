@@ -12,6 +12,7 @@ import { MyCoursesPage } from "./my-courses/my-courses.page";
 import { Router } from "@angular/router";
 import { CommentsPage } from './comments/comments.page';
 import { RestService } from './rest.service';
+import { ProfessorCreateUpdatePage } from './professor-create-update/professor-create-update.page';
 
 @Component({
   selector: "app-root",
@@ -35,7 +36,20 @@ export class AppComponent {
   }
 
   userId:any
+  userRole:any
   dataResult:any
+  hide:false 
+
+  ngOnInit(){
+
+
+    this.rest.getCurrentRole()
+    this.rest.currentRole.subscribe( (message) => (this.userRole = message) );
+
+    if(this.userRole==""){
+
+    }
+  }
 
   openCustom() {
     this.menu.close("custom");
@@ -58,8 +72,6 @@ export class AppComponent {
 
   }
 
-
-
   openRegisterDialog(): void {
 
       this.dataResult = null
@@ -76,7 +88,7 @@ export class AppComponent {
     
   }
 
-  openUpdateDialog(): void {
+  openSUpdateDialog(): void {
 
     this.rest.getCurrentUserId()
     this.rest.currentUserId.subscribe( (message) => (this.userId = message) );
@@ -97,6 +109,24 @@ export class AppComponent {
         });
       });
     }
+  }
+
+  openPUpdateDialog(): void {
+
+    this.rest.getCurrentUserId()
+    this.rest.currentUserId.subscribe( (message) => (this.userId = message) );
+
+    this.rest.getProfessorById(this.userId).subscribe((data) => {
+      const dialogRef = this.dialog.open(ProfessorCreateUpdatePage, {
+        width: "500px",
+        height: "80%",
+        data: { data },
+      });
+  
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log("The dialog was closed");
+      });
+    });
   }
 
 
