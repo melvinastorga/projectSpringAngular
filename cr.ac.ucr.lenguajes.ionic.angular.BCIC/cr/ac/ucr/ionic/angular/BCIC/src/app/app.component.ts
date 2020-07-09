@@ -13,7 +13,6 @@ import { Router } from "@angular/router";
 import { CommentsPage } from './comments/comments.page';
 import { RestService } from './rest.service';
 import { ProfessorCreateUpdatePage } from './professor-create-update/professor-create-update.page';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 

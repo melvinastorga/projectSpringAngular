@@ -5,7 +5,12 @@
   <h1 style="font-size: 25px; margin-bottom: 5px;">Profesores</h1>
 
 </div>
-<div class="showAdmin"><h2>Administrador: Administrador </h2> </div>
+<div class="showAdmin"><h2 [(ngModel)]="adminName">Administrador:  </h2> </div>
+
+<mat-form-field class="input-form" appearance="legacy">
+  <mat-label>Nombre</mat-label>
+  <input class="input" [(ngModel)]="name" matInput>
+</mat-form-field>
 
   <mat-tab-group>
     <!--First tab-->

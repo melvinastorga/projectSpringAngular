@@ -439,6 +439,17 @@ export class RestService {
       );
   }
 
+  getAdmin(): Observable<any> {
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path + "/getAdmin")
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getAdmin"))
+      );
+  }
+
   putProfessor(professor): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));

@@ -56,11 +56,15 @@ export class ProfessorCreateUpdatePage implements OnInit {
   imageElement:any
   role: ''
 
+  adminName: ''
+
 
   message = ""
 
   ngOnInit() {
     this.getProvince();
+
+    this.getAdmin();
 
     if (this.data != null) {
       var contentData = this.data.data;
@@ -105,6 +109,12 @@ export class ProfessorCreateUpdatePage implements OnInit {
       this.imgString = ''
     }
 
+  }
+
+  getAdmin(){
+    this.rest.getAdmin().subscribe((data)=>{
+      this.adminName = data
+    });
   }
 
   getProvince(){
