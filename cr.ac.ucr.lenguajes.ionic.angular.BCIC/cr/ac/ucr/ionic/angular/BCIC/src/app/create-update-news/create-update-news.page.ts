@@ -20,6 +20,7 @@ export class CreateUpdateNewsPage implements OnInit {
   title = "";
   message=""
   userId="";
+  isDisable=false;
 
   constructor(
 
@@ -41,6 +42,7 @@ export class CreateUpdateNewsPage implements OnInit {
       if(this.action=='details'){
 
         this.action="Detalles"
+        this.isDisable=true;
       }else{
 
         this.action="Actualizar"
