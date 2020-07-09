@@ -37,18 +37,32 @@ export class AppComponent {
 
   userId:any
   userRole:any
+  superUser:any
   dataResult:any
-  hide:false 
+  hide:any 
 
-  ngOnInit(){
-
+  permissons(){
 
     this.rest.getCurrentRole()
     this.rest.currentRole.subscribe( (message) => (this.userRole = message) );
 
-    if(this.userRole==""){
+    this.rest.getCurrentSuperUser()
+    this.rest.currentsuperUser.subscribe( (message) => (this.superUser = message) );
 
+    if(this.userRole=="Student", this.superUser==true){
+      this.hide="president"
+      console.log("president")
+    }if(this.userRole=="Professor", this.superUser==true){
+      this.hide="admin"
+      console.log("admin")
+    }if(this.userRole=="Professor", this.superUser==false){
+      this.hide="professor"
+      console.log("professor")
+    }if(this.userRole=="Student", this.superUser==false){
+      this.hide="student"
+      console.log("student")
     }
+    
   }
 
   openCustom() {
@@ -135,7 +149,11 @@ export class AppComponent {
     this.router.navigate(["professors"]);
   }
 
-  
+  logout(): void {
+    this.openCustom();
+    this.router.navigate(["home"]);
+  }
+
   home(): void {
     this.openCustom();
     this.router.navigate(["home"]);
