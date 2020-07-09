@@ -328,7 +328,7 @@ export class RestService {
       );
   }
 
-  getPresident(studentId, updatedBy) {
+  getPresident() {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
