@@ -6,6 +6,7 @@ import {
 } from "@angular/material/dialog";
 import { RestService } from '../rest.service';
 import { DialogData } from '../professor-details/professor-details.page';
+import { Router } from '@angular/router';
 
 
 
@@ -19,7 +20,9 @@ export class HomeLoginPage implements OnInit {
     public rest:RestService,
     public dialogRef: MatDialogRef<HomeLoginPage>,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public router: Router
+    
   ) {}
 
   email=''
@@ -59,7 +62,7 @@ export class HomeLoginPage implements OnInit {
 
         this.rest.setSuperUser(contentData.student.isPresident)
  
-        console.log(contentData.student.userRole)
+      
 
       }else if(contentData.professor!=null){
 
@@ -71,10 +74,12 @@ export class HomeLoginPage implements OnInit {
 
       this.rest.setSuperUser(contentData.professor.isAdmin)
 
-      console.log(contentData.professor.isAdmin)
-      console.log(contentData.professor.userRole)
+    
 
-      }})}
+      }})
+    
+      this.router.navigate(["home"]);
+    }
 
 
       
