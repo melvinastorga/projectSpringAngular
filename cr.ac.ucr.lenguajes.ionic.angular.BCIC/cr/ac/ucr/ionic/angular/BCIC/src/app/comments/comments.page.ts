@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
 import { RestService } from '../rest.service';
 
 export interface DialogData {
-
+data:any
 }
 @Component({
   selector: 'app-comments',
@@ -31,18 +31,25 @@ export class CommentsPage implements OnInit {
   commentaryString:''
   userId:any
   commentaryId:0
+  commentaries:any;
   
   ngOnInit() {
     this.id = this.data
-    
     this.rest.getCurrentUserId()
     this.rest.currentUserId.subscribe( (message) => (this.userId = message) );
+
+    this.rest.getCommentaries(this.id).subscribe((data1)=>{
+
+      this.commentaries=data1;
+      console.log(this.commentaries);
+
+    })
 
   }
 
   onNoClick(): void {
+ 
     this.dialogRef.close();
-    
   }
 
   postComment(): void {

@@ -7,124 +7,19 @@
 <ion-content class="comments-container">
   <br>
 
-  <p>
+  <p *ngFor="let commentary of commentaries" style="padding: 8px 8px 8px 10px; text-align: center;">
     <mat-card class="card-comments">
       <div class="card-comments-header">
         <mat-card-header >
           <div mat-card-avatar class="example-header-image"></div>
-          <ion-label >Diego Vega Rodriguez</ion-label>
+          <ion-label >{{commentary.personName}}&nbsp;{{commentary.personLastName}}</ion-label>
         </mat-card-header>
       </div>
 
       <mat-card-content class="card-comments-content">
       
         <p>
-             hola mundo
-        </p>
-       
-  
-      </mat-card-content>
-    </mat-card>
-  </p>
-  <br>
-
-  <p>
-    <mat-card class="card-comments">
-      <div class="card-comments-header">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <ion-label >Diego Vega Rodriguez</ion-label>
-        </mat-card-header>
-      </div>
-
-      <mat-card-content class="card-comments-content">
-      
-        <p>
-             hola mundo
-        </p>
-       
-  
-      </mat-card-content>
-    </mat-card>
-  </p>
-  <br>
-
-  <p>
-    <mat-card class="card-comments">
-      <div class="card-comments-header">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <ion-label >Diego Vega Rodriguez</ion-label>
-        </mat-card-header>
-      </div>
-
-      <mat-card-content class="card-comments-content">
-      
-        <p>
-             hola mundo
-        </p>
-       
-  
-      </mat-card-content>
-    </mat-card>
-  </p>
-  <br>
-
-  <p>
-    <mat-card class="card-comments">
-      <div class="card-comments-header">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <ion-label >Diego Vega Rodriguez</ion-label>
-        </mat-card-header>
-      </div>
-
-      <mat-card-content class="card-comments-content">
-      
-        <p>
-             hola mundo
-        </p>
-       
-  
-      </mat-card-content>
-    </mat-card>
-  </p>
-  <br>
-
-  <p>
-    <mat-card class="card-comments">
-      <div class="card-comments-header">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <ion-label >Diego Vega Rodriguez</ion-label>
-        </mat-card-header>
-      </div>
-
-      <mat-card-content class="card-comments-content">
-      
-        <p>
-             hola mundo
-        </p>
-       
-  
-      </mat-card-content>
-    </mat-card>
-  </p>
-  <br>
-
-  <p>
-    <mat-card class="card-comments">
-      <div class="card-comments-header">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <ion-label >Diego Vega Rodriguez</ion-label>
-        </mat-card-header>
-      </div>
-
-      <mat-card-content class="card-comments-content">
-      
-        <p>
-             hola mundo
+          {{commentary.commentaryString}}
         </p>
        
   
@@ -142,13 +37,13 @@
   </mat-form-field>
   <ion-row>
     <ion-col>
-      <button mat-raised-button color="secondary" (click)="postComment()">Comentar</button>
+      <button mat-raised-button color="secondary" (click)="postComment();">Comentar</button>
     </ion-col>
     <ion-col>
 
     </ion-col>
     <ion-col>
-      <button mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>
+      <button mat-raised-button color="secondary" (click)="onNoClick()">Cerrar</button>
     </ion-col>
   </ion-row>
 
