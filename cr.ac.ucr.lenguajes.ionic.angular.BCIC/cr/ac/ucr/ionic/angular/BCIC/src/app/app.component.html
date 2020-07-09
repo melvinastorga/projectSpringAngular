@@ -81,7 +81,7 @@
           <ion-item *ngIf='hide=="student"'>
             <ion-button class="menu-item" fill="transparent" (click)="openSUpdateDialog()">Perfil</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="professor"'>
+          <ion-item *ngIf='hide=="professor" || hide=="admin"'>
             <ion-button class="menu-item" fill="transparent" (click)="openPUpdateDialog()">Perfil</ion-button>
           </ion-item>
           <ion-item *ngIf='hide=="admin"'>
@@ -90,16 +90,16 @@
           <ion-item *ngIf='hide=="admin"'>
             <ion-button class="menu-item"  (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="professor"'>
+          <ion-item *ngIf='hide=="professor" || hide=="admin"'>
             <ion-button class="menu-item"  (click)="openMyCoursesDialog()" fill="transparent">Mis Cursos</ion-button>
           </ion-item>
           <ion-item *ngIf='hide=="admin"'>
             <ion-button class="menu-item"  (click)="openCoursesDialog()" fill="transparent">Cursos</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="professor"'>
+          <ion-item *ngIf='hide=="professor" || hide=="admin"'>
             <ion-button class="menu-item" fill="transparent">Citas</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="admin" || "president"'>
+          <ion-item *ngIf='hide=="admin" || hide=="president"'>
             <ion-button class="menu-item" fill="transparent" (click)="openNewsDialog()">Noticias</ion-button>
           </ion-item>
           <ion-item>
@@ -108,7 +108,7 @@
           <ion-item>
             <ion-button class="menu-item-close" fill="transparent" (click)="openCustom()">Cerrar</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide !==""'>
+          <ion-item *ngIf='hide=="student" ||  hide "professor"'>
             <ion-button class="menu-item-close" (click)="logout()" fill="transparent">Cerrar Sesion</ion-button>
           </ion-item>
         </ion-list>
