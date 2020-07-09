@@ -54,7 +54,7 @@ public class ProfessorService implements IProfesorService {
                 professor.getLastName(),
                 professor.getInterests(),
                 professor.getProfilePic(),
-                false,
+                true,
                 professor.getDistricId(),
                 professor.getCantonId(),
                 professor.getProvinceId(),

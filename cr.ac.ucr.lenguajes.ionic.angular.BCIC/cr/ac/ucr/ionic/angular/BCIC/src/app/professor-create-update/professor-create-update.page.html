@@ -19,6 +19,13 @@
   </p>
 
   <p>
+    <mat-form-field class="input-form" color="secondary" appearance="legacy">
+      <mat-label>Contrasena</mat-label>
+      <input color="secondary" class="input" [(ngModel)]="password" matInput>
+    </mat-form-field>
+  </p>
+
+  <p>
     <mat-form-field class="input-from" color="secondary" appearance="legacy">
       <mat-label>Correo</mat-label>
       <input color="secondary" class="input" [(ngModel)]="email" matInput>
@@ -29,7 +36,7 @@
   <p>
     <mat-form-field class="input-form" color="secondary" appearance="legacy">
       <mat-label>Especialidad</mat-label>
-      <input color="secondary" class="input" [(ngModel)]="specialty" matInput>
+      <input color="secondary" class="input" [(ngModel)]="especiality" matInput>
     </mat-form-field>
   </p>
 
@@ -54,7 +61,7 @@
   <p>
     <mat-form-field appearance="fill">
       <mat-label>District</mat-label>
-      <mat-select [(ngModel)]="districtId" >
+      <mat-select [(ngModel)]="districId" >
       <mat-option *ngFor="let district of districts" [value]="district.districId">
         {{district.name}}</mat-option>
     </mat-select>

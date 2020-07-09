@@ -77,8 +77,18 @@ getProfessorDetailsId(id){
   });
 }
 
-putProfessor(){
+putProfessor(id) {
+  this.rest.getProfessorById(id).subscribe((data) => {
+    const dialogRef = this.dialog.open(ProfessorCreateUpdatePage, {
+      width: "500px",
+      height: "80%",
+      data: { data },
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  });
 }
 
 create(){

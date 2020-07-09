@@ -30,17 +30,20 @@ export class ProfessorCreateUpdatePage implements OnInit {
   ) {}
 
   action = ""
+
+  personId = 0
   name= ""
   lastName = ""
+  password = ""
   email = ""
-  specialty = ""
+  especiality = ""
 
   provinces: any=[]
   cantons: any=[]
   districts: any=[]
   provinceId:0
   cantonId:0
-  districtId:0
+  districId:0
 
   profilePic: [71,107,98]
   
@@ -50,6 +53,8 @@ export class ProfessorCreateUpdatePage implements OnInit {
   updatedBy: 0
   updatedAt :Date = new Date();
   imgString: ''
+  role: ''
+
 
   message = ""
 
@@ -61,23 +66,33 @@ export class ProfessorCreateUpdatePage implements OnInit {
       this.action = "Actualizar";
       this.name = contentData.name;
       this.lastName = contentData.lastName;
-      this.email = contentData.mail;
-      this.specialty = contentData.specialty;
-      this.provinces = contentData.provinceId;
-      this.cantons = contentData.cantonId;
-      this.districts = contentData.districtId;
+      this.password = contentData.password;
+      this.email = contentData.email;
+      this.especiality = contentData.especiality;
+      this.provinceId = contentData.provinceId;
+      this.cantonId = contentData.cantonId;
+      this.getCanton(contentData.provinceId)
+      this.getDistrict()
+      this.districId = contentData.districId;
       this.interests = contentData.interests;
 
     } else {
       this.action = "Crear";
       this.name = "";
       this.lastName = "";
+      this.password = "";
       this.email = "";
-      this.specialty = "";
-      this.provinces = "";
-      this.cantons = "";
-      this.districts = "";
+      this.especiality = "";
+      this.provinceId = 0;
+      this.cantonId = 0;
+      this.districId = 0;
       this.interests = "";
+      this.profilePic = [71, 107, 98];
+      this.date = new Date();
+      this.updatedBy = 0
+      this.updatedAt = new Date();
+      this.role = ''
+      this.imgString = ''
     }
 
   }
@@ -96,7 +111,7 @@ getCanton(provinceId){
 
   getDistrict(){
     console.log(this.provinceId, this.cantonId)
-    this.rest.getDistric(this.provinceId, this.cantonId).subscribe((data)=>{
+  this.rest.getDistric(this.provinceId, this.cantonId).subscribe((data)=>{
     this.districts = data
 });
 }
@@ -105,8 +120,9 @@ getCanton(provinceId){
     if (
       this.name == "" ||
       this.lastName == "" ||
+      this.password == "" ||
       this.email == "" ||
-      this.specialty == "" ||
+      this.especiality == "" ||
       this.provinces == "" ||
       this.cantons == "" ||
       this.districts == "" ||
@@ -118,15 +134,19 @@ getCanton(provinceId){
     } else {
       if (this.action == "Crear") {
         var newProfessor = {
+          personId: 0,
           name: this.name,
           lastName: this.lastName,
+          password: this.password,
           email: this.email,
-          specialty: this.specialty,
+          especiality: this.especiality,
           provinceId: this.provinceId,
-          cantonId:this.cantonId,
-          districId:this.districtId,
+          cantonId: this.cantonId,
+          districId:this.districId,
           interests: this.interests,
-          createAt:this.date,
+          createAt: this.date,
+          status: 0,
+          createdBy: 0,
           updatedBy: 0,
           updatedAt:this.date,
           imgString: this.imgString,
@@ -143,11 +163,12 @@ getCanton(provinceId){
       } else {
         this.data.data.name = this.name;
         this.data.data.lastName = this.lastName;
-        this.data.data.mail = this.email;
-        this.data.data.specialty = this.specialty;
+        this.data.data.password = this.password;
+        this.data.data.email = this.email;
+        this.data.data.especiality = this.especiality;
         this.data.data.province = this.provinces;
         this.data.data.canton = this.cantons;
-        this.data.data.district = this.districts;
+        this.data.data.distric = this.districts;
         this.data.data.interests = this.interests;
 
         this.rest.putProfessor(this.data.data).subscribe(() => {
