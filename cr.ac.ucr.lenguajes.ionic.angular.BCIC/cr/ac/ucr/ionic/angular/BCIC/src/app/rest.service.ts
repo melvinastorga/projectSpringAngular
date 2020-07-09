@@ -588,6 +588,16 @@ export class RestService {
       );
   }
 
+  getCommentaries(id){
+    
+    return this.http
+      .get(this.endPointNewsApi+"/commentary/GetCommentariesByNotice/id",httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getCommentaries"))
+      );
+  }
+
 
   //-------------------------Places Methods------------------------
 
