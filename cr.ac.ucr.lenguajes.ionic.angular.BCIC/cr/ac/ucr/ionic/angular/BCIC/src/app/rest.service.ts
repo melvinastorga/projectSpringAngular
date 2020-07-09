@@ -578,7 +578,16 @@ export class RestService {
   
   //-------------------------Comments Methods------------------------
 
-  
+  postCommentary(commentary): Observable<any> {
+    //https://localhost:44358/api/commentary/PostCommentary
+    return this.http
+      .post(this.endPointNewsApi + "/commentary/PostCommentary",commentary,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postCommentary"))
+      );
+  }
+
 
   //-------------------------Places Methods------------------------
 

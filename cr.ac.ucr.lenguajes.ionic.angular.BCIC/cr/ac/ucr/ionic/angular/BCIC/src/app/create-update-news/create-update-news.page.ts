@@ -13,9 +13,10 @@ import { AlertController } from '@ionic/angular';
 export class CreateUpdateNewsPage implements OnInit {
 
   action = "";
-  news = "";
+  noticeString = "";
   title = "";
   message=""
+  userId="";
 
   constructor(
 
@@ -30,36 +31,39 @@ export class CreateUpdateNewsPage implements OnInit {
     if (this.data != null) {
       var contentData = this.data.data;
       this.action = "Actualizar";
-      this.news = contentData.notice;
+      this.noticeString = contentData.noticeString;
       this.title = contentData.title;
 
     } else {
       this.action = "Crear";
-
     }
   }
 
   post() {
     if (
-      this.news == "" ||
-      this.title == "" 
-    ) {
+      this.noticeString == "" ||
+      this.title == ""  ) {
       this.message="Ingrese los datos correspondientes";
       this.onNoClick();
       this.presentAlert();
     } else {
       if (this.action == "Crear") {
-        var news = {
-          title: this.title,
-          news: this.news,     
-        };
-
-        this.rest.postCourses(news).subscribe(() => {
-          this.message="El curso sea ha creado con exito";
-          this.onNoClick();
-          this.presentAlert();
-          this.router.navigate(["courses"]);
+       
+        this.rest.getCurrentUserId()
+        this.rest.currentUserId.subscribe( (message) => (this.userId = message) );
+    
+        var notice = {
+          "noticeId": 0,
+          "personId": this.userId,
+          "title": this.title,
+          "noticeString": this.noticeString
+    
+        }
+    
+        this.rest.postNews(notice).subscribe(() => {
+          console.log(notice)
         });
+    
       } else {
        /* this.data.data.course = this.course;
         this.data.data.term = this.term;
