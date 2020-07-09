@@ -21,6 +21,7 @@ export class StudentsPage implements OnInit {
   students:any=[];
   studentsToAttend:any=[];
   studentsOff:any=[];
+  president:any
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -134,6 +135,14 @@ export class StudentsPage implements OnInit {
     });
   }
 
+  promoteStudent(studentId){
+    this.rest.promoteStudentToPresident(studentId, 14).subscribe((data)=>{
+
+      this.presentAlert("La cuenta del estudiante ha sido activada con éxito");
+      this.ngOnInit();
+  
+    });
+  }
 
   async presentAlert(message) {
     const alert = await this.alertController.create({

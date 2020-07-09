@@ -4,6 +4,9 @@ import {
   MatDialogRef,
   MatDialog,
 } from "@angular/material/dialog";
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { RestService } from '../rest.service';
 
 export interface DialogData {
 
@@ -15,14 +18,53 @@ export interface DialogData {
 })
 export class CommentsPage implements OnInit {
 
-  constructor(
+  constructor(public rest:RestService, 
+    public dialog: MatDialog, 
+    public alertController: AlertController, 
+    private route:ActivatedRoute, 
+    private router:Router,
     public dialogRef: MatDialogRef<CommentsPage>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
-  ngOnInit() {}
+  id:any
+  commentaryString:''
+  userId:any
+  commentaryId:0
+  
+  ngOnInit() {
+    this.id = this.data
+    
+    this.rest.getCurrentUserId()
+    this.rest.currentUserId.subscribe( (message) => (this.userId = message) );
+
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
+    
   }
+
+  postComment(): void {
+
+    var comment={
+      "commentaryId":this.commentaryId,
+      "personId": this.userId ,
+      "noticeId": this.id,
+      "commentaryString": this.commentaryString
+    }
+
+    console.log(comment)
+
+    this.rest.postCommentary(comment).subscribe((data)=>{
+  
+      this.dialogRef.afterClosed().subscribe((result) => {
+        console.log("The dialog was closed");
+      });
+    
+  
+    });
+  
+  }
+
 }
