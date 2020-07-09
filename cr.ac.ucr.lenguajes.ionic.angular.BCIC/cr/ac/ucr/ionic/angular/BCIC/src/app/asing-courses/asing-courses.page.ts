@@ -28,7 +28,6 @@ export class AsingCoursesPage implements OnInit {
   ngOnInit() {
     this.rest.getProfessor().subscribe((data) => {
       this.professors = data;
-      console.log(this.professors);
     });
   }
 
