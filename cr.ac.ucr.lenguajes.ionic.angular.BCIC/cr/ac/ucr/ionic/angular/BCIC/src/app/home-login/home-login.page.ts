@@ -56,7 +56,10 @@ export class HomeLoginPage implements OnInit {
 
         this.rest.setUser(contentData.student.email)
 
-
+        this.rest.setSuperUser(contentData.student.isPresident)
+ 
+        console.log(contentData.student.isPresident)
+        console.log(contentData.student.personId)
 
       }else if(contentData.professor!=null){
 
@@ -65,6 +68,11 @@ export class HomeLoginPage implements OnInit {
       this.rest.setRole(contentData.professor.userRole)
 
       this.rest.setUser(contentData.professor.email)
+
+      this.rest.setSuperUser(contentData.professor.isAdmin)
+
+      console.log(contentData.professor.isAdmin)
+      console.log(contentData.professor.personId)
 
       }})}
 
