@@ -81,7 +81,7 @@
           <ion-item *ngIf='hide=="student"'>
             <ion-button class="menu-item" fill="transparent" (click)="openSUpdateDialog()">Perfil</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="professor"'>
+          <ion-item *ngIf='hide=="professor" || hide=="admin"'>
             <ion-button class="menu-item" fill="transparent" (click)="openPUpdateDialog()">Perfil</ion-button>
           </ion-item>
           <ion-item *ngIf='hide=="admin"'>
@@ -90,13 +90,13 @@
           <ion-item *ngIf='hide=="admin"'>
             <ion-button class="menu-item"  (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="professor"'>
+          <ion-item *ngIf='hide=="professor" || hide=="admin"'>
             <ion-button class="menu-item"  (click)="openMyCoursesDialog()" fill="transparent">Mis Cursos</ion-button>
           </ion-item>
           <ion-item *ngIf='hide=="admin"'>
             <ion-button class="menu-item"  (click)="openCoursesDialog()" fill="transparent">Cursos</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide=="professor"'>
+          <ion-item *ngIf='hide=="professor" || hide=="admin"'>
             <ion-button class="menu-item" fill="transparent">Citas</ion-button>
           </ion-item>
           <ion-item *ngIf='hide=="admin" || hide=="president"'>
