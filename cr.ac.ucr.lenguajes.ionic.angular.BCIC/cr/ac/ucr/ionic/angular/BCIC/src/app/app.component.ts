@@ -13,6 +13,7 @@ import { Router } from "@angular/router";
 import { CommentsPage } from './comments/comments.page';
 import { RestService } from './rest.service';
 import { ProfessorCreateUpdatePage } from './professor-create-update/professor-create-update.page';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @Component({
   selector: "app-root",
@@ -49,16 +50,19 @@ export class AppComponent {
     this.rest.getCurrentSuperUser()
     this.rest.currentsuperUser.subscribe( (message) => (this.superUser = message) );
 
-    if(this.userRole=="Student", this.superUser==true){
+    console.log(this.userRole)
+    console.log(this.superUser)
+
+    if(this.userRole=="Student" && this.superUser==true){
       this.hide="president"
       console.log("president")
-    }if(this.userRole=="Professor", this.superUser==true){
+    }if(this.userRole=="Professor" && this.superUser==true){
       this.hide="admin"
       console.log("admin")
-    }if(this.userRole=="Professor", this.superUser==false){
+    }if(this.userRole=="Professor" && this.superUser==false){
       this.hide="professor"
       console.log("professor")
-    }if(this.userRole=="Student", this.superUser==false){
+    }else if(this.userRole=="Student" && this.superUser==false){
       this.hide="student"
       console.log("student")
     }
