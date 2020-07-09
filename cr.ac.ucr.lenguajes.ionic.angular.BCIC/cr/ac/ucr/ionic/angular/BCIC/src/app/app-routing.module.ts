@@ -92,6 +92,10 @@ const routes: Routes = [
     path: 'remove-professor-courses',
     loadChildren: () => import('./remove-professor-courses/remove-professor-courses.module').then( m => m.RemoveProfessorCoursesPageModule)
   },
+  {
+    path: 'create-update-news',
+    loadChildren: () => import('./create-update-news/create-update-news.module').then( m => m.CreateUpdateNewsPageModule)
+  },
 
 ];
 

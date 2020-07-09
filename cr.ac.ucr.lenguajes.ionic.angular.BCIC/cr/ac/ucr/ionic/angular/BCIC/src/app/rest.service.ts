@@ -555,6 +555,26 @@ export class RestService {
       );
   }
 
+  putNews(news): Observable<any> {
+    //https://localhost:44358/api/notice/PostNotice
+    return this.http
+      .post(this.endPointNewsApi + "/notice/PutNotice",news,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postNews"))
+      );
+  }
+
+  deleteNews(news): Observable<any> {
+    //https://localhost:44358/api/notice/PostNotice
+    return this.http
+      .post(this.endPointNewsApi + "/notice/DeleteNotice",news,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("postNews"))
+      );
+  }
+
   //-------------------------Places Methods------------------------
 
   

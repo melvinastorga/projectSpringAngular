@@ -51,9 +51,7 @@ namespace Proyecto_DDMS_API.Controllers
         [HttpGet]
         public IActionResult GetAllNoticesSP()
         {
-            var notices = _context.Notice
-                            .FromSqlRaw($"SelectNotice")
-                            .AsEnumerable();
+            var notices = _context.Notice.FromSqlRaw("exec SelectNotice");
             return Ok(notices);
         }
 

@@ -14,6 +14,9 @@ namespace Proyecto_DDMS_API.Models
         public int PersonId { get; set; }
         public string NoticeString { get; set; }
         public string Title { get; set; }
+       
+        public string PersonName { get; set; }
+        public string PersonLastName { get; set; }
 
         public virtual ICollection<Commentary> Commentary { get; set; }
     }

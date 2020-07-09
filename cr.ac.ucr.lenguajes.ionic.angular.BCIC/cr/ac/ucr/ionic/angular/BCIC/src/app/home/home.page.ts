@@ -63,10 +63,14 @@ export class HomePage implements OnInit {
     this.blockSelected = 1;
     return new Promise((response) => {
       this.rest.getNews().subscribe((data) => {
+
+
         for (let index = 0; index < data.length; index++) {
           var item = {
             title: data[index].title,
             description: data[index].noticeString,
+            name: data[index].personName,
+            lastName: data[index].personLastName,
             buttonText: "Comentarios",
             img: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
           };
@@ -84,6 +88,7 @@ export class HomePage implements OnInit {
     this.coursesCards = [];
     return new Promise((response) => {
       this.rest.getCourses().subscribe((data) => {
+
         for (let index = 0; index < data.length; index++) {
           if (data[index].term == num) {
             var item = {

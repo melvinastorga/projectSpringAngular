@@ -126,6 +126,11 @@ export class AppComponent {
     this.router.navigate(["my-courses"]);
   }
 
+  openNewsDialog(): void {
+    this.openCustom();
+    this.router.navigate(["news"]);
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
