@@ -108,7 +108,7 @@
           <ion-item>
             <ion-button class="menu-item-close" fill="transparent" (click)="openCustom()">Cerrar</ion-button>
           </ion-item>
-          <ion-item *ngIf='hide !==""'>
+          <ion-item *ngIf='hide=="student" ||  hide "professor"'>
             <ion-button class="menu-item-close" (click)="logout()" fill="transparent">Cerrar Sesion</ion-button>
           </ion-item>
         </ion-list>
