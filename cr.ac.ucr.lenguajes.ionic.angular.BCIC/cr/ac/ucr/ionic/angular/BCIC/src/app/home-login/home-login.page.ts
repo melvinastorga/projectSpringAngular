@@ -27,8 +27,13 @@ export class HomeLoginPage implements OnInit {
   userId: any
   userName:any
   userRole:any
+  hideMe:any
 
   ngOnInit() {
+  }
+
+  hide() {
+    this.hideMe = false;
   }
 
   login(): void {
@@ -41,19 +46,17 @@ export class HomeLoginPage implements OnInit {
     this.rest.login(loginModel).subscribe((data1)=>{ 
 
       var contentData = data1;
-      console.log(contentData);
 
 
       if (contentData.student != null) {
 
-        console.log(contentData.student.personId)
         this.rest.setUserId(contentData.student.personId)
 
         this.rest.setRole(contentData.student.userRole)
 
         this.rest.setUser(contentData.student.email)
 
-      console.log(this.userId)
+
 
       }else if(contentData.professor!=null){
 
@@ -65,6 +68,8 @@ export class HomeLoginPage implements OnInit {
 
       }})}
 
+
+      
 
   onNoClick(): void {
     this.dialogRef.close();

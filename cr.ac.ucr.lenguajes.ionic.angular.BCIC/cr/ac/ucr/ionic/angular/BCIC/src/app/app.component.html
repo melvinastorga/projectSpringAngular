@@ -45,14 +45,6 @@
           </ion-button>
           <!-- End Register button-->
         </ion-item>
-        <ion-item style="color: white;">
-          <!-- Register button-->
-          <ion-button disabled="true" color="bgColor" class="navbar-button" (click)="openRegisterDialog()">
-            Perfil
-            <ion-icon name="create-outline" class="navbar-button-icon2"></ion-icon>
-          </ion-button>
-          <!-- End Register button-->
-        </ion-item>
         <ion-item>
           <!-- login button-->
           <ion-button (click)="openLoginDialog()" color="bgColor" class="navbar-button">
@@ -87,7 +79,7 @@
             <ion-button class="menu-item"  (click)="home()" fill="transparent">Principal</ion-button>
           </ion-item>
           <ion-item>
-            <ion-button class="menu-item" fill="transparent">Perfil</ion-button>
+            <ion-button class="menu-item" fill="transparent" (click)="openUpdateDialog()">Perfil</ion-button>
           </ion-item>
           <ion-item>
             <ion-button class="menu-item" (click)="openProfessorsDialog()" fill="transparent">Profesores</ion-button>

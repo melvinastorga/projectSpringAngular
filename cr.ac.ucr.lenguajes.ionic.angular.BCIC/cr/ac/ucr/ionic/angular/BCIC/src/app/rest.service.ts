@@ -84,20 +84,14 @@ export class RestService {
   //---------------Get session variables values---------------
 
   public async getCurrentUser() {
-    return new Promise((response) => {
       this.storage.get("name").then((val) => {
         this.username.next(val);
-        response(val);
       });
-    });
   }
 
   public async getCurrentUserId() {
-    return new Promise((response) => {
       this.storage.get("userId").then((val) => {
         this.userId.next(val);
-        response(val);
-      });
     });
   }
 
@@ -147,6 +141,20 @@ export class RestService {
   }
 
   //--------------------Student methods------------------------
+
+  getImage(userId){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .get(path +
+        "/imageString/" +
+        userId, 
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
 
   getStudentById(studentId){
     var path;
@@ -356,12 +364,15 @@ export class RestService {
       );
      
   }
+
   
+  
+
   putProfessor(professor): Observable<any> {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
-      .post(path + "/professor/updateProfessor",professor,httpOptions)
+      .post(path + "/updateProfessor",professor,httpOptions)
       .pipe(
         map(this.extractData),
         catchError(this.handleError<any>("putProfessor"))
@@ -372,10 +383,10 @@ export class RestService {
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
     return this.http
-      .post(path + "/professor/postProfessor",professor,httpOptions)
+      .post(path + "/postProfessor",professor,httpOptions)
       .pipe(
         map(this.extractData),
-        catchError(this.handleError<any>("postProfessor"))
+        catchError(this.handleError<any>("postCourse"))
       );
   }
 

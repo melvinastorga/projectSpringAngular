@@ -48,8 +48,10 @@ export class HomeRegisterPage implements OnInit {
   updatedAt: Date = new Date();
   role: ''
   carne: ''
-  imgString: ''
+  imgString: any
   action = ""
+  source: string = '';
+  imageElement:any
 
 
   ngOnInit() {
@@ -59,23 +61,33 @@ export class HomeRegisterPage implements OnInit {
     if (this.data != null) {
       var contentData = this.data.data;
       this.action = "Actualizar";
-      this.action = "Crear";
-      this.provinceId = contentData.provinceId
-      this.cantonId = contentData.cantonId
-      this.email = contentData.email
-      this.password = contentData.password
-      this.name = contentData.name
-      this.lastName = contentData.lastName
-      this.interests = contentData.interests
-      this.profilePic = [71, 107, 98]
-      this.status = contentData.status
-      this.districtId = contentData.districId
+      this.personId = contentData.student.personId
+      this.provinceId = contentData.student.provinceId
+      this.cantonId = contentData.student.cantonId
+      this.email = contentData.student.email
+      this.password = contentData.student.password
+      this.name = contentData.student.name
+      this.lastName = contentData.student.lastName
+      this.interests = contentData.student.interests
+      this.profilePic = contentData.student.profilePic
+      this.status = contentData.student.status
+      this.districtId = contentData.student.districId
       this.date = new Date();
       this.updatedBy = 0
       this.updatedAt = new Date();
-      this.role = ''
-      this.carne = contentData.carne
-      this.imgString = ''
+      this.role = contentData.student.role
+      this.carne = contentData.student.carne
+
+
+      this.source = this.imgString
+      this.imageElement = document.createElement("img");
+      this.imageElement.setAttribute('src', this.imgString);
+
+      this.getCanton(contentData.student.provinceId)
+      this.getDistrict()
+
+      console.log("no nulo " + this.data)
+
     } else {
       this.action = "Crear";
       this.cantonId = 0
@@ -93,10 +105,20 @@ export class HomeRegisterPage implements OnInit {
       this.role = ''
       this.carne = ''
       this.imgString = ''
+
+      console.log(" nulo " + this.data)
     }
 
   }
 
+
+
+
+  getImgString() {
+    this.rest.getImage(this.personId).subscribe((data) => {
+      this.imgString = data
+    });
+  }
 
   getProvince() {
     this.rest.getProvince().subscribe((data) => {
@@ -107,7 +129,6 @@ export class HomeRegisterPage implements OnInit {
   getCanton(provinceId) {
     this.rest.getCanton(provinceId).subscribe((data) => {
       this.cantons = data
-      this.ngOnInit();
     });
   }
 
@@ -115,7 +136,6 @@ export class HomeRegisterPage implements OnInit {
     console.log(this.provinceId, this.cantonId)
     this.rest.getDistric(this.provinceId, this.cantonId).subscribe((data) => {
       this.districts = data
-      this.ngOnInit();
     });
   }
 
@@ -123,14 +143,14 @@ export class HomeRegisterPage implements OnInit {
   postStudent() {
 
     var student = {
-      "personId": 0,
+      "personId": this.personId,
       "email": this.email,
       "password": this.password,
       "name": this.name,
       "lastName": this.lastName,
       "interests": this.interests,
       "profilePic": [71, 107, 98],
-      "status": 0,
+      "status": 1,
       "districId": this.districtId,
       "cantonId": this.cantonId,
       "provinceId": this.provinceId,
@@ -143,11 +163,16 @@ export class HomeRegisterPage implements OnInit {
 
     }
 
-
+  if(this.action=="Crear"){
     this.rest.postStudent(student).subscribe(() => {
       console.log(student)
     });
-
+  }else if(this.action=="Actualizar"){
+    this.rest.putStudent(student).subscribe(() => {
+      console.log(student)
+    });
+  }
+  
   }
 
   updateSource($event: Event) {
@@ -156,7 +181,7 @@ export class HomeRegisterPage implements OnInit {
   }
 
   // Uses FileReader to read the file from the input
-  source: string = '';
+ 
   projectImage(file: File) {
     let reader = new FileReader;
     // TODO: Define type of 'e'
@@ -166,19 +191,19 @@ export class HomeRegisterPage implements OnInit {
       this.onChange.emit(file);
 
 
+      console.log(e.target.result)
       //Create a canvas and draw image on Client Side to get the byte[] equivalent
       var canvas = document.createElement("canvas");
-      var imageElement = document.createElement("img");
+      this.imageElement = document.createElement("img");
 
-      imageElement.setAttribute('src', e.target.result);
-      canvas.width = imageElement.width;
-      canvas.height = imageElement.height;
+      this.imageElement.setAttribute('src', e.target.result);
+      canvas.width = this.imageElement.width;
+      canvas.height = this.imageElement.height;
       var context = canvas.getContext("2d");
-      context.drawImage(imageElement, 0, 0);
+      context.drawImage(this.imageElement, 0, 0);
       var base64Image = e.target.result
       this.imgString = e.target.result
 
-      console.log(base64Image)
 
     };
     // This will process our file and get it's attributes/data

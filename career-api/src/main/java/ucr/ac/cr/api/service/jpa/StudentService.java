@@ -31,7 +31,8 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public Student getStudentById(int id){
+    public Student getStudentById(int id) {
+
         return studentRepository.getStudentById(id);
     }
 
@@ -61,20 +62,20 @@ public class StudentService implements IStudentService {
 
     @Override
     public void updateStudent(Student student){
-        studentRepository.updateStudent(student.personId,
+        studentRepository.updateStudent(student.getPersonId(),
                 student.getEmail(),
                 student.getPassword(),
                 student.getName(),
                 student.getLastName(),
                 student.getInterests(),
                 student.getProfilePic(),
-                student.isStudentStatus(),
+                true,
                 student.getDistricId(),
                 student.getCantonId(),
                 student.getProvinceId(),
-                student.getCreateAt(),
-                student.getUpdatedBy(),
-                student.getUpdatedAt(),
+                date,
+                student.getPersonId(),
+                date,
                 student.getRole(),
                 student.getCarne(),
                 "Update");
@@ -111,5 +112,10 @@ public class StudentService implements IStudentService {
         byte[] decodedString = Base64.getDecoder().decode(new String(name).getBytes("UTF-8"));
         System.out.println(new String(decodedString));
         return name;
+    }
+
+    public String byteToString (byte[] arrayString) throws UnsupportedEncodingException {
+        String decoded = new String(new String(arrayString, "UTF-8"));
+        return decoded;
     }
 }

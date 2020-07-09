@@ -13,13 +13,24 @@ public class UserModel {
 
     public LocationNames locationNames;
 
+    public String imgString;
+
     public UserModel() {
     }
 
-    public UserModel(Professor professor, Student student, LocationNames locationNames) {
+    public UserModel(Professor professor, Student student, LocationNames locationNames, String imgString) {
         this.professor = professor;
         this.student = student;
         this.locationNames = locationNames;
+        this.imgString = imgString;
+    }
+
+    public String getImgString() {
+        return imgString;
+    }
+
+    public void setImgString(String imgString) {
+        this.imgString = imgString;
     }
 
     public Professor getProfessor() {

@@ -58,57 +58,45 @@ export class AppComponent {
 
   }
 
+
+
   openRegisterDialog(): void {
 
-    this.userId = this.rest.getCurrentUserId().then((val) => {
-      this.userId.next(val);
-    });
-
-    console.log(this.userId)
-
-    if (this.userId != null) {
-      this.rest.getStudentById(this.userId).subscribe((data1) => {
-        this.dataResult = data1
-      });
-    } else {
       this.dataResult = null
 
-    }
+      const dialogRef = this.dialog.open(HomeRegisterPage, {
+        width: "50%",
+        height: "70%",
+        data: null,
+  
+      });
 
-    const dialogRef = this.dialog.open(HomeRegisterPage, {
-      width: "50%",
-      height: "70%",
-      data: this.dataResult,
-
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
-      this.animal = result;
-    });
-
+      dialogRef.afterClosed().subscribe((result) => {
+      });
+    
   }
 
   openUpdateDialog(): void {
 
-    this.userId = this.rest.getCurrentUserId()
-    this.rest.getStudentById(this.userId).subscribe((data:{})=>{
-      
-      console.log(data)
+    this.rest.getCurrentUserId()
+    this.rest.currentUserId.subscribe( (message) => (this.userId = message) );
 
-    const dialogRef = this.dialog.open(HomeRegisterPage, {
-      width: "50%",
-      height: "70%",
-      data: { data },
-    });
     
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
-      this.animal = result;
-    });
+    if (this.userId != 'error user id null') {
+      this.rest.getStudentById(this.userId).subscribe((data) => {
+        
+        console.log("get" + data)
 
-  });
+        const dialogRef = this.dialog.open(HomeRegisterPage, {
+          width: "50%",
+          height: "70%",
+          data: { data }
+        });
 
+        dialogRef.afterClosed().subscribe((result) => {
+        });
+      });
+    }
   }
 
 

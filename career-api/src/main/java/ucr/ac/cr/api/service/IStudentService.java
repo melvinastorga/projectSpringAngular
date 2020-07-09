@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IStudentService {
     List<Student> listAllStudent();
-    Student getStudentById(int id);
+    Student getStudentById(int id) throws UnsupportedEncodingException;
     void insertStudent(Student officeHours) throws UnsupportedEncodingException;
     void updateStudent(Student officeHours);
     void serveStudentAccount(int studentId, int updatedBy, String action);

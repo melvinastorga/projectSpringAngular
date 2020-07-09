@@ -23,7 +23,7 @@ public class StudentController {
     private LocationNameService locationNameService;
 
     @GetMapping("/getStudentById/{id}")
-    public ResponseEntity<UserModel> getStudentById(@PathVariable Integer id){
+    public ResponseEntity<UserModel> getStudentById(@PathVariable Integer id) throws UnsupportedEncodingException {
         UserModel user = new UserModel();
         Student student = service.getStudentById(id);
 

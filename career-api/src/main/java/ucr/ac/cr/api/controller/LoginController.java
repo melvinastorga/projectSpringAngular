@@ -1,5 +1,6 @@
 package ucr.ac.cr.api.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.NoSuchElementException;
 
 import org.apache.catalina.User;
@@ -59,6 +60,13 @@ public class LoginController {
 		}catch(NoSuchElementException e){
 			return new ResponseEntity<UserModel>(HttpStatus.NOT_FOUND);
 		}
+	}
+
+	@GetMapping("/imageString/{userId}")
+	public ResponseEntity<String> getImageString (@PathVariable Integer userId) throws UnsupportedEncodingException {
+		Student student = studentService.getStudentById(userId);
+		return new ResponseEntity(studentService.byteToString(student.getProfilePic()), HttpStatus.OK) ;
+
 	}
 	
 }
