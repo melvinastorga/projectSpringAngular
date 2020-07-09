@@ -53,6 +53,7 @@ export class AppComponent {
     this.rest.getCurrentSuperUser()
     this.rest.currentsuperUser.subscribe( (message) => (this.superUser = message) );
 
+    console.log(this.superUser);
 
 
     if(this.userRole=="Student" && this.superUser==true){
@@ -162,6 +163,7 @@ export class AppComponent {
   logout(): void {
     this.openCustom();
     this.router.navigate(["home"]);
+    this.rest.logout();
   }
 
   home(): void {

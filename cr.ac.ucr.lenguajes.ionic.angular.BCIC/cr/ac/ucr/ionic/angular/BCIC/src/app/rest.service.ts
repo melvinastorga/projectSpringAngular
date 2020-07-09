@@ -139,7 +139,7 @@ export class RestService {
   //----------------------------------------------------------
 
   //-------------------------Logout---------------------------
-  public async logout() {
+  public logout() {
   
       this.storage.remove("name");
   
