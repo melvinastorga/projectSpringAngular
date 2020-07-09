@@ -165,11 +165,11 @@ export class HomeRegisterPage implements OnInit {
 
   if(this.action=="Crear"){
     this.rest.postStudent(student).subscribe(() => {
-      console.log(student)
+      
     });
   }else if(this.action=="Actualizar"){
     this.rest.putStudent(student).subscribe(() => {
-      console.log(student)
+      
     });
   }
   
