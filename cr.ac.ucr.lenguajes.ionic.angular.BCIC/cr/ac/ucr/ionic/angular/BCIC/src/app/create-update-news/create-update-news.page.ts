@@ -1,10 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../professor-details/professor-details.page';
 import { RestService } from '../rest.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+export interface DialogData {
+  data: any;
+  action1:any
+}
 @Component({
   selector: 'app-create-update-news',
   templateUrl: './create-update-news.page.html',
@@ -29,10 +32,19 @@ export class CreateUpdateNewsPage implements OnInit {
 
   ngOnInit() {
     if (this.data != null) {
+     
       var contentData = this.data.data;
-      this.action = "Actualizar";
+      this.action = this.data.action1.action
+   
       this.noticeString = contentData.noticeString;
       this.title = contentData.title;
+      if(this.action=='details'){
+
+        this.action="Detalles"
+      }else{
+
+        this.action="Actualizar"
+      }
 
     } else {
       this.action = "Crear";
@@ -61,21 +73,20 @@ export class CreateUpdateNewsPage implements OnInit {
         }
     
         this.rest.postNews(notice).subscribe(() => {
-          console.log(notice)
+          this.message="La noticia sea ha creado con exito";
+          this.onNoClick();
+          this.presentAlert();
+          this.router.navigate(["news"]);
         });
     
       } else {
-       /* this.data.data.course = this.course;
-        this.data.data.term = this.term;
-        this.data.data.code = this.code;
-        this.data.data.description = this.description;
-        this.data.data.credits = this.credits;*/
-
+        this.data.data.title = this.title;
+        this.data.data.noticeString = this.noticeString;
         this.rest.putCourses(this.data.data).subscribe(() => {
-          this.message="El curso sea ha actualizado con exito";
+          this.message="La noticia sea ha actualizado con exito";
           this.onNoClick();
           this.presentAlert();
-          this.router.navigate(["courses"]);
+          this.router.navigate(["news"]);
         });
       }
     }

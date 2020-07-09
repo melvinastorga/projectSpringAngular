@@ -546,7 +546,7 @@ export class RestService {
   }
 
   postNews(news): Observable<any> {
-    //https://localhost:44358/api/notice/PostNotice
+  
     return this.http
       .post(this.endPointNewsApi + "/notice/PostNotice",news,httpOptions)
       .pipe(
@@ -556,7 +556,7 @@ export class RestService {
   }
 
   putNews(news): Observable<any> {
-    //https://localhost:44358/api/notice/PostNotice
+
     return this.http
       .post(this.endPointNewsApi + "/notice/PutNotice",news,httpOptions)
       .pipe(
@@ -565,13 +565,23 @@ export class RestService {
       );
   }
 
-  deleteNews(news): Observable<any> {
-    //https://localhost:44358/api/notice/PostNotice
+  deleteNews(id): Observable<any> {
+
     return this.http
-      .post(this.endPointNewsApi + "/notice/DeleteNotice",news,httpOptions)
+      .delete(this.endPointNewsApi+"/notice/DeleteNotice/"+id,httpOptions)
       .pipe(
         map(this.extractData),
-        catchError(this.handleError<any>("postNews"))
+        catchError(this.handleError<any>("deleteNews"))
+      );
+  }
+
+  getNewsById(id){
+    
+    return this.http
+      .get(this.endPointNewsApi+"/notice/GetNotice/"+id,httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>(" getNewsById"))
       );
   }
 
@@ -579,7 +589,7 @@ export class RestService {
   //-------------------------Comments Methods------------------------
 
   postCommentary(commentary): Observable<any> {
-    //https://localhost:44358/api/commentary/PostCommentary
+
     return this.http
       .post(this.endPointNewsApi + "/commentary/PostCommentary",commentary,httpOptions)
       .pipe(

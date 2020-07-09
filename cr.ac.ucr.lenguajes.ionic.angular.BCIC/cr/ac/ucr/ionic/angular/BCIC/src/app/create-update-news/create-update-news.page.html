@@ -27,7 +27,7 @@
   
     <ion-row>
       <ion-col>
-        <button mat-raised-button color="secondary" (click)="post()">{{action}}</button>
+        <button mat-raised-button color="secondary" *ngIf='this.action!="Detalles"' (click)="post()">{{action}}</button>
       </ion-col>
       <ion-col>
       </ion-col>

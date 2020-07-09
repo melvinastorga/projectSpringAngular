@@ -7,6 +7,11 @@ import { Router } from "@angular/router";
 import { MatTableDataSource } from "@angular/material/table";
 import { CreateUpdateNewsPage } from "../create-update-news/create-update-news.page";
 
+export interface DialogData{
+  data : any,
+  action : any
+}
+
 @Component({
   selector: "app-news",
   templateUrl: "./news.page.html",
@@ -57,11 +62,14 @@ export class NewsPage implements OnInit {
   }
 
   get(id): void {
-    this.rest.getCourse(id).subscribe((data) => {
+
+    var action1={"action":"details"};
+    this.rest.getNewsById(id).subscribe((data) => {
       const dialogRef = this.dialog.open(CreateUpdateNewsPage, {
         width: "500px",
         height: "80%",
-        data: data,
+        data: {data,action1},
+        
       });
 
       dialogRef.afterClosed().subscribe((result) => {
@@ -82,18 +90,22 @@ export class NewsPage implements OnInit {
   }
 
   delete(id) {
-    this.rest.deleteCourses(id).subscribe((data) => {
+    this.rest.deleteNews(id).subscribe((data) => {
       this.presentAlert();
       this.ngOnInit();
     });
   }
 
   put(id) {
-    this.rest.getCourse(id).subscribe((data) => {
+    
+    var action1={"action":"update"};
+    this.rest.getNewsById(id).subscribe((data) => {
+    
+
       const dialogRef = this.dialog.open(CreateUpdateNewsPage, {
         width: "500px",
         height: "80%",
-        data: { data },
+        data: { data,action1},
       });
 
       dialogRef.afterClosed().subscribe((result) => {
