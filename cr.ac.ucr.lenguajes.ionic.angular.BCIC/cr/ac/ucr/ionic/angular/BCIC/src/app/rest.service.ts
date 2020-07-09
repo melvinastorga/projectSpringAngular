@@ -112,6 +112,15 @@ export class RestService {
     });
   }
 
+  public async getCurrentSuperUser() {
+    return new Promise((response) => {
+      this.storage.get("superUser").then((val) => {
+        this.superUser.next(val);
+        response(val);
+      });
+    });
+  }
+
   //----------------------------------------------------------
 
   //-------------------------Login----------------------------
