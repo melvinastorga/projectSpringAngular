@@ -153,6 +153,8 @@ export class StudentsPage implements OnInit {
   getPresident(){
 
       this.rest.getPresident().subscribe((data)=>{
+        console.log(data)
+
       this.presidentName = data.name + " " + data.lastName
           
     });
