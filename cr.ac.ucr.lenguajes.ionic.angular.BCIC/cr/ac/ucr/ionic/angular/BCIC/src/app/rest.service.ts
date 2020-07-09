@@ -46,6 +46,9 @@ export class RestService {
   private userId = new BehaviorSubject("error user id null");
   public currentUserId = this.userId.asObservable();
 
+  private superUser = new BehaviorSubject("");
+  public currentsuperUser = this.superUser.asObservable();
+
   private endPoint = new BehaviorSubject("http://localhost:8080/api");
   public currentendPoint = this.endPoint.asObservable();
 
@@ -70,6 +73,11 @@ export class RestService {
   public setUserId(id: string) {
     this.userId.next(id);
     this.storage.set("userId", id);
+  }
+
+  public setSuperUser(id: string) {
+    this.superUser.next(id);
+    this.storage.set("superUser", id);
   }
   public setRole(role: string) {
     this.role.next(role);

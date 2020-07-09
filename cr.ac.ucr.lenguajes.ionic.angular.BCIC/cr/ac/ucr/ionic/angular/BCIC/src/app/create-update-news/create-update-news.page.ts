@@ -20,7 +20,7 @@ export class CreateUpdateNewsPage implements OnInit {
   title = "";
   message=""
   userId="";
-  isDisable=false;
+  isDisable:any;
 
   constructor(
 
@@ -32,6 +32,8 @@ export class CreateUpdateNewsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.isDisable=false;
     if (this.data != null) {
      
       var contentData = this.data.data;
