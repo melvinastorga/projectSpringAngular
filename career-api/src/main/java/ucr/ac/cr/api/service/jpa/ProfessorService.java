@@ -7,6 +7,8 @@ import ucr.ac.cr.api.repository.ProfessorRepository;
 import ucr.ac.cr.api.service.IProfesorService;
 
 import javax.transaction.Transactional;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -15,6 +17,9 @@ public class ProfessorService implements IProfesorService {
 
     @Autowired
     private ProfessorRepository professorRepository;
+
+    long millis=System.currentTimeMillis();
+    java.sql.Date date=new java.sql.Date(millis);
 
     @Override
     public Professor getProfessorById(int id){
@@ -35,7 +40,12 @@ public class ProfessorService implements IProfesorService {
     }
 
     @Override
-    public void insertProfessor(Professor professor){
+    public void insertProfessor(Professor professor) throws UnsupportedEncodingException {
+
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
+
+        professor.setProfilePic(stringToByte(professor.getImgString()));
 
          professorRepository.insertProfessor(0,
                 professor.getEmail(),
@@ -44,21 +54,23 @@ public class ProfessorService implements IProfesorService {
                 professor.getLastName(),
                 professor.getInterests(),
                 professor.getProfilePic(),
-                professor.isStatus(),
+                false,
                 professor.getDistricId(),
                 professor.getCantonId(),
                 professor.getProvinceId(),
-                professor.getCreatedBy(),
-                professor.getCreateAt(),
-                professor.getUpdatedBy(),
-                professor.getUpdatedAt(),
+                 professor.personId,
+                 date,
+                 professor.personId,
+                 date,
                 "Professor",
                 professor.getEspeciality(),
                 "Insert");
     }
 
     @Override
-    public void updateProfessor(Professor professor){
+    public void updateProfessor(Professor professor) throws UnsupportedEncodingException {
+
+        professor.setProfilePic(stringToByte(professor.getImgString()));
 
         professorRepository.updateProfessor(professor.getPersonId(),
                 professor.getEmail(),
@@ -67,17 +79,23 @@ public class ProfessorService implements IProfesorService {
                 professor.getLastName(),
                 professor.getInterests(),
                 professor.getProfilePic(),
-                professor.isStatus(),
+                true,
                 professor.getDistricId(),
                 professor.getCantonId(),
                 professor.getProvinceId(),
-                professor.getCreatedBy(),
-                professor.getCreateAt(),
-                professor.getUpdatedBy(),
-                professor.getUpdatedAt(),
+                professor.personId,
+                date,
+                professor.personId,
+                date,
                 "Professor",
                 professor.getEspeciality(),
                 "Update");
     }
 
+    public byte[] stringToByte(String string) throws UnsupportedEncodingException {
+        byte[] name = Base64.getEncoder().encode(string.getBytes());
+        byte[] decodedString = Base64.getDecoder().decode(new String(name).getBytes("UTF-8"));
+        System.out.println(new String(decodedString));
+        return name;
+    }
 }

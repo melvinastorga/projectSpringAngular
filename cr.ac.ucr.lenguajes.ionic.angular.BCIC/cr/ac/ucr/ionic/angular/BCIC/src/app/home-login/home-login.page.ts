@@ -31,7 +31,6 @@ export class HomeLoginPage implements OnInit {
   ngOnInit() {
   }
 
-
   login(): void {
 
     var loginModel = {

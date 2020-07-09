@@ -16,6 +16,9 @@ import java.util.List;
 @Transactional
 public class StudentService implements IStudentService {
 
+    long millis=System.currentTimeMillis();
+    java.sql.Date date=new java.sql.Date(millis);
+
     @Autowired
     StudentRepository studentRepository;
 
@@ -34,10 +37,6 @@ public class StudentService implements IStudentService {
 
     @Override
     public void insertStudent(Student student) throws UnsupportedEncodingException {
-
-
-        long millis=System.currentTimeMillis();
-        java.sql.Date date=new java.sql.Date(millis);
 
         student.setProfilePic(stringToByte(student.imgString));
 

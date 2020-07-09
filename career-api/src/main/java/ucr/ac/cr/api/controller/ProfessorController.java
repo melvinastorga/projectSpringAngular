@@ -9,6 +9,7 @@ import ucr.ac.cr.api.entity.OfficeHours;
 import ucr.ac.cr.api.entity.Professor;
 import ucr.ac.cr.api.service.jpa.ProfessorService;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
@@ -37,13 +38,13 @@ public class ProfessorController {
     }
 
     @PostMapping("/postProfessor")
-    public ResponseEntity<?> insertProfessor(@RequestBody Professor professor){
+    public ResponseEntity<?> insertProfessor(@RequestBody Professor professor) throws UnsupportedEncodingException {
          service.insertProfessor(professor);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PostMapping("/updateProfessor")
-    public void updateProfessor(@RequestBody Professor professor){
+    public void updateProfessor(@RequestBody Professor professor) throws UnsupportedEncodingException {
         service.updateProfessor(professor);
     }
 

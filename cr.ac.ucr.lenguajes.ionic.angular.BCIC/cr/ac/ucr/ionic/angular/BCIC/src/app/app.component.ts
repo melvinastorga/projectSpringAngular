@@ -34,6 +34,9 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  userId:any
+  dataResult:any
+
   openCustom() {
     this.menu.close("custom");
     this.menu.enable(true, "custom");
@@ -52,26 +55,47 @@ export class AppComponent {
       this.animal = result;
     });
 
-   
+
   }
 
   openRegisterDialog(): void {
+
+    this.userId = this.rest.getCurrentUserId().then((val) => {
+      this.userId.next(val);
+    });
+
+    console.log(this.userId)
+
+    if (this.userId != null) {
+      this.rest.getStudentById(this.userId).subscribe((data1) => {
+        this.dataResult = data1
+      });
+    } else {
+      this.dataResult = null
+
+    }
+
     const dialogRef = this.dialog.open(HomeRegisterPage, {
       width: "50%",
       height: "70%",
-      data: { },
+      data: this.dataResult,
+
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
       this.animal = result;
     });
+
   }
 
-  openUpdateDialog(id): void {
+  openUpdateDialog(): void {
 
-    this.rest.getStudentById(id).subscribe((data:{})=>{
+    this.userId = this.rest.getCurrentUserId()
+    this.rest.getStudentById(this.userId).subscribe((data:{})=>{
       
+      console.log(data)
+
     const dialogRef = this.dialog.open(HomeRegisterPage, {
       width: "50%",
       height: "70%",
