@@ -66,6 +66,13 @@ export class ProfessorsPage implements OnInit {
     });
   }
 
+  promoteProfessor(professorId){
+    this.rest.promoteProfessorToAdmin(professorId, 14).subscribe((data)=>{
+      this.ngOnInit();
+  
+    });
+  }
+
   
 getProfessorDetailsId(id){
 
