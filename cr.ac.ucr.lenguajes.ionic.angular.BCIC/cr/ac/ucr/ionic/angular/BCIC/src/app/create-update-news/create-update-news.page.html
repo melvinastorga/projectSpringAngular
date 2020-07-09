@@ -16,7 +16,7 @@
     <p>
       <mat-form-field>
         <mat-label>Noticia</mat-label>
-        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" ng-disabled='this.action!="Detalles"'
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" ng-disabled="noticeString"
           cdkAutosizeMaxRows="8" [(ngModel)]="noticeString"></textarea>
       </mat-form-field>
     </p>
