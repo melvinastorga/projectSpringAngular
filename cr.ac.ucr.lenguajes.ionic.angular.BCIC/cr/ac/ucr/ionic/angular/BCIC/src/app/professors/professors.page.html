@@ -36,7 +36,7 @@
           <th mat-header-cell *matHeaderCellDef> Opciones </th>
           <td mat-cell *matCellDef="let element">
             <button size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button" (click)="getProfessorDetailsId(element.professorId)">Detalles</button>
-            <button size="sm" mdbBtn color="unique" mdbWavesEffect class="social-prof-button" (click)="promoteProfessorToAdmin(element.professorId)">Promover</button>
+            <button size="sm" mdbBtn color="unique" mdbWavesEffect class="social-prof-button" (click)="promoteProfessor(element.professorId)">Promover</button>
             <button size="sm" mdbBtn color="warning" mdbWavesEffect class="social-prof-button" (click)="putProfessor(element.professorId)">Actualizar</button>
             <button size="sm" mdbBtn color="danger" mdbWavesEffect class="social-prof-button" (click)="delete(element.professorId)">x</button>
           </td>
@@ -84,7 +84,7 @@
             <th mat-header-cell *matHeaderCellDef> Opciones </th>
             <td mat-cell *matCellDef="let element">
               <button size="sm" mdbBtn color="info" mdbWavesEffect class="social-prof-button" (click)="getProfessorDetailsId(element.professorId)">Detalles</button>
-              <button size="sm" mdbBtn color="success" mdbWavesEffect class="social-prof-button">Activar</button>
+              <button size="sm" mdbBtn color="success" mdbWavesEffect class="social-prof-button" (click)="activateProfessorAccount(element.professorId)">Activar</button>
             </td>
           </ng-container>
 

@@ -58,6 +58,14 @@ export class ProfessorsPage implements OnInit {
     });
   }
 
+  activateProfessorAccount(professorId){
+    this.rest.activateProfessorAccount(professorId, 14).subscribe((data)=>{
+
+      this.ngOnInit();
+  
+    });
+  }
+
   
 getProfessorDetailsId(id){
 

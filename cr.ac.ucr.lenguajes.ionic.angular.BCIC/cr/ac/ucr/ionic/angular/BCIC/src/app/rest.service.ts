@@ -381,23 +381,7 @@ export class RestService {
         catchError(this.handleError<any>("getData"))
       );
   }
-  promoteProfessorToAdmin(professorId, updatedBy) {
-    var path;
-    this.currentendPoint.subscribe((result) => (path = result));
-    return this.http
-      .post(
-        path +
-          "/promoteProfessor/" +
-          professorId +
-          "/" +
-          updatedBy,
-        httpOptions
-      )
-      .pipe(
-        map(this.extractData),
-        catchError(this.handleError<any>("ranking"))
-      );
-  }
+
   getProfessorByCourse(courseId){
     var path;
     this.currentendPoint.subscribe((result) => (path = result));
@@ -431,6 +415,21 @@ export class RestService {
       );
   }
   
+  activateProfessorAccount(professorId, updatedBy){
+    var path;
+    this.currentendPoint.subscribe((result) => (path = result));
+    return this.http
+      .post(path +
+        "/activateAccount/" +
+        professorId
+        + "/" +
+        updatedBy,
+        httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError<any>("getData"))
+      );
+  }
 
   putProfessor(professor): Observable<any> {
     var path;
