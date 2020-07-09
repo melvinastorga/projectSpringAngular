@@ -44,30 +44,34 @@ export class AppComponent {
   dataResult:any
   hide:any 
 
-  permissons(){
 
+  permissons(){
+ 
     this.rest.getCurrentRole()
     this.rest.currentRole.subscribe( (message) => (this.userRole = message) );
 
     this.rest.getCurrentSuperUser()
     this.rest.currentsuperUser.subscribe( (message) => (this.superUser = message) );
 
-    console.log(this.userRole)
-    console.log(this.superUser)
+
 
     if(this.userRole=="Student" && this.superUser==true){
       this.hide="president"
-      console.log("president")
+   
+     
     }if(this.userRole=="Professor" && this.superUser==true){
       this.hide="admin"
-      console.log("admin")
+   
+     
     }if(this.userRole=="Professor" && this.superUser==false){
       this.hide="professor"
-      console.log("professor")
+   
+   
     }else if(this.userRole=="Student" && this.superUser==false){
       this.hide="student"
-      console.log("student")
+  
     }
+
     
   }
 
@@ -187,6 +191,9 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+
+      this.permissons();
+     
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

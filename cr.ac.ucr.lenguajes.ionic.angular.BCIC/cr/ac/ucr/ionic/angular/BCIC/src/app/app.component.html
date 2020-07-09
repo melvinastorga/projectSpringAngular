@@ -37,7 +37,7 @@
     <ion-buttons slot="secondary">
       <ion-items>
 
-        <ion-item *ngIf='hide!==""' style="color: white;">
+        <ion-item *ngIf='this.superUser===0 || this.superUser===1' style="color: white;">
           <!-- Register button-->
           <ion-button  color="bgColor" class="navbar-button"  (click)="openRegisterDialog()">
             Registrarse
@@ -45,7 +45,7 @@
           </ion-button>
           <!-- End Register button-->
         </ion-item>
-        <ion-item *ngIf='hide!==""'>
+        <ion-item *ngIf='this.superUser===0 || this.superUser===1'>
           <!-- login button-->
           <ion-button (click)="openLoginDialog()" color="bgColor" class="navbar-button">
             Iniciar sesion
