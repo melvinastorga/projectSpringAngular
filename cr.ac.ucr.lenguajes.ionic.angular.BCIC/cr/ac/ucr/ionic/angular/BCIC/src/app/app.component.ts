@@ -15,6 +15,8 @@ import { RestService } from './rest.service';
 import { ProfessorCreateUpdatePage } from './professor-create-update/professor-create-update.page';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
+
+
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
