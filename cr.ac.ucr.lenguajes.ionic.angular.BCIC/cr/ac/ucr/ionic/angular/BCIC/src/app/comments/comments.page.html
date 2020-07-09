@@ -137,12 +137,12 @@
 <div class="comment-area">
   <mat-form-field>
     <mat-label>Comentar</mat-label>
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+    <textarea [(ngModel)]="commentaryString"  matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
       cdkAutosizeMaxRows="5"></textarea>
   </mat-form-field>
   <ion-row>
     <ion-col>
-      <button mat-raised-button color="secondary">Comentar</button>
+      <button mat-raised-button color="secondary" (click)="postComment()">Comentar</button>
     </ion-col>
     <ion-col>
 

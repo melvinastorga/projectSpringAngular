@@ -67,6 +67,7 @@ export class HomePage implements OnInit {
 
         for (let index = 0; index < data.length; index++) {
           var item = {
+            id: data[index].noticeId,
             title: data[index].title,
             description: data[index].noticeString,
             name: data[index].personName,
@@ -178,11 +179,14 @@ export class HomePage implements OnInit {
     }
   }
 
-  openCommentsDialog(): void {
+  openCommentsDialog(id): void {
     const dialogRef = this.dialog.open(CommentsPage, {
       width: "500px",
       height: "92%",
+      data: id
     });
+
+console.log(id)
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");

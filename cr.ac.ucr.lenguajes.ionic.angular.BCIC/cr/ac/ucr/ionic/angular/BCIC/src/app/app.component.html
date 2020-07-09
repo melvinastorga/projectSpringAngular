@@ -78,25 +78,28 @@
           <ion-item>
             <ion-button class="menu-item"  (click)="home()" fill="transparent">Principal</ion-button>
           </ion-item>
-          <ion-item>
-            <ion-button class="menu-item" fill="transparent" (click)="openUpdateDialog()">Perfil</ion-button>
+          <ion-item *ngIf='hide=="student"'>
+            <ion-button class="menu-item" fill="transparent" (click)="openSUpdateDialog()">Perfil</ion-button>
           </ion-item>
-          <ion-item>
-            <ion-button class="menu-item" (click)="openProfessorsDialog()" fill="transparent">Profesores</ion-button>
+          <ion-item *ngIf='hide=="professor"'>
+            <ion-button class="menu-item" fill="transparent" (click)="openPUpdateDialog()">Perfil</ion-button>
           </ion-item>
-          <ion-item>
-            <ion-button class="menu-item" (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button>
+          <ion-item *ngIf='hide=="admin"'>
+            <ion-button class="menu-item"  (click)="openProfessorsDialog()" fill="transparent">Profesores</ion-button>
           </ion-item>
-          <ion-item>
-            <ion-button class="menu-item" (click)="openMyCoursesDialog()" fill="transparent">Mis Cursos</ion-button>
+          <ion-item *ngIf='hide=="admin"'>
+            <ion-button class="menu-item"  (click)="openStudentsDialog()" fill="transparent">Estudiantes</ion-button>
           </ion-item>
-          <ion-item>
-            <ion-button class="menu-item" (click)="openCoursesDialog()" fill="transparent">Cursos</ion-button>
+          <ion-item *ngIf='hide=="professor"'>
+            <ion-button class="menu-item"  (click)="openMyCoursesDialog()" fill="transparent">Mis Cursos</ion-button>
           </ion-item>
-          <ion-item>
+          <ion-item *ngIf='hide=="admin"'>
+            <ion-button class="menu-item"  (click)="openCoursesDialog()" fill="transparent">Cursos</ion-button>
+          </ion-item>
+          <ion-item *ngIf='hide=="professor"'>
             <ion-button class="menu-item" fill="transparent">Citas</ion-button>
           </ion-item>
-          <ion-item>
+          <ion-item *ngIf='hide=="admin" || "president"'>
             <ion-button class="menu-item" fill="transparent" (click)="openNewsDialog()">Noticias</ion-button>
           </ion-item>
           <ion-item>
