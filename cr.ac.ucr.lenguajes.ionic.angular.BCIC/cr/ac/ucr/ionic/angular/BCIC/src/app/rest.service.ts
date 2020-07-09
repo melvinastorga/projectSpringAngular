@@ -139,13 +139,21 @@ export class RestService {
   //----------------------------------------------------------
 
   //-------------------------Logout---------------------------
-  public async logout() {
-    return new Promise((response) => {
+  public logout() {
+  
       this.storage.remove("name");
-      this.username.next("");
+  
 
-      response("ha cerrado session");
-    });
+      this.storage.remove("role");
+
+
+      this.storage.remove("userId");
+
+
+
+      this.storage.remove("superUser");
+
+    
   }
   //----------------------------------------------------------
 
